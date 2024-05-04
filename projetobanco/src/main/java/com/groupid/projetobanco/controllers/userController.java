@@ -1,5 +1,5 @@
 package com.groupid.projetobanco.controllers;
 
-public class userController {
-    
+public class UserController {
+    // o responsável pelas requisições
 }

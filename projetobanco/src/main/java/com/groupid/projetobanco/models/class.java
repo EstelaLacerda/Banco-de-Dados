@@ -1,5 +1,5 @@
 package com.groupid.projetobanco.models;
 
-public class class {
-    
+public class Class {
+    // superclasse, gets and sets
 }
