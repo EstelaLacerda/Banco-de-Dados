@@ -24,14 +24,6 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
-    @PostMapping
-    public String crimes(@RequestBody Funcionario funcionario) {
-        
-        funcionarioRepository.insertFuncionario(funcionario);
-
-        return "Funcionario Legal Criado";
-    }
-
     @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
     public ModelAndView funcionarioForm(){
         ModelAndView mv = new ModelAndView();
@@ -39,13 +31,13 @@ public class FuncionarioController {
         return mv;
     }
 
-    @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
     public ModelAndView funcionarioForm(Funcionario funcionario){
         funcionarioRepository.insertFuncionario(funcionario);;
         ModelAndView mv = new ModelAndView();
         mv.setViewName("index");
         return mv;
-    }
+    }*/
 
     @GetMapping("/lista")
     public ModelAndView getAllFuncionarios(){
