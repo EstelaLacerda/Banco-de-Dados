@@ -21,11 +21,12 @@ public class FuncionarioRepository {
 
     public boolean deleteFuncionario(int matricula) {
         jdbcTemplate.update("DELETE FROM FARMACEUTICO WHERE MATRICULA_FARMACEUTICO = ?", matricula);
-    
+        jdbcTemplate.update("DELETE FROM MEDICO WHERE MATRICULA_MEDICO = ?", matricula);
+
         int rowsAffected = jdbcTemplate.update("DELETE FROM FUNCIONARIO WHERE MATRICULA = ?", matricula);
     
         if (rowsAffected > 0) {
-            System.out.println("Funcionário e suas dependências (Farmacêuticos) foram excluídos com sucesso.");
+            System.out.println("Funcionário e suas dependências foram excluídos com sucesso.");
         } else {
             System.out.println("Não foi possível excluir o Funcionário ou não encontrado na base de dados.");
         }
