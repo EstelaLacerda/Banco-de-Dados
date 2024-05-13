@@ -2,29 +2,29 @@ package com.groupid.projetobanco.models;
 
 public class Aprova {
 
-    private int fk_Farmaceutico_fk_Funcionario_matricula_aprova;
-    private int fk_Remedio_Controlado_fk_Remedio_codigo;
+    private int matricula_farmaceutico;
+    private int codigo_remedio_controlado;
 
-    public Aprova(int fk_Farmaceutico_fk_Funcionario_matricula_aprova, int fk_Remedio_Controlado_fk_Remedio_codigo) {
-        this.fk_Farmaceutico_fk_Funcionario_matricula_aprova = fk_Farmaceutico_fk_Funcionario_matricula_aprova;
-        this.fk_Remedio_Controlado_fk_Remedio_codigo = fk_Remedio_Controlado_fk_Remedio_codigo;
+    public Aprova(int matricula_farmaceutico, int codigo_remedio_controlado) {
+        this.matricula_farmaceutico = matricula_farmaceutico;
+        this.codigo_remedio_controlado = codigo_remedio_controlado;
     }
 
     // Getter e Setter Matricula do Funcionario Farmaceutico Aprovada
     public int getMatriculaFuncionarioFarmaceuticoAprova() {
-        return fk_Farmaceutico_fk_Funcionario_matricula_aprova;
+        return matricula_farmaceutico;
     }
 
-    public void setMatriculaFuncionarioFarmaceuticoAprova(int fk_Farmaceutico_fk_Funcionario_matricula_aprova) {
-        this.fk_Farmaceutico_fk_Funcionario_matricula_aprova = fk_Farmaceutico_fk_Funcionario_matricula_aprova;
+    public void setMatriculaFuncionarioFarmaceuticoAprova(int matricula_farmaceutico) {
+        this.matricula_farmaceutico = matricula_farmaceutico;
     }
 
     // Getter e Setter Codigo do Remedio Controlado
     public int getCodigoRemedioControlado() {
-        return fk_Remedio_Controlado_fk_Remedio_codigo;
+        return codigo_remedio_controlado;
     }
 
-    public void setCodigoRemedioControlado(int fk_Remedio_Controlado_fk_Remedio_codigo) {
-        this.fk_Remedio_Controlado_fk_Remedio_codigo = fk_Remedio_Controlado_fk_Remedio_codigo;
+    public void setCodigoRemedioControlado(int codigo_remedio_controlado) {
+        this.codigo_remedio_controlado = codigo_remedio_controlado;
     }
 }

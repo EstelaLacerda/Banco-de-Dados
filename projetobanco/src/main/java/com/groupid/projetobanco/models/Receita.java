@@ -12,9 +12,9 @@ public class Receita {
     private String horario;
     private String dosagem;
     private String status_receita;
-    private Time fk_Consulta_hora;
-    private int fk_fk_Medico_fk_Funcionario_matricula;
-    private String fk_fk_Paciente_cpf;
+    private Time hora_consulta;
+    private int matricula_medico;
+    private String cpf_paciente;
 
     // Getter e Setter Data de Prescrição
     public Date getDataPrescricao() {
@@ -81,28 +81,28 @@ public class Receita {
 
     // Getter e Setter Hora da Consulta
     public Time getHoraConsulta() {
-        return fk_Consulta_hora;
+        return hora_consulta;
     }
 
-    public void setHoraConsulta(Time fk_Consulta_hora) {
-        this.fk_Consulta_hora = fk_Consulta_hora;
+    public void setHoraConsulta(Time hora_consulta) {
+        this.hora_consulta = hora_consulta;
     }
 
     // Getter e Setter Matricula do Funcionario Medico
     public int getMatriculaFuncionarioMedico() {
-        return fk_fk_Medico_fk_Funcionario_matricula;
+        return matricula_medico;
     }
 
-    public void setMatriculaFuncionarioMedico(int fk_fk_Medico_fk_Funcionario_matricula) {
-        this.fk_fk_Medico_fk_Funcionario_matricula = fk_fk_Medico_fk_Funcionario_matricula;
+    public void setMatriculaFuncionarioMedico(int matricula_medico) {
+        this.matricula_medico = matricula_medico;
     }
 
     // Getter e Setter FK_Paciente_CPF
     public String getCpfPaciente() {
-        return fk_fk_Paciente_cpf;
+        return cpf_paciente;
     }
 
-    public void setCpfPaciente(String fk_fk_Paciente_cpf) {
-        this.fk_fk_Paciente_cpf = fk_fk_Paciente_cpf;
+    public void setCpfPaciente(String cpf_paciente) {
+        this.cpf_paciente = cpf_paciente;
     }
 }

@@ -5,13 +5,13 @@ import java.sql.Time;
 public class Consulta {
 
     private Time hora;
-    private String fk_Paciente_cpf;
-    private int fk_Medico_fk_Funcionario_matricula;
+    private String cpf_Paciente;
+    private int matricula_medico;
 
-    public Consulta(Time hora, String fk_Paciente_cpf, int fk_Medico_fk_Funcionario_matricula) {
+    public Consulta(Time hora, String cpf_Paciente, int matricula_medico) {
         this.hora = hora;
-        this.fk_Paciente_cpf = fk_Paciente_cpf;
-        this.fk_Medico_fk_Funcionario_matricula = fk_Medico_fk_Funcionario_matricula;
+        this.cpf_Paciente = cpf_Paciente;
+        this.matricula_medico = matricula_medico;
     }
 
     // Getter e Setter Hora
@@ -25,19 +25,19 @@ public class Consulta {
 
     // Getter e Setter CPF do Paciente
     public String getCpfPaciente() {
-        return fk_Paciente_cpf;
+        return cpf_Paciente;
     }
 
-    public void setCpfPaciente(String fk_Paciente_cpf) {
-        this.fk_Paciente_cpf = fk_Paciente_cpf;
+    public void setCpfPaciente(String cpf_Paciente) {
+        this.cpf_Paciente = cpf_Paciente;
     }
 
     // Getter e Setter Matricula do Funcionario Medico
     public int getMatriculaFuncionarioMedico() {
-        return fk_Medico_fk_Funcionario_matricula;
+        return matricula_medico;
     }
 
-    public void setMatriculaFuncionarioMedico(int fk_Medico_fk_Funcionario_matricula) {
-        this.fk_Medico_fk_Funcionario_matricula = fk_Medico_fk_Funcionario_matricula;
+    public void setMatriculaFuncionarioMedico(int matricula_medico) {
+        this.matricula_medico = matricula_medico;
     }
 }

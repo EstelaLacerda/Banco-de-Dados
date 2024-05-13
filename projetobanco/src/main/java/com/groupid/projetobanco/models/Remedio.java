@@ -11,11 +11,11 @@ public class Remedio {
     private Date data_abertura;
     private String tempo_utilizacao;
     private String principio_ativo;
-    private int fk_Estoque_cod_estoque;
+    private int cod_estoque;
 
     public Remedio(String tipo, int codigo, String quantidade, Date validade, 
     Date data_abertura, String tempo_utilizacao, String principio_ativo, 
-    int fk_Estoque_cod_estoque) {
+    int cod_estoque) {
         this.tipo = tipo;
         this.codigo = codigo;
         this.quantidade = quantidade;
@@ -23,7 +23,7 @@ public class Remedio {
         this.data_abertura = data_abertura;
         this.tempo_utilizacao = tempo_utilizacao;
         this.principio_ativo = principio_ativo;
-        this.fk_Estoque_cod_estoque = fk_Estoque_cod_estoque;
+        this.cod_estoque = cod_estoque;
     }
 
     // Getter e Setter Tipo
@@ -91,10 +91,10 @@ public class Remedio {
 
     // Getter e Setter Codigo de Estoque
     public int getCodigoEstoque() {
-        return fk_Estoque_cod_estoque;
+        return cod_estoque;
     }
 
-    public void setCodigoEstoque(int fk_Estoque_cod_estoque) {
-        this.fk_Estoque_cod_estoque = fk_Estoque_cod_estoque;
+    public void setCodigoEstoque(int cod_estoque) {
+        this.cod_estoque = cod_estoque;
     }
 }

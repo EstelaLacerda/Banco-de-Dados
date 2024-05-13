@@ -11,7 +11,7 @@ public class Paciente {
     private float peso;
     private String nome_mae;
     private Date data_nascimento;
-    private int fk_Setor_hospitalar_codigo_setor;
+    private int codigo_setor;
 
     // Getter e Setter Nome
     public String getNome() {
@@ -78,10 +78,10 @@ public class Paciente {
 
     // Getter e Setter Codigo do Setor Hospitalar
     public int getCodigoSetorHospitalar() {
-        return fk_Setor_hospitalar_codigo_setor;
+        return codigo_setor;
     }
 
-    public void setCodigoSetorHospitalar(int fk_Setor_hospitalar_codigo_setor) {
-        this.fk_Setor_hospitalar_codigo_setor = fk_Setor_hospitalar_codigo_setor;
+    public void setCodigoSetorHospitalar(int codigo_setor) {
+        this.codigo_setor = codigo_setor;
     }
 }

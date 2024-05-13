@@ -19,19 +19,26 @@ public class FuncionarioRepository {
         funcionario.getMatricula(), funcionario.getNome(), funcionario.getCargo());
     }
 
-    public boolean deleteFuncionario(int matricula){
-
-        jdbcTemplate.update("DELETE FROM farmaceutico WHERE FK_FUNCIONARIO_MATRICULA_FARMACEUTICO = ?", matricula);
-        jdbcTemplate.update("DELETE FROM medico WHERE FK_FUNCIONARIO_MATRICULA_MEDICO = ?", matricula);
-
+    public boolean deleteFuncionario(int matricula) {
+        jdbcTemplate.update("DELETE FROM FARMACEUTICO WHERE MATRICULA_FARMACEUTICO = ?", matricula);
+    
         int rowsAffected = jdbcTemplate.update("DELETE FROM FUNCIONARIO WHERE MATRICULA = ?", matricula);
-        return rowsAffected > 0;
+    
+        if (rowsAffected > 0) {
+            System.out.println("Funcionário e suas dependências (Farmacêuticos) foram excluídos com sucesso.");
+        } else {
+            System.out.println("Não foi possível excluir o Funcionário ou não encontrado na base de dados.");
+        }
+        
+        return true;
     }
 
     public List<Funcionario> getAllFuncionarios(){
         return jdbcTemplate.query("SELECT * FROM FUNCIONARIO", (resultSet, rowNum) -> {
             Funcionario funcionario = new Funcionario(rowNum, null, null);
             funcionario.setMatricula(resultSet.getInt("MATRICULA"));
+            funcionario.setNome(resultSet.getString("NOME"));
+            funcionario.setCargo(resultSet.getString("CARGO"));
             return funcionario;
         });
     }

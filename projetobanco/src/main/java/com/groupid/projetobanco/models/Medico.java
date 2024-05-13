@@ -3,11 +3,11 @@ package com.groupid.projetobanco.models;
 public class Medico {
 
     private String crm;
-    private int fk_Funcionario_matricula_medico;
+    private int matricula_medico;
 
-    public Medico(String crm, int fk_Funcionario_matricula_medico) {
+    public Medico(String crm, int matricula_medico) {
         this.crm = crm;
-        this.fk_Funcionario_matricula_medico = fk_Funcionario_matricula_medico;
+        this.matricula_medico = matricula_medico;
     }
 
     // Getter e Setter CRM
@@ -21,10 +21,10 @@ public class Medico {
 
     // Getter e Setter Matricula do Medico
     public int getMatriculaMedico() {
-        return fk_Funcionario_matricula_medico;
+        return matricula_medico;
     }
 
-    public void setMatriculaMedico(int fk_Funcionario_matricula_medico) {
-        this.fk_Funcionario_matricula_medico = fk_Funcionario_matricula_medico;
+    public void setMatriculaMedico(int matricula_medico) {
+        this.matricula_medico = matricula_medico;
     }
 }

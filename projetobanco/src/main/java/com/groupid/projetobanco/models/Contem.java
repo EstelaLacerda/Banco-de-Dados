@@ -2,29 +2,29 @@ package com.groupid.projetobanco.models;
 
 public class Contem {
 
-    private int fk_Receita_id_receita;
-    private int fk_Remedio_codigo_contem;
+    private int id_receita;
+    private int codigo_remedio;
 
-    public Contem(int fk_Receita_id_receita, int fk_Remedio_codigo_contem) {
-        this.fk_Receita_id_receita = fk_Receita_id_receita;
-        this.fk_Remedio_codigo_contem = fk_Remedio_codigo_contem;
+    public Contem(int id_receita, int codigo_remedio) {
+        this.id_receita = id_receita;
+        this.codigo_remedio = codigo_remedio;
     }
 
     // Getter e Setter ID da Receita
     public int getIdReceita() {
-        return fk_Receita_id_receita;
+        return id_receita;
     }
 
-    public void setIdReceita(int fk_Receita_id_receita) {
-        this.fk_Receita_id_receita = fk_Receita_id_receita;
+    public void setIdReceita(int id_receita) {
+        this.id_receita = id_receita;
     }
 
     // Getter e Setter Contem Codigo do Remedio
     public int getContemCodigoRemedio() {
-        return fk_Remedio_codigo_contem;
+        return codigo_remedio;
     }
 
-    public void setContemCodigoRemedio(int fk_Remedio_codigo_contem) {
-        this.fk_Remedio_codigo_contem = fk_Remedio_codigo_contem;
+    public void setContemCodigoRemedio(int codigo_remedio) {
+        this.codigo_remedio = codigo_remedio;
     }
 }

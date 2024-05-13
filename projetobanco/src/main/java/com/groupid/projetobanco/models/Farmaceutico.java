@@ -3,11 +3,11 @@ package com.groupid.projetobanco.models;
 public class Farmaceutico {
 
     private String crf;
-    private int fk_Funcionario_matricula_farmaceutico;
+    private int matricula_farmaceutico;
 
-    public Farmaceutico(String crf, int fk_Funcionario_matricula_farmaceutico) {
+    public Farmaceutico(String crf, int matricula_farmaceutico) {
         this.crf = crf;
-        this.fk_Funcionario_matricula_farmaceutico = fk_Funcionario_matricula_farmaceutico;
+        this.matricula_farmaceutico = matricula_farmaceutico;
     }
 
     // Getter e Setter CRF
@@ -21,10 +21,10 @@ public class Farmaceutico {
 
     // Getter e Setter Matricula do Farmaceutico
     public int getMatriculaFarmaceutico() {
-        return fk_Funcionario_matricula_farmaceutico;
+        return matricula_farmaceutico;
     }
 
-    public void setMatriculaFarmaceutico(int fk_Funcionario_matricula_farmaceutico) {
-        this.fk_Funcionario_matricula_farmaceutico = fk_Funcionario_matricula_farmaceutico;
+    public void setMatriculaFarmaceutico(int matricula_farmaceutico) {
+        this.matricula_farmaceutico = matricula_farmaceutico;
     }
 }
