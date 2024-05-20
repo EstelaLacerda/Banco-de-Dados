@@ -27,4 +27,5 @@ public class Farmaceutico {
     public void setMatriculaFarmaceutico(int matricula_farmaceutico) {
         this.matricula_farmaceutico = matricula_farmaceutico;
     }
+
 }

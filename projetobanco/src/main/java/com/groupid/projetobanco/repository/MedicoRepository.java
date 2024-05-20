@@ -14,9 +14,23 @@ public class MedicoRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void insertMedico(Medico medico) {
-        jdbcTemplate.update("INSERT INTO MEDICO(CRM, MATRICULA_MEDICO) VALUES(?, ?)",
-        medico.getCrm(), medico.getMatriculaMedico());
+    public boolean insertMedico(Medico medico) {
+        if (!medicoExists(medico.getMatriculaMedico())) {
+            jdbcTemplate.update("INSERT INTO MEDICO(CRM, MATRICULA_MEDICO) VALUES(?, ?)",
+                    medico.getCrm(), medico.getMatriculaMedico());
+            System.out.println("Médico inserido com sucesso!");
+            return true;
+        } 
+        
+        else {
+            System.out.println("Já existe um médico com essa matrícula.");
+            return false;
+        }
+    }
+
+    public boolean medicoExists(int matricula_medico) {
+        String sql = "SELECT COUNT(*) FROM MEDICO WHERE MATRICULA_MEDICO = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, matricula_medico) > 0;
     }
 
     public boolean deleteMedico(int matricula_medico){

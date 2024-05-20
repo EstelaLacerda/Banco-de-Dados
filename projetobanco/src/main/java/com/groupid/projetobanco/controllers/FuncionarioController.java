@@ -23,8 +23,15 @@ public class FuncionarioController {
 
     @PostMapping
     public String createFuncionario(@RequestBody Funcionario funcionario){
-        funcionarioRepository.insertFuncionario(funcionario);;
-        return "Funcionario inserido!\n";
+        boolean inserted = funcionarioRepository.insertFuncionario(funcionario);
+    
+        if (inserted) {
+            return "Funcionario inserido!\n";
+        } 
+        
+        else {
+            return "Já existe um funcionário com essa matrícula.\n";
+        }
     }
 
     @DeleteMapping("/{matricula}")
@@ -32,7 +39,9 @@ public class FuncionarioController {
         boolean deleted = funcionarioRepository.deleteFuncionario(matricula);
         if(deleted){
             return "Funcionario deletado!\n";
-        } else {
+        } 
+        
+        else {
             return "O Funcionario com essas informações não existe no banco de dados!\n";
         }
     }

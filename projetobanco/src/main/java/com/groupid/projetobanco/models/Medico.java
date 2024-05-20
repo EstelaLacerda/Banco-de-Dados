@@ -27,4 +27,5 @@ public class Medico {
     public void setMatriculaMedico(int matricula_medico) {
         this.matricula_medico = matricula_medico;
     }
+
 }

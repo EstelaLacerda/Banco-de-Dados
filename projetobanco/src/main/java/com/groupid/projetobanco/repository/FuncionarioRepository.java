@@ -14,9 +14,21 @@ public class FuncionarioRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void insertFuncionario(Funcionario funcionario) {
-        jdbcTemplate.update("INSERT INTO FUNCIONARIO(MATRICULA, NOME, CARGO) VALUES(?, ?, ?)",
-        funcionario.getMatricula(), funcionario.getNome(), funcionario.getCargo());
+    public boolean insertFuncionario(Funcionario funcionario) {
+        if (!funcionarioExists(funcionario.getMatricula())) {
+            jdbcTemplate.update("INSERT INTO FUNCIONARIO(MATRICULA, NOME, CARGO) VALUES(?, ?, ?)",
+                    funcionario.getMatricula(), funcionario.getNome(), funcionario.getCargo());
+            return true;
+        } 
+        
+        else {
+            return false;
+        }
+    }
+
+    public boolean funcionarioExists(int matricula) {
+        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, matricula) > 0;
     }
 
     public boolean deleteFuncionario(int matricula) {
@@ -28,7 +40,7 @@ public class FuncionarioRepository {
         if (rowsAffected > 0) {
             System.out.println("Funcionário e suas dependências foram excluídos com sucesso.");
         } else {
-            System.out.println("Não foi possível excluir o Funcionário ou não encontrado na base de dados.");
+            System.out.println("Não foi possível excluir o Funcionário ou não foi encontrado na base de dados.");
         }
         
         return true;
