@@ -97,4 +97,5 @@ public class Remedio {
     public void setCodigoEstoque(int cod_estoque) {
         this.cod_estoque = cod_estoque;
     }
+
 }

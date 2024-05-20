@@ -15,6 +15,7 @@ public class Receita {
     private Time hora_consulta;
     private int matricula_medico;
     private String cpf_paciente;
+    private String nome_remedio;
 
     // Getter e Setter Data de Prescrição
     public Date getDataPrescricao() {
@@ -104,5 +105,13 @@ public class Receita {
 
     public void setCpfPaciente(String cpf_paciente) {
         this.cpf_paciente = cpf_paciente;
+    }
+
+    public String getNomeRemedio() {
+        return nome_remedio;
+    }
+
+    public void setNomeRemedio(String nome_remedio) {
+        this.nome_remedio = nome_remedio;
     }
 }
