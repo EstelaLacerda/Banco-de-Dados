@@ -40,7 +40,7 @@ public class ReceitaRepository {
 
     public List<Receita> getAllReceitas(){
         return jdbcTemplate.query("SELECT * FROM RECEITA", (resultSet, rowNum) -> {
-            Receita receita = new Receita();
+            Receita receita = new Receita(null, rowNum, null, null, null, null, null, null, rowNum, null, null);
             receita.setIdReceita(resultSet.getInt("ID_RECEITA"));
             receita.setDataPrescricao(resultSet.getDate("DATAPRESCRICAO"));
             receita.setCrm(resultSet.getString("CRM"));

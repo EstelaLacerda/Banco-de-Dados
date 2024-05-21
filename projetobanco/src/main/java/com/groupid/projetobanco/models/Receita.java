@@ -17,6 +17,21 @@ public class Receita {
     private String cpf_paciente;
     private String nome_remedio;
 
+    public Receita(Date data_prescricao, int id_receita, String crm, String quantidade, 
+    String horario, String dosagem, String status_receita, Time hora_consulta, int matricula_medico, String cpf_paciente, String nome_remedio){
+        this.data_prescricao = data_prescricao;
+        this.id_receita = id_receita;
+        this.crm = crm;
+        this.quantidade = quantidade;
+        this.horario = horario;
+        this.dosagem = dosagem;
+        this.status_receita = status_receita;
+        this.hora_consulta = hora_consulta;
+        this.matricula_medico = matricula_medico;
+        this.cpf_paciente = cpf_paciente;
+        this.nome_remedio = nome_remedio;
+    }
+
     // Getter e Setter Data de Prescrição
     public Date getDataPrescricao() {
         return data_prescricao;
