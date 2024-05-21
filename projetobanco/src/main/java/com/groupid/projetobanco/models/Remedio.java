@@ -26,6 +26,10 @@ public class Remedio {
         this.cod_estoque = cod_estoque;
     }
 
+    public Remedio(){
+        super();
+    }
+
     // Getter e Setter Tipo
     public String getTipo() {
         return tipo;
