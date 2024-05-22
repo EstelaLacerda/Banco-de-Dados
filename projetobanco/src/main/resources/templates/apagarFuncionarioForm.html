@@ -40,7 +40,7 @@
             
             <h2 style="margin-top: 50px;">Cadastrar Funcionário</h2>
 
-            <form id="formFuncionario" action="/funcionario" method="post" th:object="${funcionario}">
+            <form id="apagarFuncionarioForm" action="/funcionario/deletar" method="get" th:object="${funcionario}">
                 <div class="form-group">
                     <label for="matricula"><strong>Matrícula:</strong></label>
                     <br>

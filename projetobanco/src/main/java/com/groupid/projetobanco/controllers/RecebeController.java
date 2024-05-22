@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.groupid.projetobanco.models.Recebe;
-import com.groupid.projetobanco.repository.ContemRepository;
+import com.groupid.projetobanco.repository.RecebeRepository;
 
 @RestController
 @RequestMapping("/funcionario/recebe/receita")
@@ -23,7 +23,7 @@ public class RecebeController {
     
     @PostMapping
     public String createRecebe(@RequestBody Recebe recebe) {
-        contemRepository.insertRecebe(recebe);
+        recebeRepository.insertRecebe(recebe);
         return "Receita recebida pelo Funcionário!\n";
     }
     
@@ -41,7 +41,7 @@ public class RecebeController {
     }
 
     @GetMapping("/allrecebe")
-    public List<Contem> getRecebe(){
-        return contemRepository.getAllRecebe();
+    public List<Recebe> getRecebe(){
+        return recebeRepository.getAllRecebe();
     }
 }
