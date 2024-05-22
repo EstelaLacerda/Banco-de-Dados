@@ -16,7 +16,7 @@ public class ConsultaRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertConsulta(Consulta consulta) {
-        jdbcTemplate.update("INSERT INTO CONSULTA VALUES(?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO CONSULTA (HORA, CPF_PACIENTE, MATRICULA_MEDICO) VALUES(SYSDATE,?, ?)",
         consulta.getHora(), consulta.getCpfPaciente(), consulta.getMatriculaFuncionarioMedico());
     }
 
