@@ -33,7 +33,7 @@ public class ConsultaController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allconsulta")
     public List<Consulta> getConsultas(){
         return consultaRepository.getAllConsultas();
     }

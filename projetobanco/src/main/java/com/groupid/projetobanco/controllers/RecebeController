@@ -40,7 +40,7 @@ public class RecebeController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allrecebe")
     public List<Contem> getRecebe(){
         return contemRepository.getAllRecebe();
     }

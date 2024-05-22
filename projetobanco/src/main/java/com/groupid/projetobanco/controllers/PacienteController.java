@@ -41,7 +41,7 @@ public class PacienteController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allpacientes")
     public List<Paciente> getPacientes(){
         return pacienteRepository.getAllPacientes();
     }

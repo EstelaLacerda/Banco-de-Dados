@@ -41,7 +41,7 @@ public class ReceitaController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allreceitas")
     public List<Receita> getReceitas(){
         return receitaRepository.getAllReceitas();
     }

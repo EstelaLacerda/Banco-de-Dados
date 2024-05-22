@@ -19,7 +19,7 @@ import com.groupid.projetobanco.repository.SetorHospitalarRepository;
 @RequestMapping("/setorhospitalar")
 public class SetorHospitalarController {
     @Autowired
-    private SetorHospitalarRepository setorHospitalarRepository;
+    private SetorHospitalarRepository SetorHospitalarRepository;
 
     @PostMapping
     public String createSetorHospitalar(@RequestBody Setor_hospitalar Setor_hospitalar){
@@ -37,9 +37,9 @@ public class SetorHospitalarController {
         }    
     }
 
-    @GetMapping
+    @GetMapping("/allsetorhospitalar")
     public List<Setor_hospitalar> getSetoreshospitalar(){
-        return setorHospitalarRepository.getAllSetoresHospilar();
+        return SetorHospitalarRepository.getAllSetoresHospilar();
     }
 
 }

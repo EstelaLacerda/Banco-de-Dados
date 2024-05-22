@@ -44,7 +44,7 @@ public class MedicoController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allmedicos")
     public List<Medico> getMedicos(){
         return medicoRepository.getAllMedicos();
     }
