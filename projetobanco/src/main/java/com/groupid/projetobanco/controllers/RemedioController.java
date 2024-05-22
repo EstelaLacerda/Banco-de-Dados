@@ -38,7 +38,7 @@ public class RemedioController {
     }
 
     @GetMapping
-    public List<Remedio> getRemedio(){
+    public List<Remedio> getRemedios(){
         return remedioRepository.getAllRemedios();
     }
 

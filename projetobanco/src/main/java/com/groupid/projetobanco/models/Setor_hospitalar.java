@@ -16,4 +16,5 @@ public class Setor_hospitalar {
     public void setCodigoSetor(int codigo_Setor) {
         this.codigo_Setor = codigo_Setor;
     }
+
 }
