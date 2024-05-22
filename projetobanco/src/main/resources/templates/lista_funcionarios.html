@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: center;
+            width: 95%;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin: 0 auto;
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 20%;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 40%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 40%;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .button-container button {
+            width: 220px;
+            height: 35px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            background-color: #01546B;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Inclui o cabeçalho -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Matrícula</th>
+                    <th>Nome</th>
+                    <th>Cargo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="funcionario : ${funcionarios}">
+                    <td th:text="${funcionario.matricula}"></td>
+                    <td th:text="${funcionario.nome}"></td>
+                    <td th:text="${funcionario.cargo}"></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="button-container">
+        <form action="/" method="get">
+            <button type="submit">Voltar</button>
+        </form>
+    </div>
+
+</body>
+</html>

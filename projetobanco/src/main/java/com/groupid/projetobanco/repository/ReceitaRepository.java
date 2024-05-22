@@ -3,6 +3,7 @@ package com.groupid.projetobanco.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +22,7 @@ public class ReceitaRepository {
             jdbcTemplate.update(sql, receita.getDataPrescricao(), receita.getIdReceita(), receita.getCrm(), receita.getQuantidade(),
                             receita.getHorario(), receita.getDosagem(), receita.getStatusReceita(), receita.getHoraConsulta(),
                             receita.getMatriculaFuncionarioMedico(), receita.getCpfPaciente(), receita.getNomeRemedio());
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
             throw new RuntimeException("Erro ao inserir receita: " + e.getMessage(), e);
         }
     }

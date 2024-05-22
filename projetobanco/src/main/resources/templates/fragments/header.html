@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Hospitalar</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="Banco-de-Dados/projetobanco/src/main/resources/images/logo-hirc.png" type="image/x-icon">
+</head>
+<body style=>
+    <!-- CABEÇALHO -->
+    <header style="margin: 0; padding: 0;">
+        <div class="headerCabecalho" 
+            style="display: flex; flex-flow: row nowrap;
+                    width: 100%; height: 100px; justify-content: space-around; align-items: center;
+                    background-color: #01546B; background-size: contain; background-repeat: repeat-x;
+                    margin: 0; padding: 0;">
+
+            <hgroup style="margin: 0; padding: 0;">
+                <aside class="tituloNav" 
+                    style="position: absolute; top: 20px; right: 800px;
+                            width: 380px; height: 200px; margin: 0; padding: 0;">
+                    <a href="/" style="text-decoration: none; color: white;">
+                        <h2 style="color: white; font-family: Arial, sans-serif;">Farmácia Hospitalar</h2>
+                    </a>
+                </aside>
+            </hgroup>
+
+            <nav style="margin: 0; padding: 0;">
+                <div class="navbarCabecalho" style="display: flex; flex-flow: row nowrap; margin: 0; padding: 0;">
+                    <ul style="display: flex; flex-flow: row nowrap; margin: 0; padding: 0;">
+                        <!-- CADASTRAR FUNCIONÁRIO -->
+                        <li style="margin: 0 5px; padding: 2px 4px; font-size: 1em; list-style: none; text-transform: uppercase;">
+                            <a href="/funcionario" class="links" style="text-decoration: none; color: white; font-family: Arial, sans-serif;">
+                                Cadastrar Funcionário
+                            </a>
+                        </li>
+
+                        <!-- CONSULTAR RECEITA -->
+                        <li style="margin: 0 5px; padding: 2px 4px; font-size: 1em; list-style: none; text-transform: uppercase;">
+                            <a href="/receita" style="text-decoration: none; color: white; font-family: Arial, sans-serif;">
+                                Consultar Receita
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

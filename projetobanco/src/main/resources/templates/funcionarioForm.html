@@ -3,72 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="shortcut icon" href="https://web.celepar.pr.gov.br/drupal/images/sesa/hospital-do-trabalhador/logo-hirc-328x100.png" type="image/x-icon">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: start;     /* Centraliza verticalmente */
+            height: 100vh;           /* Altura total da viewport para centralizar verticalmente */
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;  /* Alinha os inputs em coluna */
+            justify-content: center; /* Centraliza verticalmente os inputs dentro do .form-container */
+            align-items: center;     /* Centraliza horizontalmente os inputs dentro do .form-container */
+        }
+
+        .form-group {
+            padding-top: 30px;
+        }
+    </style>
+
 </head>
-<body>
-    <header>
-        <div class="headerCabecalho", 
-            style="text-shadow: 1px 1px 1px black; display: flex; flex-flow: row nowrap;
-                    width: 100%; height: 100px; justify-content: space-around; align-items: center;
-                    background-color: rgb(63, 0, 63); background-size: contain; background-repeat: repeat-x;">
-            <div class="logo">
-                <hgroup>
-                    <img src="/images/logo.png" alt="Logo", 
-                        style="width: 27%; align-items: start;">
-                    <aside class="tituloNav", 
-                        style="position: absolute; top: 40px; right: 800px;
-                            width: 380px; height: 200px;">
-                        <h2 style="color: #D2B48C;">Hospital de Infectologia e Retaguarda Oswaldo Cruz</h2>
-                    </aside>
-                </hgroup>
-            </div>
-            <nav>
-                <div class="navbarCabecalho", 
-                    style="display: flex; flex-flow: row nowrap;">
-                    <ul style="display: flex; flex-flow: row nowrap;">
-                        <li style="margin: 0 5px; padding: 2px 4px;
-                            font-size: 1em; list-style: none;
-                            text-transform: uppercase;">
-                            <a href="/" class="links" 
-                                style="text-shadow: 1px 1px 1px black;
-                                    text-decoration: none; color: #D2B48C;"
-                                    onmouseover="this.style.color='green';" onmouseout="this.style.color='#D2B48C';">
-                                Voltar
-                            </a>
-                        </li>
-                </div>
-            </nav>
-        </div>
-    </header>
+
+<body style="background-color: #fff; margin: 0; padding: 0;">
+    <!-- Inclui o cabeçalho -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
     <div class="container">
-        <h1 style="text-align: center;">Faça seu cadastro</h1><br>
-        <form id="cadastroForm" method="post" style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
-            <input type="text" name="matricula" id="matricula" placeholder="matricula" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;" required>
-            <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; border: none; background-color: #4CAF50; color: white; font-weight: bold; cursor: pointer;" onmouseover="this.style.backgroundColor='#45a049';" onmouseout="this.style.backgroundColor='#4CAF50';">Cadastrar</button>
-        </form>  
+        <div class="form-container">
+            <h2 style="padding">Cadastrar Funcionário</h2>
+            <form action="/funcionario" method="post" th:object="${funcionario}">
+                <div class="form-group">
+                    <label for="matricula"><strong>Matrícula:</strong></label>
+                    <br>
+                    <input type="text" id="matricula" name="matricula" th:field="*{matricula}" required>
+                </div>
+                <div class="form-group">
+                    <label for="nome"><strong>Nome:</strong></label>
+                    <br>
+                    <input type="text" id="nome" name="nome" th:field="*{nome}" required>
+                </div>
+                <div class="form-group">
+                    <label for="cargo"><strong>Cargo:</strong></label>
+                    <br>
+                    <input type="text" id="cargo" name="cargo" th:field="*{cargo}" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
+                </div>
+            </form>
+        </div>
     </div>
-    
-    <footer class="footer" style="
-            width: 100%; 
-            text-align: center; 
-            font-weight: bold;
-            font-style: italic;
-            background-color: rgb(63, 0, 63);">
-        <img src="/images/logo.png" alt="Logo", 
-        style="width: 10%; align-items: start;">
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            var url = new URL(window.location.href);
-
-            var idUser = url.pathname.split('/').pop();
-
-            document.getElementById('matricula').value = idUser;
-        });
-    </script>
 </body>
 </html>
