@@ -15,7 +15,7 @@ import com.groupid.projetobanco.models.RemedioControlado;
 import com.groupid.projetobanco.repository.RemedioControladoRepository;
 
 @RestController
-@RequestMapping("git")
+@RequestMapping("/remediocontrolado")
 public class RemedioControladoController {
     @Autowired
     private RemedioControladoRepository remedioControladoRepository;
@@ -27,8 +27,8 @@ public class RemedioControladoController {
     }
 
     @DeleteMapping("/{fk_Remedio_codigo}")
-    public String deleteRemedioControlado(@PathVariable int fk_Remedio_codigo){
-        boolean deleted = remedioControladoRepository.deleteRemedioControlado(fk_Remedio_codigo);
+    public String deleteRemedioControlado(@PathVariable int codigo_remedio){
+        boolean deleted = remedioControladoRepository.deleteRemedioControlado(codigo_remedio);
         if(deleted){
             return "Remédio controlado deletado!\n";
         } else {
