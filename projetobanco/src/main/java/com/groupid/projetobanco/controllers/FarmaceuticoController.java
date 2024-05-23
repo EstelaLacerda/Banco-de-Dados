@@ -31,6 +31,7 @@ public class FarmaceuticoController {
         } else {
             return "Já existe um farmacêutico com essa matrícula.\n";
         }
+
     }
 
     @DeleteMapping("/deletar/{matricula_farmaceutico}")

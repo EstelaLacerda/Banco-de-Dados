@@ -26,16 +26,21 @@
         .form-group {
             padding-top: 30px;
         }
+        input {
+            background-color: #D9D9D9; 
+            border-radius: 5px; 
+            border: solid #7A7A7A;
+        }
     </style>
 
 </head>
 
-<body style="background-color: #fff; margin: 0; padding: 0;">
+<body style="background-color: #000000; margin: 0; padding: 0;">
     <!-- Inclui o cabeçalho -->
     <div th:replace="fragments/header :: header"></div>
 
     <div class="container">
-        <div class="form-container" style="border-radius: 5px; border: solid; background-color: #fff; margin-top: 100px">
+        <div class="form-container" style="border-radius: 5px; border: solid; background-color: #D9D9D9; margin-top: 100px">
             
             <h2 style="margin-top: 50px;">Cadastrar Farmacêutico</h2>
 
@@ -53,14 +58,17 @@
                     <input type="text" th:value="${crf}" id="crf" name="crf" required>
                 </div>
             
+                <form action="/cadastrar-e-listar" method="post">
+                    <div class="form-group">
+                        <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
+                    </div>
+                </form>
+                
                 <div class="form-group">
-                    <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
-                </div>
+                    <button onclick="window.location.href='/funcionario/farmaceutico/lista'" style="display: inline-block; width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Ir para Lista</button>
+                </div>            
+                
             </form>
-
-            <div class="form-group">
-                <button onclick="history.back();" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #D1345B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px;">Voltar</button>
-            </div>
         </div>
     </div>
     <script>

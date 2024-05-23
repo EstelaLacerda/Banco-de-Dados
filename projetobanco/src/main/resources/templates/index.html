@@ -5,29 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farmácia Hospitalar</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="shortcut icon" href="Banco-de-Dados\projetobanco\src\main\resources\images\logo-hirc.png" type="image/x-icon">
 </head>
 
-<body style="background-color: #fff; margin: 0; padding: 0;">
+<body style="background-color: #000000; margin: 0; padding: 0; font-family: 'Roboto', sans-serif;">
     
     <!-- Inclui o cabeçalho -->
     <div th:replace="fragments/header :: header"></div>
 
     <!-- PÁGINA PRINCIPAL -->
 
-    <div class="container" style="padding-top: 100px;">
+    <div class="container" style="padding-top: 150px;">
 
         <form action="/funcionario/lista" method="get" style="text-align: left; padding-top: 40px; padding-left: 400px;">
-            <button type="submit" style="width: 725px; height: 60px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Ver Funcionarios</button>
-        </form><br>
-        
-        <form action="/" method="get" style="text-align: left; padding-top: 40px; padding-left: 400px;">
-            <button type="submit" style="width: 725px; height: 60px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Ver Remédios</button>
+            <button type="submit" style="width: 725px; height: 60px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer;">Ver Funcionários</button>
         </form><br>
 
-        <form action="/" method="get" style="text-align: left; padding-top: 40px; padding-left: 400px;">
-            <button type="submit" style="width: 725px; height: 60px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Ver Pacientes</button>
-        </form><br>   
+        <form action="/cadastro/funcionario" method="get" style="text-align: left; padding-top: 40px; padding-left: 400px;">
+            <button type="submit" style="width: 725px; height: 60px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer;">Cadastrar Funcionário</button>
+        </form><br>
+
     </div>
     
 </body>

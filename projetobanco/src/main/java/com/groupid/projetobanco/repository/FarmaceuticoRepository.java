@@ -20,12 +20,11 @@ public class FarmaceuticoRepository {
                     farmaceutico.getCrf(), farmaceutico.getMatriculaFarmaceutico());
             System.out.println("Farmacêutico inserido com sucesso!");
             return true;
-        } 
-        
-        else {
+        } else {
             System.out.println("Já existe um farmacêutico com essa matrícula.");
             return false;
         }
+
     }
 
     public boolean farmaceuticoExists(int matricula_farmaceutico) {
