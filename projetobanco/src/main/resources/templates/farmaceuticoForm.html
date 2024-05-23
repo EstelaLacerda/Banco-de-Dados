@@ -34,35 +34,25 @@
     <!-- Inclui o cabeçalho -->
     <div th:replace="fragments/header :: header"></div>
 
-    <!-- FORMULÁRIO DE CADASTRO -->
     <div class="container">
         <div class="form-container" style="border-radius: 5px; border: solid; background-color: #fff; margin-top: 100px">
             
-            <h2 style="margin-top: 50px;">Cadastrar Funcionário</h2>
+            <h2 style="margin-top: 50px;">Cadastrar Farmacêutico</h2>
 
-            <form id="formFuncionario" action="/funcionario" method="post" th:object="${funcionario}">
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <form id="formFuncionarioFarmaceutico" action="/funcionario/farmaceutico" method="post" onsubmit="return sendData()">
                 <div class="form-group">
-                    <label for="matricula"><strong>Matrícula:</strong></label>
+                    <label for="matricula_farmaceutico"><strong>Matrícula:</strong></label>
                     <br>
-                    <input type="text" id="matricula" name="matricula" th:field="*{matricula}" required>
+                    <input type="text" th:value="${matricula_farmaceutico}" id="matricula_farmaceutico" name="matricula_farmaceutico" required>
                 </div>
-
+            
                 <div class="form-group">
-                    <label for="nome"><strong>Nome:</strong></label>
+                    <label for="crf"><strong>CRF:</strong></label>
                     <br>
-                    <input type="text" id="nome" name="nome" th:field="*{nome}" required>
+                    <input type="text" th:value="${crf}" id="crf" name="crf" required>
                 </div>
-
-                <div class="form-group">
-                    <label><strong>Cargo:</strong></label>
-                    <br>
-                    <input type="radio" id="medico" name="cargo" th:value="'Médico'" th:field="*{cargo}">
-                    <label for="medico">Médico</label>
-                    <br>
-                    <input type="radio" id="farmaceutico" name="cargo" th:value="'Farmacêutico'" th:field="*{cargo}">
-                    <label for="farmaceutico">Farmacêutico</label>
-                </div>
-
+            
                 <div class="form-group">
                     <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
                 </div>
@@ -73,12 +63,36 @@
             </div>
         </div>
     </div>
-
-    <script th:inline="javascript">
-        var message = /*[[${message}]]*/ null;
-        if (message) {
-            alert(message);
-        }
+    <script>
+        function sendData() {
+            var formData = {
+                matricula_farmaceutico: document.getElementById("matricula_farmaceutico").value,
+                crf: document.getElementById("crf").value
+            };
+        
+            fetch("/funcionario/farmaceutico", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar os dados');
+                }
+                return response.text();  // Use .text() se o backend retorna texto simples
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        
+            return false;
+        }              
     </script>
+    
 </body>
 </html>

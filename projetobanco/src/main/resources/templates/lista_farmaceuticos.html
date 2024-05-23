@@ -69,16 +69,13 @@
         }
 
         th:nth-child(1), td:nth-child(1) {
-            width: 20%;
+            width: 50%;
         }
 
         th:nth-child(2), td:nth-child(2) {
-            width: 40%;
+            width: 50%;
         }
 
-        th:nth-child(3), td:nth-child(3) {
-            width: 40%;
-        }
     </style>
 </head>
 <body>
@@ -109,28 +106,25 @@
                 <thead>
                     <tr>
                         <th>Matrícula</th>
-                        <th>Nome</th>
-                        <th>Cargo</th>
+                        <th>CRF</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="funcionario : ${funcionarios}">
-                        <td th:text="${funcionario.matricula}"></td>
-                        <td th:text="${funcionario.nome}"></td>
-                        <td th:text="${funcionario.cargo}"></td>
+                    <tr th:each="farmaceutico : ${farmaceuticos}">
+                        <td th:text="${farmaceutico.matriculaFarmaceutico}"></td>
+                        <td th:text="${farmaceutico.crf}"></td>
 
                         <td>
-                            <form th:action="@{/funcionario/deletar/{matricula}(matricula=${funcionario.matricula})}" method="post" class="delete-form">
-                                <input type="hidden" name="matricula" th:value="${funcionario.matricula}">
+                            <form th:action="@{/funcionario/farmaceutico/deletar/{matricula_farmaceutico}(matricula_farmaceutico=${farmaceutico.matriculaFarmaceutico})}" method="post" class="delete-form">
                                 <button class="delete-button" type="submit">Deletar</button>
-                            </form>                                                                                
+                            </form>                                                                                                            
                         </td>
-
                     </tr>
-                </tbody>
+                </tbody>                
             </table>
         </div>
     </div> 
+
 </body>
 </html>

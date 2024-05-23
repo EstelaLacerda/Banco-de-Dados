@@ -20,11 +20,11 @@ public class Medico {
     }
 
     // Getter e Setter Matricula do Medico
-    public int getMatriculaMedico() {
+    public int getMatricula_Medico() {
         return matricula_medico;
     }
 
-    public void setMatriculaMedico(int matricula_medico) {
+    public void setMatricula_Medico(int matricula_medico) {
         this.matricula_medico = matricula_medico;
     }
 

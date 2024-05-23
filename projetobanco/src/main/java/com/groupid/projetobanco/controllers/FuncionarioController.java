@@ -30,14 +30,19 @@ public class FuncionarioController {
     @PostMapping
     public String createFuncionario(@ModelAttribute Funcionario funcionario, Model model) {
         boolean inserted = funcionarioRepository.insertFuncionario(funcionario);
-
+    
         if (inserted) {
-            model.addAttribute("message", "Funcionario inserido com sucesso!");
+            model.addAttribute("message", "Funcionário inserido com sucesso!");
         } else {
             model.addAttribute("message", "Já existe um Funcionário com essa matrícula.");
         }
-        return "funcionarioForm";
-    }
+        
+        return switch (funcionario.getCargo()) {
+            case "Médico" -> "medicoForm";
+            case "Farmacêutico" -> "farmaceuticoForm";
+            default -> "redirect:/funcionario";
+        };
+    }      
 
     @PostMapping("/deletar/{matricula}")
     public String deleteFuncionario(@PathVariable int matricula, Model model) {

@@ -15,9 +15,9 @@ public class MedicoRepository {
     private JdbcTemplate jdbcTemplate;
 
     public boolean insertMedico(Medico medico) {
-        if (!medicoExists(medico.getMatriculaMedico())) {
+        if (!medicoExists(medico.getMatricula_Medico())) {
             jdbcTemplate.update("INSERT INTO MEDICO(CRM, MATRICULA_MEDICO) VALUES(?, ?)",
-                    medico.getCrm(), medico.getMatriculaMedico());
+                    medico.getCrm(), medico.getMatricula_Medico());
             System.out.println("Médico inserido com sucesso!");
             return true;
         } 
@@ -43,7 +43,7 @@ public class MedicoRepository {
         return jdbcTemplate.query("SELECT * FROM MEDICO", (resultSet, rowNum) -> {
             Medico medico = new Medico(null, rowNum);
             medico.setCrm(resultSet.getString("CRM"));
-            medico.setMatriculaMedico(resultSet.getInt("MATRICULA_MEDICO"));
+            medico.setMatricula_Medico(resultSet.getInt("MATRICULA_MEDICO"));
             return medico;
         });
     }
