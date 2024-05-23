@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: start;     /* Centraliza verticalmente */
+            height: 100vh;           /* Altura total da viewport para centralizar verticalmente */
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;  /* Alinha os inputs em coluna */
+            justify-content: center; /* Centraliza verticalmente os inputs dentro do .form-container */
+            align-items: center;     /* Centraliza horizontalmente os inputs dentro do .form-container */
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        .form-group {
+            padding-top: 30px;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #fff; margin: 0; padding: 0;">
+    <!-- Inclui o cabeçalho -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="form-container" style="border-radius: 5px; border: solid; background-color: #fff; margin-top: 100px">
+
+            <h2 style="margin-top: 50px;">Cadastrar Médico</h2>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <form id="formFuncionarioMedico" action="/funcionario/medico" method="post" onsubmit="return sendData()">
+            <div class="form-group">
+                <label for="matricula_medico"><strong>Matrícula:</strong></label>
+                <br>
+                <input type="text" th:value="${matricula_medico}" id="matricula_medico" name="matricula_medico">
+            </div>
+    
+            <div class="form-group">
+                <label for="crm"><strong>CRM:</strong></label>
+                <br>
+                <input type="text" th:value="${crm}" id="crm" name="crm">
+            </div>
+    
+            <div class="form-group">
+                <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px;">Cadastrar</button>
+           </div>
+           </form>
+        </div>
+   </div>
+    
+    <script>
+        function sendData() {
+            var formData = {
+                matricula_medico: document.getElementById("matricula_medico").value,
+                crm: document.getElementById("crm").value
+            };
+    
+            fetch("/funcionario/medico", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar os dados');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+    
+            return false;
+        }
+    </script>
+    
+</body>
+</html>

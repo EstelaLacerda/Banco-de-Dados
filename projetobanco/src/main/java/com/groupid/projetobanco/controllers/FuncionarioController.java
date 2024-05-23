@@ -33,10 +33,13 @@ public class FuncionarioController {
 
         if (inserted) {
             model.addAttribute("message", "Funcionario inserido com sucesso!");
-        } else {
+        } 
+        
+        else {
             model.addAttribute("message", "Já existe um Funcionário com essa matrícula.");
         }
-        return "funcionarioForm";
+        
+        return "medicoForm";
     }
 
     @PostMapping("/deletar/{matricula}")

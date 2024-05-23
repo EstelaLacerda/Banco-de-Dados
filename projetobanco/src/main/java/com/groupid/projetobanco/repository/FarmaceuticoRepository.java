@@ -39,12 +39,14 @@ public class FarmaceuticoRepository {
         return rowsAffected > 0;
     }
 
-    public List<Farmaceutico> getAllFarmaceuticos(){
+    public List<Farmaceutico> getAllFarmaceuticos() {
         return jdbcTemplate.query("SELECT * FROM FARMACEUTICO", (resultSet, rowNum) -> {
-            Farmaceutico farmaceutico = new Farmaceutico(null, rowNum);
-            farmaceutico.setCrf(resultSet.getString("CRF"));
-            farmaceutico.setMatriculaFarmaceutico(resultSet.getInt("MATRICULA_FARMACEUTICO"));
+            Farmaceutico farmaceutico = new Farmaceutico(
+                resultSet.getString("CRF"),
+                resultSet.getInt("MATRICULA_FARMACEUTICO")
+            );
             return farmaceutico;
         });
     }
+    
 }
