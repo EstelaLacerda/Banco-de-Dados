@@ -15,12 +15,12 @@ public class RemedioControladoRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertRemedioControlado(RemedioControlado remedio_controlado) {
-        jdbcTemplate.update("INSERT INTO REMEDIO_CONTROLADO(FOI_APROVADO, CRF, FK_REMEDIO_CODIGO) VALUES (?, ?, ?)",
-        remedio_controlado.getFoi_Aprovado(), remedio_controlado.getCrf(), remedio_controlado.getFk_Remedio_codigo());
+        jdbcTemplate.update("INSERT INTO REMEDIO_CONTROLADO(FOI_APROVADO, CRF, CODIGO_REMEDIO) VALUES (?, ?, ?)",
+        remedio_controlado.getFoi_Aprovado(), remedio_controlado.getCrf(), remedio_controlado.getCodigoRemedio());
     }
 
-    public boolean deleteRemedioControlado(int fk_Remedio_codigo){
-        int rowsAffected = jdbcTemplate.update("DELETE FROM REMEDIO_CONTROLADO WHERE FK_REMEDIO_CODIGO = ?", fk_Remedio_codigo);
+    public boolean deleteRemedioControlado(int codigo_remedio){
+        int rowsAffected = jdbcTemplate.update("DELETE FROM REMEDIO_CONTROLADO WHERE FK_REMEDIO_CODIGO = ?", codigo_remedio);
         if(rowsAffected > 0){
             System.out.println("Remédio controlado foi excluído com sucesso.");
         } else {
@@ -36,7 +36,7 @@ public class RemedioControladoRepository {
             RemedioControlado remedioControlado = new RemedioControlado(false, null, rowNum);
             remedioControlado.setFoi_Aprovado(resultSet.getBoolean("FOI_APROVADO"));
             remedioControlado.setCrf(resultSet.getString("CRF"));
-            remedioControlado.setFk_Remedio_codigo(resultSet.getInt("FK_REMEDIO_CODIGO"));
+            remedioControlado.setCodigoRemedio(resultSet.getInt("CODIGO_REMEDIO"));
             return remedioControlado;
         });
 
