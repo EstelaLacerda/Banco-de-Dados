@@ -24,7 +24,7 @@ public class ReceitaController {
     @PostMapping
     public String createReceita(@RequestBody Receita receita){
         try{
-            receitaRepository.insertReceita(receita);;
+            receitaRepository.insertReceita(receita);
             return "Receita inserido!\n";
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class ReceitaController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allreceitas")
     public List<Receita> getReceitas(){
         return receitaRepository.getAllReceitas();
     }

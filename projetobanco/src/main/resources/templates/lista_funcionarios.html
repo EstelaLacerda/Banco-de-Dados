@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            width: 220px;
+            height: 35px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            background-color: #01546B;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .delete-button-container {
+            text-align: center;
+        }
+
+        .delete-button-container button {
+            width: auto;
+            height: auto;
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 20%;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 40%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="button-container">
+        <form action="/funcionario/medico/lista" method="get">
+            <button type="submit">Ver Médicos</button>
+        </form>
+        
+        <form action="/funcionario/farmaceutico/lista" method="get">
+            <button type="submit">Ver Farmacêuticos</button>
+        </form>
+
+        <form action="/" method="get">
+            <button type="submit">Editar</button>
+        </form>
+
+        <form action="/" method="get">
+            <button style="background-color: #D1345B;" type="submit">Voltar</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="funcionario : ${funcionarios}">
+                        <td th:text="${funcionario.matricula}"></td>
+                        <td th:text="${funcionario.nome}"></td>
+                        <td th:text="${funcionario.cargo}"></td>
+                        <td>
+                            <form th:action="@{/funcionario/deletar/{matricula}(matricula=${funcionario.matricula})}" method="post" class="delete-form">
+                                <input type="hidden" name="matricula" th:value="${funcionario.matricula}">
+                                <button class="delete-button" type="submit">Deletar</button>
+                            </form>                                                                                
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 
+
+</body>
+</html>

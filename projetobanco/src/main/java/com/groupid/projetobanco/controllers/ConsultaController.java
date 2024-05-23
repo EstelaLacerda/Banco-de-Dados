@@ -22,7 +22,8 @@ public class ConsultaController {
         return "Consulta inserida!\n";
     }
 
-    @DeleteMapping("/{hora}{cpf_Paciente}{matricula_medico}")
+
+    @DeleteMapping("/{hora} {cpf_Paciente} {matricula_medico}")
     public String deleteConsulta(@PathVariable Time hora, String cpf_Paciente, int matricula_medico) {
         boolean deleted = consultaRepository.deleteConsulta(matricula_medico, cpf_Paciente, hora);
         if (deleted) {
@@ -32,7 +33,7 @@ public class ConsultaController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/allconsulta")
     public List<Consulta> getConsultas(){
         return consultaRepository.getAllConsultas();
     }

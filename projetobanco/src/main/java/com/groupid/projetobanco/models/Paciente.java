@@ -13,6 +13,17 @@ public class Paciente {
     private Date data_nascimento;
     private int codigo_setor;
 
+    public Paciente(String nome, String cpf, String sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.sexo = sexo;
+        this.idade = idade;
+        this.peso = peso;
+        this.nome_mae = nome_mae;
+        this.data_nascimento = data_nascimento;
+        this.codigo_setor = codigo_setor;
+    }
+
     // Getter e Setter Nome
     public String getNome() {
         return nome;
