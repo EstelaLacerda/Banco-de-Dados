@@ -23,7 +23,7 @@ public class RemedioController {
 
     @PostMapping
     public String createRemedio(@RequestBody Remedio remedio){
-         remedioRepository.insertRemedio(remedio);
+        remedioRepository.insertRemedio(remedio);
         return "Remédio inserido!\n";
     }
 

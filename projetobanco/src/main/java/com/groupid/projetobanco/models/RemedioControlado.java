@@ -1,22 +1,22 @@
 package com.groupid.projetobanco.models;
 
-public class Remedio_controlado {
+public class RemedioControlado {
     private boolean foi_Aprovado;
     private String crf;
-    private int codigo_remedio;
+    private int fk_Remedio_codigo;
 
-    public Remedio_controlado(boolean foi_Aprovado, String crf, int codigo_remedio) {
+    public RemedioControlado(boolean foi_Aprovado, String crf, int fk_Remedio_codigo) {
         this.foi_Aprovado = foi_Aprovado;
         this.crf = crf;
-        this.codigo_remedio = codigo_remedio;
+        this.fk_Remedio_codigo = fk_Remedio_codigo;
     }
 
     // Getter e Setter Foi Aprovado
-    public boolean getFoiAprovado() {
+    public boolean getFoi_Aprovado() {
         return foi_Aprovado;
     }
 
-    public void setFoiAprovado(boolean foi_Aprovado) {
+    public void setFoi_Aprovado(boolean foi_Aprovado) {
         this.foi_Aprovado = foi_Aprovado;
     }
 
@@ -30,11 +30,11 @@ public class Remedio_controlado {
     }
 
     // Getter e Setter Codigo do Remedio
-    public int getRemedioCodigo() {
-        return codigo_remedio;
+    public int getFk_Remedio_codigo() {
+        return fk_Remedio_codigo;
     }
 
-    public void setRemedioCodigo(int codigo_remedio) {
-        this.codigo_remedio = codigo_remedio;
+    public void setFk_Remedio_codigo(int fk_Remedio_codigo) {
+        this.fk_Remedio_codigo = fk_Remedio_codigo;
     }
 }

@@ -2,13 +2,20 @@ package com.groupid.projetobanco.models;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Remedio {
 
     private String tipo;
     private int codigo;
     private String quantidade;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date validade;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date data_abertura;
+    
     private String tempo_utilizacao;
     private String principio_ativo;
     private int cod_estoque;
