@@ -56,17 +56,21 @@
                 <div class="form-group">
                     <label><strong>Cargo:</strong></label>
                     <br>
-                    <input type="radio" id="medico" name="cargo" th:value="'Médico'" th:field="*{cargo}" required>
+                    <input type="radio" id="medico" name="cargo" th:value="'Médico'" th:field="*{cargo}">
                     <label for="medico">Médico</label>
                     <br>
-                    <input type="radio" id="farmaceutico" name="cargo" th:value="'Farmacêutico'" th:field="*{cargo}" required>
+                    <input type="radio" id="farmaceutico" name="cargo" th:value="'Farmacêutico'" th:field="*{cargo}">
                     <label for="farmaceutico">Farmacêutico</label>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px;">Cadastrar</button>
+                    <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
                 </div>
             </form>
+
+            <div class="form-group">
+                <button onclick="history.back();" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #D1345B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px;">Voltar</button>
+            </div>
         </div>
     </div>
 
