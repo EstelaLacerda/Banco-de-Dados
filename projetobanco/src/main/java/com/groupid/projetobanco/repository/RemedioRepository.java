@@ -14,7 +14,12 @@ public class RemedioRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-     public void insertRemedio(Remedio remedio) {
+    public void updateRemedio(Remedio remedio){
+        jdbcTemplate.update("UPDATE INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getDataAbertura(), remedio.getTempoUtilizacao(), remedio.getCodigoEstoque(), remedio.getPrincipioAtivo());
+    }
+
+    public void insertRemedio(Remedio remedio) {
         jdbcTemplate.update("INSERT INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
         remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getDataAbertura(), remedio.getTempoUtilizacao(), remedio.getCodigoEstoque(), remedio.getPrincipioAtivo());
     }
@@ -45,6 +50,8 @@ public class RemedioRepository {
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO"));
             return remedio;
         });
+
+
 
     }
 
