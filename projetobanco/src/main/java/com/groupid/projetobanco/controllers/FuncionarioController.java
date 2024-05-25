@@ -27,6 +27,13 @@ public class FuncionarioController {
         return "funcionarioForm";
     }
 
+    @GetMapping("/outro/lista")
+    public String getFuncionarioOutro(Model model) {
+        List<Funcionario> funcionarios = funcionarioRepository.getAllFuncionariosOutro();
+        model.addAttribute("funcionarios", funcionarios);
+        return "lista_funcionarios";
+    }
+
     @PostMapping
     public String createFuncionario(@ModelAttribute Funcionario funcionario, Model model) {
         boolean inserted = funcionarioRepository.insertFuncionario(funcionario);
@@ -49,8 +56,8 @@ public class FuncionarioController {
             return "redirect:/cadastro/farmaceutico";
         } 
         
-        else if ("Outros".equalsIgnoreCase(cargo)) {
-            return "redirect:/funcionario/lista";
+        else if ("Outro".equalsIgnoreCase(cargo)) {
+            return "redirect:/funcionario/outro/lista";
         } 
 
         else {

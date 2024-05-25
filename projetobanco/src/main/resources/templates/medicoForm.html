@@ -72,7 +72,7 @@
                 matricula_medico: document.getElementById("matricula_medico").value,
                 crm: document.getElementById("crm").value
             };
-    
+        
             fetch("/funcionario/medico", {
                 method: "POST",
                 headers: {
@@ -84,15 +84,14 @@
                 if (!response.ok) {
                     throw new Error('Erro ao enviar os dados');
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
+
+                window.location.href = "/funcionario/medico/lista";
             })
             .catch(error => {
                 console.error('Erro:', error);
             });
         }
+        
     </script>
 </body>
 </html>

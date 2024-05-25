@@ -56,4 +56,14 @@ public class FuncionarioRepository {
             return funcionario;
         });
     }
+
+    public List<Funcionario> getAllFuncionariosOutro(){
+        return jdbcTemplate.query("SELECT * FROM FUNCIONARIO WHERE CARGO = 'OUTRO'", (resultSet, rowNum) -> {
+            Funcionario funcionario = new Funcionario(rowNum, null, null);
+            funcionario.setMatricula(resultSet.getInt("MATRICULA"));
+            funcionario.setNome(resultSet.getString("NOME"));
+            funcionario.setCargo(resultSet.getString("CARGO"));
+            return funcionario;
+        });
+    }
 }

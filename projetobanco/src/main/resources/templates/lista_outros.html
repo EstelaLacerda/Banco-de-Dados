@@ -150,28 +150,27 @@
                     <tr>
                         <th>Matrícula</th>
                         <th>Nome</th>
-                        <th>CRM</th>
+                        <th>Cargo</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="medico : ${medicos}">
-                        <td th:text="${medico.matricula}"></td>
-                        <td th:text="${medico.nome}"></td>
-                        <td th:text="${medico.crm}"></td>
+                    <tr th:each="funcionario : ${funcionarios}" th:if="${funcionario.cargo == 'Outro'}">
+                        <td th:text="${funcionario.matricula}"></td>
+                        <td th:text="${funcionario.nome}"></td>
+                        <td th:text="${funcionario.cargo}"></td>
 
                         <td>
-                            <form th:action="@{/funcionario/medico/deletar/{matricula}(matricula=${medico.matricula})}" method="post" class="delete-form">
-                                <input type="hidden" name="matricula" th:value="${medico.matricula}">
+                            <form th:action="@{/funcionario/deletar/{matricula}(matricula=${funcionario.matricula})}" method="post" class="delete-form">
+                                <input type="hidden" name="matricula" th:value="${funcionario.matricula}">
                                 <button class="delete-button" type="submit">Deletar</button>
-                            </form>                                                                                                                              
+                            </form>                                                                                
                         </td>
-                                                
+
                     </tr>
-                </tbody>                
+                </tbody>
             </table>
         </div>
     </div> 
-
 </body>
 </html>

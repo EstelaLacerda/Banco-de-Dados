@@ -72,7 +72,7 @@
                 matricula_farmaceutico: document.getElementById("matricula_farmaceutico").value,
                 crf: document.getElementById("crf").value
             };
-    
+        
             fetch("/funcionario/farmaceutico", {
                 method: "POST",
                 headers: {
@@ -84,15 +84,13 @@
                 if (!response.ok) {
                     throw new Error('Erro ao enviar os dados');
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
+
+                window.location.href = "/funcionario/farmaceutico/lista";
             })
             .catch(error => {
                 console.error('Erro:', error);
             });
-        }
+        }        
     </script>
 </body>
 </html>

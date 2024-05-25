@@ -134,6 +134,10 @@
             <button type="submit">Ver Farmacêuticos</button>
         </form>
 
+        <form action="/funcionario/outro/lista" method="get">
+            <button type="submit">Ver Outros</button>
+        </form>
+
         <form onsubmit="history.back(); return false;">
             <button style="background-color: #D1345B;" type="submit">Voltar</button>
         </form>
@@ -157,7 +161,7 @@
                         <td th:text="${farmaceutico.crf}"></td>
 
                         <td>
-                            <form th:action="@{/funcionario/farmaceutico/deletar/{matriculaFarmaceutico}(matriculaFarmaceutico=${farmaceutico.matriculaFarmaceutico})}" method="post" class="delete-form">
+                            <form th:action="@{/funcionario/farmaceutico/deletar/{matricula_farmaceutico}(matricula_farmaceutico=${farmaceutico.matricula})}" method="post" class="delete-form">
                                 <input type="hidden" name="matriculaFarmaceutico" th:value="${farmaceutico.matriculaFarmaceutico}">
                                 <button class="delete-button" type="submit">Deletar</button>
                             </form>                                                                                                                                                          

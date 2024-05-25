@@ -24,14 +24,15 @@ public class FarmaceuticoController {
     @PostMapping
     public String createFarmaceutico(@RequestBody Farmaceutico farmaceutico) {
         boolean inserted = farmaceuticoRepository.insertFarmaceutico(farmaceutico);
-    
+        
         if (inserted) {
-            return "Farmacêutico inserido!\n";
-        } else {
-            return "Já existe um farmacêutico com essa matrícula.\n";
+            return "redirect:/funcionario/farmaceutico/lista";
+        } 
+        
+        else {
+            return "error";
         }
-
-    }
+    }    
 
     @PostMapping("/deletar/{matricula_farmaceutico}")
     public String deleteFarmaceutico(@PathVariable int matricula_farmaceutico, Model model) {
