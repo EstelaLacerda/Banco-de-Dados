@@ -13,11 +13,6 @@ import com.groupid.projetobanco.models.Medico;
 @RequestMapping("/cadastro")
 public class CadastroController {
 
-    @GetMapping
-    public String showCadastro(Model model) {
-        return "cadastro";
-    }
-
     @GetMapping("/funcionario")
     public String showForm(Model model) {
         model.addAttribute("funcionario", new Funcionario(0, null, null));
@@ -26,13 +21,13 @@ public class CadastroController {
 
     @GetMapping("/medico")
     public String showFormMedico(Model model) {
-        model.addAttribute("medico", new Medico(null, 0));
+        model.addAttribute("medico", new Medico(0, null, null, null, 0));
         return "medicoForm";
     }
 
     @GetMapping("/farmaceutico")
     public String getFarmaceuticos(Model model) {
-        model.addAttribute("farmaceuticos", new Farmaceutico(null, 0));
+        model.addAttribute("farmaceuticos", new Farmaceutico(0, null, null, null, 0));
         return "farmaceuticoForm";
     }
 }

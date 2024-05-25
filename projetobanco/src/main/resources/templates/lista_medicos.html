@@ -96,11 +96,15 @@
         }
 
         th:nth-child(1), td:nth-child(1) {
-            width: 50%;
+            width: 20%;
         }
 
         th:nth-child(2), td:nth-child(2) {
-            width: 50%;
+            width: 40%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 40%;
         }
 
         .delete-button {
@@ -141,22 +145,24 @@
                 <thead>
                     <tr>
                         <th>Matrícula</th>
+                        <th>Nome</th>
                         <th>CRM</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="medico : ${medicos}">
-                        <td th:text="${medico.matricula_Medico}"></td>
+                        <td th:text="${medico.matricula}"></td>
+                        <td th:text="${medico.nome}"></td>
                         <td th:text="${medico.crm}"></td>
 
                         <td>
-                            <form action="/funcionario/medico/deletar/{matricula_medico}" method="post" class="delete-form">
-                                <input type="hidden" name="matricula_medico" th:value="${medico.matricula_Medico}">
+                            <form th:action="@{/funcionario/medico/deletar/{matricula}(matricula=${medico.matricula})}" method="post" class="delete-form">
+                                <input type="hidden" name="matricula" th:value="${medico.matricula}">
                                 <button class="delete-button" type="submit">Deletar</button>
-                            </form>                            
-                                                                                                          
+                            </form>                                                                                                                              
                         </td>
+                                                
                     </tr>
                 </tbody>                
             </table>

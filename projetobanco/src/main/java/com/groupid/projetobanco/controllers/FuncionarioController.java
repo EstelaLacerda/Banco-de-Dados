@@ -36,14 +36,28 @@ public class FuncionarioController {
         } else {
             model.addAttribute("message", "Já existe um Funcionário com essa matrícula.");
         }
+    
+        // Verifica o valor do cargo
+        String cargo = funcionario.getCargo().trim();
+        System.out.println("Cargo inserido: " + cargo);
+    
+        if ("Médico".equalsIgnoreCase(cargo)) {
+            return "redirect:/cadastro/medico";
+        } 
         
-        return switch (funcionario.getCargo()) {
-            case "Médico" -> "medicoForm";
-            case "Farmacêutico" -> "farmaceuticoForm";
-            default -> "redirect:/funcionario";
-        };
-    }      
+        else if ("Farmacêutico".equalsIgnoreCase(cargo)) {
+            return "redirect:/cadastro/farmaceutico";
+        } 
+        
+        else if ("Outros".equalsIgnoreCase(cargo)) {
+            return "redirect:/funcionario/lista";
+        } 
 
+        else {
+            return "redirect:/funcionario";
+        }
+    }
+    
     @PostMapping("/deletar/{matricula}")
     public String deleteFuncionario(@PathVariable int matricula, Model model) {
         boolean deleted = funcionarioRepository.deleteFuncionario(matricula);

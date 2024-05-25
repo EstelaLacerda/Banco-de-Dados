@@ -15,36 +15,37 @@ public class MedicoRepository {
     private JdbcTemplate jdbcTemplate;
 
     public boolean insertMedico(Medico medico) {
-        if (!medicoExists(medico.getMatricula_Medico())) {
-            jdbcTemplate.update("INSERT INTO MEDICO(CRM, MATRICULA_MEDICO) VALUES(?, ?)",
-                    medico.getCrm(), medico.getMatricula_Medico());
-            System.out.println("Médico inserido com sucesso!");
-            return true;
-        } 
-        
-        else {
-            System.out.println("Já existe um médico com essa matrícula.");
+        if (funcionarioExists(medico.getMatricula_Medico())) {
+            int rowsMedico = jdbcTemplate.update(
+                "INSERT INTO MEDICO(MATRICULA_MEDICO, CRM) VALUES(?, ?)",
+                medico.getMatricula_Medico(), medico.getCrm()
+            );
+            return rowsMedico > 0;
+        } else {
             return false;
         }
     }
 
-    public boolean medicoExists(int matricula_medico) {
-        String sql = "SELECT COUNT(*) FROM MEDICO WHERE MATRICULA_MEDICO = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, matricula_medico) > 0;
+    private boolean funcionarioExists(int matricula) {
+        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, matricula) > 0;
     }
 
-    public boolean deleteMedico(int matricula_medico){
-
+    public boolean deleteMedico(int matricula_medico) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM MEDICO WHERE MATRICULA_MEDICO = ?", matricula_medico);
         return rowsAffected > 0;
     }
 
     public List<Medico> getAllMedicos(){
-        return jdbcTemplate.query("SELECT * FROM MEDICO", (resultSet, rowNum) -> {
-            Medico medico = new Medico(null, rowNum);
-            medico.setCrm(resultSet.getString("CRM"));
-            medico.setMatricula_Medico(resultSet.getInt("MATRICULA_MEDICO"));
-            return medico;
-        });
+        return jdbcTemplate.query(
+            "SELECT F.MATRICULA, F.NOME, M.CRM FROM MEDICO M INNER JOIN FUNCIONARIO F ON M.MATRICULA_MEDICO = F.MATRICULA",
+            (resultSet, rowNum) -> {
+                Medico medico = new Medico(rowNum, null, null, null, rowNum);
+                medico.setMatricula(resultSet.getInt("MATRICULA"));
+                medico.setNome(resultSet.getString("NOME"));
+                medico.setCrm(resultSet.getString("CRM"));
+                return medico;
+            });
     }
+    
 }

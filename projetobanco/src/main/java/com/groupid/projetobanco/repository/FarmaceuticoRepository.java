@@ -15,21 +15,20 @@ public class FarmaceuticoRepository {
     private JdbcTemplate jdbcTemplate;
 
     public boolean insertFarmaceutico(Farmaceutico farmaceutico) {
-        if (!farmaceuticoExists(farmaceutico.getMatriculaFarmaceutico())) {
-            jdbcTemplate.update("INSERT INTO FARMACEUTICO(CRF, MATRICULA_FARMACEUTICO) VALUES(?, ?)",
-                    farmaceutico.getCrf(), farmaceutico.getMatriculaFarmaceutico());
-            System.out.println("Farmacêutico inserido com sucesso!");
-            return true;
+        if (funcionarioExists(farmaceutico.getMatriculaFarmaceutico())) {
+            int rowsFarmaceutico = jdbcTemplate.update(
+                "INSERT INTO FARMACEUTICO(MATRICULA_FARMACEUTICO, CRF) VALUES(?, ?)",
+                farmaceutico.getMatriculaFarmaceutico(), farmaceutico.getCrf()
+            );
+            return rowsFarmaceutico > 0;
         } else {
-            System.out.println("Já existe um farmacêutico com essa matrícula.");
             return false;
         }
-
     }
 
-    public boolean farmaceuticoExists(int matricula_farmaceutico) {
-        String sql = "SELECT COUNT(*) FROM FARMACEUTICO WHERE MATRICULA_FARMACEUTICO = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, matricula_farmaceutico) > 0;
+    private boolean funcionarioExists(int matricula) {
+        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, matricula) > 0;
     }
 
     public boolean deleteFarmaceutico(int matricula_farmaceutico){
@@ -38,14 +37,16 @@ public class FarmaceuticoRepository {
         return rowsAffected > 0;
     }
 
-    public List<Farmaceutico> getAllFarmaceuticos() {
-        return jdbcTemplate.query("SELECT * FROM FARMACEUTICO", (resultSet, rowNum) -> {
-            Farmaceutico farmaceutico = new Farmaceutico(
-                resultSet.getString("CRF"),
-                resultSet.getInt("MATRICULA_FARMACEUTICO")
-            );
-            return farmaceutico;
-        });
+    public List<Farmaceutico> getAllFarmaceuticos(){
+        return jdbcTemplate.query(
+            "SELECT F.MATRICULA, F.NOME, FA.CRF FROM FARMACEUTICO FA INNER JOIN FUNCIONARIO F ON FA.MATRICULA_FARMACEUTICO = F.MATRICULA",
+            (resultSet, rowNum) -> {
+                Farmaceutico farmaceutico = new Farmaceutico(rowNum, null, null, null, rowNum);
+                farmaceutico.setMatricula(resultSet.getInt("MATRICULA"));
+                farmaceutico.setNome(resultSet.getString("NOME"));
+                farmaceutico.setCrf(resultSet.getString("CRF"));
+                return farmaceutico;
+            });
     }
     
 }

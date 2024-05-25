@@ -96,11 +96,15 @@
         }
 
         th:nth-child(1), td:nth-child(1) {
-            width: 50%;
+            width: 20%;
         }
 
         th:nth-child(2), td:nth-child(2) {
-            width: 50%;
+            width: 40%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 40%;
         }
 
         .delete-button {
@@ -141,19 +145,22 @@
                 <thead>
                     <tr>
                         <th>Matrícula</th>
+                        <th>Nome</th>
                         <th>CRF</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="farmaceutico : ${farmaceuticos}">
-                        <td th:text="${farmaceutico.matriculaFarmaceutico}"></td>
+                        <td th:text="${farmaceutico.matricula}"></td>
+                        <td th:text="${farmaceutico.nome}"></td>
                         <td th:text="${farmaceutico.crf}"></td>
 
                         <td>
-                            <form th:action="@{/funcionario/farmaceutico/deletar/{matricula_farmaceutico}(matricula_farmaceutico=${farmaceutico.matriculaFarmaceutico})}" method="post" class="delete-form">
+                            <form th:action="@{/funcionario/farmaceutico/deletar/{matriculaFarmaceutico}(matriculaFarmaceutico=${farmaceutico.matriculaFarmaceutico})}" method="post" class="delete-form">
+                                <input type="hidden" name="matriculaFarmaceutico" th:value="${farmaceutico.matriculaFarmaceutico}">
                                 <button class="delete-button" type="submit">Deletar</button>
-                            </form>                                                                                                            
+                            </form>                                                                                                                                                          
                         </td>
                     </tr>
                 </tbody>                

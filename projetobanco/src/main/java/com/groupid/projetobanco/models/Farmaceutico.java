@@ -1,11 +1,12 @@
 package com.groupid.projetobanco.models;
 
-public class Farmaceutico {
+public class Farmaceutico extends Funcionario{
 
     private String crf;
     private int matricula_farmaceutico;
 
-    public Farmaceutico(String crf, int matricula_farmaceutico) {
+    public Farmaceutico(int matricula, String nome, String cargo, String crf, int matricula_farmaceutico) {
+        super(matricula, nome, cargo);
         this.crf = crf;
         this.matricula_farmaceutico = matricula_farmaceutico;
     }

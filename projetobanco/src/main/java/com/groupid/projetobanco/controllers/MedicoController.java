@@ -3,6 +3,8 @@ package com.groupid.projetobanco.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,15 +24,11 @@ public class MedicoController {
     private MedicoRepository medicoRepository;
 
     @PostMapping
-    public String createMedico(@RequestBody Medico medico) {
-        boolean inserted = medicoRepository.insertMedico(medico);
-    
-        if (inserted) {
-            return "Médico inserido!\n";
-        } 
-        
-        else {
-            return "Já existe um médico com essa matrícula.\n";
+    public ResponseEntity<String> createMedico(@RequestBody Medico medico) {
+        if (medicoRepository.insertMedico(medico)) {
+            return ResponseEntity.ok("Médico cadastrado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao cadastrar médico.");
         }
     }
 
@@ -38,12 +36,12 @@ public class MedicoController {
     public String deleteMedico(@PathVariable int matricula_medico, Model model) {
         boolean deleted = medicoRepository.deleteMedico(matricula_medico);
         if (deleted) {
-            model.addAttribute("message", "Médico deletado com sucesso!");
+            model.addAttribute("message", "Farmacêutico deletado com sucesso!");
         } else {
-            model.addAttribute("message", "O Médico com essa matrícula não existe no banco de dados!");
+            model.addAttribute("message", "O Farmacêutico com essa matrícula não existe no banco de dados!");
         }
         return "redirect:/funcionario/medico/lista";
-    }    
+    }       
 
     @GetMapping("/lista")
     public String getMedicos(Model model) {

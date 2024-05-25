@@ -8,17 +8,17 @@
     <style>
         .container {
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: start;     /* Centraliza verticalmente */
-            height: 100vh;           /* Altura total da viewport para centralizar verticalmente */
+            justify-content: center;
+            align-items: start;
+            height: 100vh;
             font-family: Arial, sans-serif;
         }
         
         .form-container {
             display: flex;
-            flex-direction: column;  /* Alinha os inputs em coluna */
-            justify-content: center; /* Centraliza verticalmente os inputs dentro do .form-container */
-            align-items: center;     /* Centraliza horizontalmente os inputs dentro do .form-container */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding-left: 150px;
             padding-right: 150px;
         }
@@ -26,43 +26,45 @@
         .form-group {
             padding-top: 30px;
         }
+        input {
+            background-color: #D9D9D9; 
+            border-radius: 5px; 
+            border: solid #7A7A7A;
+        }
     </style>
 
 </head>
 
-<body style="background-color: #fff; margin: 0; padding: 0;">
+<body style="background-color: #000000; margin: 0; padding: 0;">
     <!-- Inclui o cabeçalho -->
     <div th:replace="fragments/header :: header"></div>
 
     <div class="container">
-        <div class="form-container" style="border-radius: 5px; border: solid; background-color: #fff; margin-top: 100px">
+        <div class="form-container" style="border-radius: 5px; border: solid; background-color: #D9D9D9; margin-top: 100px">
 
-            <h2 style="margin-top: 50px;">Cadastrar Médico</h2>
+            <h2 style="margin-top: 50px;">Cadastro de Médico</h2>
 
             <!-- FORMULÁRIO DE CADASTRO -->
             <form id="formFuncionarioMedico" action="/funcionario/medico" method="post" onsubmit="return sendData()">
-            <div class="form-group">
-                <label for="matricula_medico"><strong>Matrícula:</strong></label>
-                <br>
-                <input type="text" th:value="${matricula_medico}" id="matricula_medico" name="matricula_medico" required>
-            </div>
-    
-            <div class="form-group">
-                <label for="crm"><strong>CRM:</strong></label>
-                <br>
-                <input type="text" th:value="${crm}" id="crm" name="crm" required>
-            </div>
-    
-            <div class="form-group">
-                <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
-           </div>
-           </form>
+                <div class="form-group">
+                    <label for="matricula_medico"><strong>Matrícula:</strong></label>
+                    <br>
+                    <input type="text" id="matricula_medico" name="matricula_medico" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="crm"><strong>CRM:</strong></label>
+                    <br>
+                    <input type="text" id="crm" name="crm" required>
+                </div>
+        
+                <div class="form-group">
+                    <button type="button" onclick="sendData()" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Cadastrar</button>
+                </div>
+            </form>
 
-           <div class="form-group">
-            <button onclick="window.location.href='/funcionario/medico/lista'" style="display: inline-block; width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #01546B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Ir para Lista</button>
-           </div>  
         </div>
-   </div>
+    </div>
     
     <script>
         function sendData() {
@@ -90,10 +92,7 @@
             .catch(error => {
                 console.error('Erro:', error);
             });
-    
-            return false;
         }
     </script>
-    
 </body>
 </html>

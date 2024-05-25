@@ -1,11 +1,12 @@
 package com.groupid.projetobanco.models;
 
-public class Medico {
+public class Medico extends Funcionario {
 
     private String crm;
     private int matricula_medico;
 
-    public Medico(String crm, int matricula_medico) {
+    public Medico(int matricula, String nome, String cargo, String crm, int matricula_medico) {
+        super(matricula, nome, cargo);
         this.crm = crm;
         this.matricula_medico = matricula_medico;
     }
