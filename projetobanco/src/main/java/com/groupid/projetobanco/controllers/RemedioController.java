@@ -3,23 +3,28 @@ package com.groupid.projetobanco.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.groupid.projetobanco.models.Remedio;
 import com.groupid.projetobanco.repository.RemedioRepository;
 
-@RestController
+@Controller
 @RequestMapping("/remedio")
 public class RemedioController {
 
     @Autowired
     private RemedioRepository remedioRepository;
+
+    @GetMapping
+    public String getMedicos(Model model) {
+        return "remedio_index";
+    }
 
     @PostMapping
     public String createRemedio(@RequestBody Remedio remedio){
@@ -27,19 +32,22 @@ public class RemedioController {
         return "Remédio inserido!\n";
     }
 
-    @DeleteMapping("/{codigo}")
-    public String deleteRemedio(@PathVariable int codigo) {
+    @PostMapping("/deletar/{codigo}")
+    public String deleteRemedio(@PathVariable int codigo, Model model) {
         boolean deleted = remedioRepository.deleteRemedio(codigo);
-        if(deleted){
-            return "Remédio deletado!\n";
+        if (deleted) {
+            model.addAttribute("message", "Remédio deletado com sucesso!");
         } else {
-            return "O Remédio com esse código não existe no banco de dados!\n";
-        }    
+            model.addAttribute("message", "O Remédio com esse código não existe no banco de dados!");
+        }
+        return "redirect:/remedio/lista";
     }
 
-    @GetMapping("/allremedios")
-    public List<Remedio> getRemedios(){
-        return remedioRepository.getAllRemedios();
+    @GetMapping("/lista")
+    public String getRemedios(Model model) {
+        List<Remedio> remedios = remedioRepository.getAllRemedios();
+        model.addAttribute("remedios", remedios);
+        return "lista_remedios";
     }
 
 }

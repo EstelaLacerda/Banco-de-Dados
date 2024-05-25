@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        .form-group {
+            padding-top: 30px;
+        }
+        input {
+            background-color: #D9D9D9; 
+            border-radius: 5px; 
+            border: solid #7A7A7A;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #000000; margin: 0; padding: 0; color: black;">
+    <!-- Inclui o cabeçalho -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <div class="container">
+        <div class="form-container" style="border-radius: 10px; border: solid #000000; background-color: #D9D9D9; margin-top: 100px">
+            
+            <h2 style="margin-top: 50px;">Cadastro de Remédio</h2>
+
+            <form id="formRemedio" action="/remedio" method="post" th:object="${remedio}">
+                <div class="form-group">
+                    <label for="codigo"><strong>Código:</strong></label>
+                    <br>
+                    <input type="text" id="codigo" name="codigo" th:field="*{codigo}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo"><strong>Tipo:</strong></label>
+                    <br>
+                    <input type="text" id="tipo" name="tipo" th:field="*{tipo}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade"><strong>Quantidade:</strong></label>
+                    <br>
+                    <input type="text" id="quantidade" name="quantidade" th:field="*{quantidade}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="validade"><strong>Data de Validade:</strong></label>
+                    <br>
+                    <input type="date" id="validade" name="validade" th:field="*{validade}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_abertura"><strong>Data de Abertura:</strong></label>
+                    <br>
+                    <input type="date" id="data_abertura" name="data_abertura" th:field="*{data_abertura}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="principio_ativo"><strong>Princípio Ativo:</strong></label>
+                    <br>
+                    <input type="text" id="principio_ativo" name="principio_ativo" th:field="*{principio_ativo}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cod_estoque"><strong>Código de Estoque:</strong></label>
+                    <br>
+                    <input type="text" id="cod_estoque" name="cod_estoque" th:field="*{cod_estoque}" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="submitForm" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
+                </div>
+            </form>
+
+            <div class="form-group">
+                <button onclick="history.back();" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #D1345B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px;">Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        var message = /*[[${message}]]*/ null;
+        if (message) {
+            alert(message);
+        }
+    </script>
+</body>
+</html>

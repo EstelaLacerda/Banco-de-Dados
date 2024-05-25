@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.groupid.projetobanco.models.Farmaceutico;
 import com.groupid.projetobanco.models.Funcionario;
 import com.groupid.projetobanco.models.Medico;
+import com.groupid.projetobanco.models.Remedio;
 
 @Controller
 @RequestMapping("/cadastro")
@@ -29,5 +30,11 @@ public class CadastroController {
     public String getFarmaceuticos(Model model) {
         model.addAttribute("farmaceuticos", new Farmaceutico(0, null, null, null, 0));
         return "farmaceuticoForm";
+    }
+
+    @GetMapping("/remedio")
+    public String showFormRemedio(Model model) {
+        model.addAttribute("remedio", new Remedio(null, 0, null, null, null, null, null, 0));
+        return "remedioForm";
     }
 }

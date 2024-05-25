@@ -15,7 +15,7 @@ import com.groupid.projetobanco.models.RemedioControlado;
 import com.groupid.projetobanco.repository.RemedioControladoRepository;
 
 @RestController
-@RequestMapping("/remediocontrolado")
+@RequestMapping("/remedio/controlado")
 public class RemedioControladoController {
     @Autowired
     private RemedioControladoRepository remedioControladoRepository;

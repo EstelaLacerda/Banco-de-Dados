@@ -74,11 +74,11 @@ public class Remedio {
     }
 
     // Getter e Setter Data de Abertura
-    public Date getDataAbertura() {
+    public Date getData_abertura() {
         return data_abertura;
     }
 
-    public void setDataAbertura(Date data_abertura) {
+    public void setData_abertura(Date data_abertura) {
         this.data_abertura = data_abertura;
     }
 
@@ -92,20 +92,20 @@ public class Remedio {
     }
 
     // Getter e Setter Princípio Ativo
-    public String getPrincipioAtivo() {
+    public String getPrincipio_Ativo() {
         return principio_ativo;
     }
 
-    public void setPrincipioAtivo(String principio_ativo) {
+    public void setPrincipio_Ativo(String principio_ativo) {
         this.principio_ativo = principio_ativo;
     }
 
     // Getter e Setter Codigo de Estoque
-    public int getCodigoEstoque() {
+    public int getCodEstoque() {
         return cod_estoque;
     }
 
-    public void setCodigoEstoque(int cod_estoque) {
+    public void setCodEstoque(int cod_estoque) {
         this.cod_estoque = cod_estoque;
     }
 
