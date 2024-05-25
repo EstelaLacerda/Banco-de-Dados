@@ -16,12 +16,12 @@ public class RemedioRepository {
 
     public void updateRemedio(Remedio remedio){
         jdbcTemplate.update("UPDATE INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipio_Ativo());
+        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo());
     }
 
     public void insertRemedio(Remedio remedio) {
         jdbcTemplate.update("INSERT INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipio_Ativo());
+        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo());
     }
 
     public boolean deleteRemedio(int codigo){
@@ -47,7 +47,7 @@ public class RemedioRepository {
             remedio.setData_abertura(resultSet.getDate("DATA_ABERTURA"));
             remedio.setTempoUtilizacao(resultSet.getString("TEMPO_UTILIZACAO"));
             remedio.setCodEstoque(resultSet.getInt("COD_ESTOQUE"));
-            remedio.setPrincipio_Ativo(resultSet.getString("PRINCIPIO_ATIVO"));
+            remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO"));
             return remedio;
         });
 

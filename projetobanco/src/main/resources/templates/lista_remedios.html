@@ -146,10 +146,6 @@
             <button type="submit">Ver Remédios</button>
         </form>
 
-        <form action="/remedio/controlado/lista" method="get">
-            <button type="submit">Ver Remédios Controlados</button>
-        </form>
-
         <form onsubmit="history.back(); return false;">
             <button style="background-color: #D1345B;" type="submit">Voltar</button>
         </form>
@@ -180,7 +176,7 @@
                         <td th:text="${remedio.validade}"></td>
                         <td th:text="${remedio.data_abertura}"></td>
                         <td th:text="${remedio.tempoUtilizacao}"></td>
-                        <td th:text="${remedio.principio_Ativo}"></td>
+                        <td th:text="${remedio.principioAtivo}"></td>
                         <td th:text="${remedio.codEstoque}"></td>
                         <td>
                             <form th:action="@{/remedio/deletar/{codigo}(codigo=${remedio.codigo})}" method="post" class="delete-form">

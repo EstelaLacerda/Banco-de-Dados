@@ -67,25 +67,26 @@
                 <div class="form-group">
                     <label for="validade"><strong>Data de Validade:</strong></label>
                     <br>
-                    <input type="date" id="validade" name="validade" th:field="*{validade}" required>
+                    <input type="date" id="validade" name="validade" th:field="*{validade}" pattern="yyyy-MM-dd" required>
                 </div>
 
                 <div class="form-group">
                     <label for="data_abertura"><strong>Data de Abertura:</strong></label>
                     <br>
-                    <input type="date" id="data_abertura" name="data_abertura" th:field="*{data_abertura}" required>
+                    <input type="date" id="data_abertura" name="data_abertura" th:field="*{data_abertura}" pattern="yyyy-MM-dd" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="principio_ativo"><strong>Princípio Ativo:</strong></label>
+                    <label for="principioAtivo"><strong>Princípio Ativo:</strong></label>
                     <br>
-                    <input type="text" id="principio_ativo" name="principio_ativo" th:field="*{principio_ativo}" required>
+                    <input type="text" id="principioAtivo" name="principioAtivo" th:field="*{principioAtivo}" required>
                 </div>
+                               
 
                 <div class="form-group">
-                    <label for="cod_estoque"><strong>Código de Estoque:</strong></label>
+                    <label for="codEstoque"><strong>Código de Estoque:</strong></label>
                     <br>
-                    <input type="text" id="cod_estoque" name="cod_estoque" th:field="*{cod_estoque}" required>
+                    <input type="text" id="codEstoque" name="codEstoque" th:field="*{codEstoque}" required>
                 </div>
 
                 <div class="form-group">

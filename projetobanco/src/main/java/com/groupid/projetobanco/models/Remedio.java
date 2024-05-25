@@ -92,11 +92,11 @@ public class Remedio {
     }
 
     // Getter e Setter Princípio Ativo
-    public String getPrincipio_Ativo() {
+    public String getPrincipioAtivo() {
         return principio_ativo;
     }
 
-    public void setPrincipio_Ativo(String principio_ativo) {
+    public void setPrincipioAtivo(String principio_ativo) {
         this.principio_ativo = principio_ativo;
     }
 
