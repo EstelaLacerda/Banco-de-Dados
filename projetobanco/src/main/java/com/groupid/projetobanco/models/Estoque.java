@@ -7,11 +7,20 @@ public class Estoque {
     private int cod_estoque;
     private int quantidade_de_remedios;
     private Date data_ultima_atualizacao; 
+    private String nome_remedio;
+    private String unidade_medida;
+    private String status_do_estoque; 
+    private Date data_de_validade;
 
-    public Estoque(int cod_estoque, int quantidade_de_remedios, Date data_ultima_atualizacao) {
+    public Estoque(int cod_estoque, int quantidade_de_remedios, Date data_ultima_atualizacao, String nome_remedio,
+    String unidade_medida, String status_do_estoque, Date data_de_validade) {
         this.cod_estoque = cod_estoque;
         this.quantidade_de_remedios = quantidade_de_remedios;
         this.data_ultima_atualizacao = data_ultima_atualizacao;
+        this.nome_remedio = nome_remedio;
+        this.unidade_medida = unidade_medida;
+        this.status_do_estoque = status_do_estoque;
+        this.data_de_validade = data_de_validade;
     }
 
     // Getter e Setter Matricula do Código do Estoque
@@ -23,7 +32,7 @@ public class Estoque {
         this.cod_estoque = cod_estoque;
     }
 
-    // Getter e Setter Matricula da Quantidade de Remédios
+    // Getter e Setter Quantidade de Remédios
     public int getQuantidadeDeRemedios() {
         return quantidade_de_remedios;
     }
@@ -32,12 +41,48 @@ public class Estoque {
         this.quantidade_de_remedios = quantidade_de_remedios;
     }
 
-    // Getter e Setter Matricula da Quantidade de Remédios
+    // Getter e Setter Ultima Atualização
     public Date getDataUltimaAtualizacao() {
         return data_ultima_atualizacao;
     }
 
-    public void setQuantidadeDeRemedios(Date data_ultima_atualizacao) {
+    public void setDataUltimaAtualizacao(Date data_ultima_atualizacao) {
         this.data_ultima_atualizacao = data_ultima_atualizacao;
+    }
+
+    // Getter e Setter Nome do Remédio
+    public String getNome_Remedio() {
+        return nome_remedio;
+    }
+
+    public void setNome_Remedio(String nome_remedio) {
+        this.nome_remedio = nome_remedio;
+    }
+
+    // Getter e Setter Unidade de Medida
+    public String getUnidade_Medida() {
+        return unidade_medida;
+    }
+
+    public void setUnidade_Medida(String unidade_medida) {
+        this.unidade_medida = unidade_medida;
+    }
+
+    // Getter e Setter Status do Estoque
+    public String getStatusEstoque() {
+        return status_do_estoque;
+    }
+
+    public void setStatusEstoque(String status_do_estoque) {
+        this.status_do_estoque = status_do_estoque;
+    }
+
+    // Getter e Setter Data de Validade
+    public Date getDataValidade() {
+        return data_de_validade;
+    }
+
+    public void setDataValidade(Date data_de_validade) {
+        this.data_de_validade = data_de_validade;
     }
 }

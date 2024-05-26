@@ -19,10 +19,11 @@ public class Remedio {
     private String tempo_utilizacao;
     private String principio_ativo;
     private int cod_estoque;
+    private String nome_do_remedio;
 
     public Remedio(String tipo, int codigo, String quantidade, Date validade, 
     Date data_abertura, String tempo_utilizacao, String principio_ativo, 
-    int cod_estoque) {
+    int cod_estoque, String nome_do_remedio) {
         this.tipo = tipo;
         this.codigo = codigo;
         this.quantidade = quantidade;
@@ -31,6 +32,7 @@ public class Remedio {
         this.tempo_utilizacao = tempo_utilizacao;
         this.principio_ativo = principio_ativo;
         this.cod_estoque = cod_estoque;
+        this.nome_do_remedio = nome_do_remedio;
     }
 
     public Remedio(){
@@ -107,6 +109,15 @@ public class Remedio {
 
     public void setCodEstoque(int cod_estoque) {
         this.cod_estoque = cod_estoque;
+    }
+
+    // Getter e Setter Codigo de Estoque
+    public String getNome_do_Remedio() {
+        return nome_do_remedio;
+    }
+
+    public void setNome_do_Remedio(String nome_do_remedio) {
+        this.nome_do_remedio = nome_do_remedio;
     }
 
 }

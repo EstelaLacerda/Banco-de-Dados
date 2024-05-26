@@ -15,13 +15,17 @@ public class RemedioRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void updateRemedio(Remedio remedio){
-        jdbcTemplate.update("UPDATE INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo());
+        jdbcTemplate.update("UPDATE INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO, NOME_DO_REMEDIO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), 
+        remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo(),
+        remedio.getNome_do_Remedio());
     }
 
     public void insertRemedio(Remedio remedio) {
-        jdbcTemplate.update("INSERT INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo());
+        jdbcTemplate.update("INSERT INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO, NOME_DO_REMEDIO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), 
+        remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo(), 
+        remedio.getNome_do_Remedio());
     }
 
     public boolean deleteRemedio(int codigo){
@@ -48,11 +52,8 @@ public class RemedioRepository {
             remedio.setTempoUtilizacao(resultSet.getString("TEMPO_UTILIZACAO"));
             remedio.setCodEstoque(resultSet.getInt("COD_ESTOQUE"));
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO"));
+            remedio.setNome_do_Remedio(resultSet.getString("NOME_DO_REMEDIO"));
             return remedio;
         });
-
-
-
     }
-
 }

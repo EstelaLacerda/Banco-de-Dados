@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            color: white;
+        }
+
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .button-container button {
+            width: 220px;
+            height: 35px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            background-color: #604CCD;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .button-container button:last-child {
+            margin-right: 10px;
+        }
+
+        .delete-button-container {
+            text-align: center;
+        }
+
+        .delete-button-container button {
+            width: auto;
+            height: auto;
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            border: 1px solid #604CCD;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #604CCD;
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #000000;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 10%;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 15%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 15%;
+        }
+
+        th:nth-child(4), td:nth-child(4) {
+            width: 15%;
+        }
+
+        th:nth-child(5), td:nth-child(5) {
+            width: 15%;
+        }
+
+        th:nth-child(6), td:nth-child(6) {
+            width: 15%;
+        }
+
+        th:nth-child(7), td:nth-child(7) {
+            width: 15%;
+        }
+
+        .delete-button {
+            background-color: #D1345B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="button-container">
+        <form action="/estoque/lista" method="get">
+            <button type="submit">Ver Estoques</button>
+        </form>
+
+        <form onsubmit="history.back(); return false;">
+            <button style="background-color: #D1345B;" type="submit">Voltar</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Quantidade</th>
+                        <th>Ultima Atualização</th>
+                        <th>Nome do Remédio</th>
+                        <th>Unidade de Medida</th>
+                        <th>Status do Estoque</th>
+                        <th>Data de Validade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="estoque : ${estoques}">
+                        <td th:text="${estoque.cod_estoque}"></td>
+                        <td th:text="${estoque.quantidade_de_remedios}"></td>
+                        <td th:text="${estoque.data_ultima_atualizacao}"></td>
+                        <td th:text="${estoque.nome_remedio}"></td>
+                        <td th:text="${estoque.unidade_medida}"></td>
+                        <td th:text="${estoque.status_do_estoque}"></td>
+                        <td th:text="${estoque.data_de_validade}"></td>
+                        <td>
+                            <form th:action="@{/estoque/deletar/{cod_estoque}(cod_estoque=${estoque.cod_estoque})}" method="post" class="delete-form">
+                                <input type="hidden" name="cod_estoque" th:value="${estoque.cod_estoque}">
+                                <button class="delete-button" type="submit">Deletar</button>
+                            </form>                                                                         
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</body>
+</html>

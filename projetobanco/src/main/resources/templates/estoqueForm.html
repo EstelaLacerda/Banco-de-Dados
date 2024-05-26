@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        .form-group {
+            padding-top: 30px;
+        }
+        input {
+            background-color: #D9D9D9; 
+            border-radius: 5px; 
+            border: solid #7A7A7A;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #000000; margin: 0; padding: 0;">
+    <!-- Inclui o cabeçalho -->
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="form-container" style="border-radius: 5px; border: solid; background-color: #D9D9D9; margin-top: 100px">
+
+            <h2 style="margin-top: 50px;">Cadastro de Estoque</h2>
+
+            <!-- FORMULÁRIO DE CADASTRO -->
+            <form id="formEstoque" action="/estoque" method="post" onsubmit="return sendData()">
+                <div class="form-group">
+                    <label for="cod_estoque"><strong>Código:</strong></label>
+                    <br>
+                    <input type="text" id="cod_estoque" name="cod_estoque" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="quantidade_de_remedios"><strong>Quantidade:</strong></label>
+                    <br>
+                    <input type="text" id="quantidade_de_remedios" name="quantidade_de_remedios" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_ultima_atualizacao"><strong>Ultima Atualização:</strong></label>
+                    <br>
+                    <input type="text" id="data_ultima_atualizacao" name="data_ultima_atualizacao" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome_remedio"><strong>Nome do Remédio:</strong></label>
+                    <br>
+                    <input type="text" id="nome_remedio" name="nome_remedio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="unidade_medida"><strong>Unidade de Medida:</strong></label>
+                    <br>
+                    <input type="text" id="unidade_medida" name="unidade_medida" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status_do_estoque"><strong>Status:</strong></label>
+                    <br>
+                    <input type="text" id="status_do_estoque" name="status_do_estoque" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_de_validade"><strong>Data de Validade:</strong></label>
+                    <br>
+                    <input type="text" id="data_de_validade" name="data_de_validade" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" onclick="sendData()" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Cadastrar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    
+    <script>
+        function sendData() {
+            var formData = {
+                matricula_medico: document.getElementById("matricula_medico").value,
+                crm: document.getElementById("crm").value
+            };
+        
+            fetch("/funcionario/medico", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao enviar os dados');
+                }
+
+                window.location.href = "/funcionario/medico/lista";
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        }
+        
+    </script>
+</body>
+</html>
