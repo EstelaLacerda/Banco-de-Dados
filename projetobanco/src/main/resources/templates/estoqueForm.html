@@ -45,7 +45,7 @@
             <h2 style="margin-top: 50px;">Cadastro de Estoque</h2>
 
             <!-- FORMULÁRIO DE CADASTRO -->
-            <form id="formEstoque" action="/estoque" method="post" onsubmit="return sendData()">
+            <form id="formEstoque" action="/estoque" method="post">
                 <div class="form-group">
                     <label for="cod_estoque"><strong>Código:</strong></label>
                     <br>
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label for="data_ultima_atualizacao"><strong>Ultima Atualização:</strong></label>
                     <br>
-                    <input type="text" id="data_ultima_atualizacao" name="data_ultima_atualizacao" required>
+                    <input type="date" id="data_ultima_atualizacao" name="data_ultima_atualizacao" required>
                 </div>
 
                 <div class="form-group">
@@ -85,43 +85,15 @@
                 <div class="form-group">
                     <label for="data_de_validade"><strong>Data de Validade:</strong></label>
                     <br>
-                    <input type="text" id="data_de_validade" name="data_de_validade" required>
+                    <input type="date" id="data_de_validade" name="data_de_validade" required>
                 </div>
 
                 <div class="form-group">
-                    <button type="button" onclick="sendData()" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Cadastrar</button>
-                </div>
+                    <button type="submit" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Cadastrar</button>
+                </div>                
             </form>
 
         </div>
     </div>
-    
-    <script>
-        function sendData() {
-            var formData = {
-                matricula_medico: document.getElementById("matricula_medico").value,
-                crm: document.getElementById("crm").value
-            };
-        
-            fetch("/funcionario/medico", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao enviar os dados');
-                }
-
-                window.location.href = "/funcionario/medico/lista";
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
-        }
-        
-    </script>
 </body>
 </html>

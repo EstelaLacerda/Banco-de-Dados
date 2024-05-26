@@ -1,5 +1,6 @@
 package com.groupid.projetobanco.repository;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,14 @@ public class EstoqueRepository {
     }
 
     public boolean insertEstoque(Estoque estoque) {
-        jdbcTemplate.update("INSERT INTO ESTOQUE(COD_ESTOQUE, QUANTIDADE_DE_REMEDIOS, DATA_ULTIMA_ATUALIZACAO, NOME_REMEDIO, UNIDADE_MEDIDA, STATUS_DO_ESTOQUE, DATA_DE_VALIDADE) VALUES(?, ?, ?, ?, ?, ?, ?)",
-        estoque.getCodigoEstoque(), estoque.getQuantidadeDeRemedios(), estoque.getDataUltimaAtualizacao(), 
-        estoque.getNome_Remedio(), estoque.getUnidade_Medida(), estoque.getStatusEstoque(), estoque.getDataValidade());
-        return false;
+        int rowsAffected = jdbcTemplate.update(
+            "INSERT INTO ESTOQUE (COD_ESTOQUE, QUANTIDADE_DE_REMEDIOS, DATA_ULTIMA_ATUALIZACAO, NOME_REMEDIO, UNIDADE_MEDIDA, STATUS_DO_ESTOQUE, DATA_DE_VALIDADE) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            estoque.getCodigoEstoque(), estoque.getQuantidadeDeRemedios(), Date.valueOf(estoque.getDataUltimaAtualizacao()),
+            estoque.getNome_Remedio(), estoque.getUnidade_Medida(), estoque.getStatusEstoque(), Date.valueOf(estoque.getDataValidade())
+        );
+        return rowsAffected > 0;
     }
+    
 
     public boolean deleteEstoque(int cod_estoque){
 
@@ -44,11 +48,11 @@ public class EstoqueRepository {
             Estoque estoque = new Estoque(rowNum, rowNum, null, null, null, null, null);
             estoque.setCodigoEstoque(resultSet.getInt("COD_ESTOQUE"));
             estoque.setQuantidadeDeRemedios(resultSet.getInt("QUANTIDADE_DE_REMEDIOS"));
-            estoque.setDataUltimaAtualizacao(resultSet.getDate("DATA_ULTIMA_ATUALIZACAO"));
+            estoque.setDataUltimaAtualizacao(resultSet.getDate("DATA_ULTIMA_ATUALIZACAO").toLocalDate());
             estoque.setNome_Remedio(resultSet.getString("NOME_REMEDIO"));
             estoque.setUnidade_Medida(resultSet.getString("UNIDADE_MEDIDA"));
             estoque.setStatusEstoque(resultSet.getString("STATUS_DO_ESTOQUE"));
-            estoque.setDataValidade(resultSet.getDate("DATA_DE_VALIDADE"));
+            estoque.setDataValidade(resultSet.getDate("DATA_DE_VALIDADE").toLocalDate());
             return estoque;
         });
     }

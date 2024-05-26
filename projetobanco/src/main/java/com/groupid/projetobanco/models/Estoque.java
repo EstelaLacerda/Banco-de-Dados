@@ -1,19 +1,19 @@
 package com.groupid.projetobanco.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Estoque {
 
     private int cod_estoque;
     private int quantidade_de_remedios;
-    private Date data_ultima_atualizacao; 
+    private LocalDate data_ultima_atualizacao; 
     private String nome_remedio;
     private String unidade_medida;
     private String status_do_estoque; 
-    private Date data_de_validade;
+    private LocalDate data_de_validade;
 
-    public Estoque(int cod_estoque, int quantidade_de_remedios, Date data_ultima_atualizacao, String nome_remedio,
-    String unidade_medida, String status_do_estoque, Date data_de_validade) {
+    public Estoque(int cod_estoque, int quantidade_de_remedios, LocalDate data_ultima_atualizacao, String nome_remedio,
+    String unidade_medida, String status_do_estoque, LocalDate data_de_validade) {
         this.cod_estoque = cod_estoque;
         this.quantidade_de_remedios = quantidade_de_remedios;
         this.data_ultima_atualizacao = data_ultima_atualizacao;
@@ -42,11 +42,11 @@ public class Estoque {
     }
 
     // Getter e Setter Ultima Atualização
-    public Date getDataUltimaAtualizacao() {
+    public LocalDate getDataUltimaAtualizacao() {
         return data_ultima_atualizacao;
     }
 
-    public void setDataUltimaAtualizacao(Date data_ultima_atualizacao) {
+    public void setDataUltimaAtualizacao(LocalDate data_ultima_atualizacao) {
         this.data_ultima_atualizacao = data_ultima_atualizacao;
     }
 
@@ -78,11 +78,11 @@ public class Estoque {
     }
 
     // Getter e Setter Data de Validade
-    public Date getDataValidade() {
+    public LocalDate getDataValidade() {
         return data_de_validade;
     }
 
-    public void setDataValidade(Date data_de_validade) {
+    public void setDataValidade(LocalDate data_de_validade) {
         this.data_de_validade = data_de_validade;
     }
 }

@@ -165,16 +165,16 @@
 
                 <tbody>
                     <tr th:each="estoque : ${estoques}">
-                        <td th:text="${estoque.cod_estoque}"></td>
-                        <td th:text="${estoque.quantidade_de_remedios}"></td>
-                        <td th:text="${estoque.data_ultima_atualizacao}"></td>
-                        <td th:text="${estoque.nome_remedio}"></td>
-                        <td th:text="${estoque.unidade_medida}"></td>
-                        <td th:text="${estoque.status_do_estoque}"></td>
-                        <td th:text="${estoque.data_de_validade}"></td>
+                        <td th:text="${estoque.codigoEstoque}"></td>
+                        <td th:text="${estoque.quantidadeDeRemedios}"></td>
+                        <td th:text="${estoque.dataUltimaAtualizacao}"></td>
+                        <td th:text="${estoque.nome_Remedio}"></td>
+                        <td th:text="${estoque.unidade_Medida}"></td>
+                        <td th:text="${estoque.statusEstoque}"></td>
+                        <td th:text="${estoque.dataValidade}"></td>
                         <td>
-                            <form th:action="@{/estoque/deletar/{cod_estoque}(cod_estoque=${estoque.cod_estoque})}" method="post" class="delete-form">
-                                <input type="hidden" name="cod_estoque" th:value="${estoque.cod_estoque}">
+                            <form th:action="@{/estoque/deletar/{codigoEstoque}(codigoEstoque=${estoque.codigoEstoque})}" method="post" class="delete-form">
+                                <input type="hidden" name="codigoEstoque" th:value="${estoque.codigoEstoque}">
                                 <button class="delete-button" type="submit">Deletar</button>
                             </form>                                                                         
                         </td>
