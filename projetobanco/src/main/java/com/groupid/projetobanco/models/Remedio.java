@@ -108,11 +108,11 @@ public class Remedio {
     }
 
     // Getter e Setter Codigo de Estoque
-    public String getNome_do_Remedio() {
+    public String getNomeRemedio() {
         return nome_do_remedio;
     }
 
-    public void setNome_do_Remedio(String nome_do_remedio) {
+    public void setNomeRemedio(String nome_do_remedio) {
         this.nome_do_remedio = nome_do_remedio;
     }
 

@@ -18,7 +18,7 @@ public class RemedioRepository {
         jdbcTemplate.update("UPDATE INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO, NOME_DO_REMEDIO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
         remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), 
         remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo(),
-        remedio.getNome_do_Remedio());
+        remedio.getNomeRemedio());
     }
 
     public boolean insertRemedio(Remedio remedio) {
@@ -26,7 +26,7 @@ public class RemedioRepository {
             "INSERT INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO, NOME_DO_REMEDIO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
             remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), 
             remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo(), 
-            remedio.getNome_do_Remedio()
+            remedio.getNomeRemedio()
         );
         return rowsAffected > 0;
     }
@@ -55,7 +55,7 @@ public class RemedioRepository {
             remedio.setTempoUtilizacao(resultSet.getString("TEMPO_UTILIZACAO"));
             remedio.setCodEstoque(resultSet.getInt("COD_ESTOQUE"));
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO"));
-            remedio.setNome_do_Remedio(resultSet.getString("NOME_DO_REMEDIO"));
+            remedio.setNomeRemedio(resultSet.getString("NOME_DO_REMEDIO"));
             return remedio;
         });
     }
