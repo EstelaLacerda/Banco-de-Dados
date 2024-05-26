@@ -1,8 +1,6 @@
 package com.groupid.projetobanco.models;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
 
 public class Remedio {
 
@@ -10,19 +8,17 @@ public class Remedio {
     private int codigo;
     private String quantidade;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date validade;
+    private LocalDate validade;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date data_abertura;
+    private LocalDate data_abertura;
     
     private String tempo_utilizacao;
     private String principio_ativo;
     private int cod_estoque;
     private String nome_do_remedio;
 
-    public Remedio(String tipo, int codigo, String quantidade, Date validade, 
-    Date data_abertura, String tempo_utilizacao, String principio_ativo, 
+    public Remedio(String tipo, int codigo, String quantidade, LocalDate validade, 
+    LocalDate data_abertura, String tempo_utilizacao, String principio_ativo, 
     int cod_estoque, String nome_do_remedio) {
         this.tipo = tipo;
         this.codigo = codigo;
@@ -67,20 +63,20 @@ public class Remedio {
     }
 
     // Getter e Setter Validade
-    public Date getValidade() {
+    public LocalDate getValidade() {
         return validade;
     }
 
-    public void setValidade(Date validade) {
+    public void setValidade(LocalDate validade) {
         this.validade = validade;
     }
 
     // Getter e Setter Data de Abertura
-    public Date getData_abertura() {
+    public LocalDate getData_abertura() {
         return data_abertura;
     }
 
-    public void setData_abertura(Date data_abertura) {
+    public void setData_abertura(LocalDate data_abertura) {
         this.data_abertura = data_abertura;
     }
 
