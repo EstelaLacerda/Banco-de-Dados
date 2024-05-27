@@ -1,8 +1,6 @@
 package com.groupid.projetobanco.models;
 
 import java.security.Timestamp;
-import java.sql.Time;
-import java.util.Date;
 
 public class Receita {
     

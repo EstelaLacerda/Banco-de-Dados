@@ -7,14 +7,14 @@ public class Remedio {
     private String nome;
     private String principio_ativo;
     private String tipo;
-    private String quantidade;
+    private int quantidade;
     private String unidade_medida;
     private String dosagem;
     private int cod_estoque;
-    private int controlado;
+    private boolean controlado;
   
-    public Remedio(int codigo_remedio, String nome, String principio_ativo, String tipo, String quantidade,
-    String unidade_medida, String dosagem, int cod_estoque, int controlado) {
+    public Remedio(int codigo_remedio, String nome, String principio_ativo, String tipo, int quantidade,
+    String unidade_medida, String dosagem, int cod_estoque, boolean controlado) {
         this.codigo_remedio = codigo_remedio;
         this.nome = nome;
         this.principio_ativo = principio_ativo;
@@ -64,11 +64,11 @@ public class Remedio {
 
    
     // Getter e Setter Quantidade
-    public String getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -96,11 +96,11 @@ public class Remedio {
         this.cod_estoque = cod_estoque;
     }
 
-    public int getControlado(){
+    public boolean getControlado(){
         return controlado;
     }
 
-    public void setControlado(int controlado){
+    public void setControlado(boolean controlado){
         this.controlado = controlado;
     }
 
