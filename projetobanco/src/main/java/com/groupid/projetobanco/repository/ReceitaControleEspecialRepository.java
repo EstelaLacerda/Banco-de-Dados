@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.groupid.projetobanco.models.RemedioControlado;
+import com.groupid.projetobanco.models.Receita_controle_especial;
 
 @Repository
 public class ReceitaControleEspecialRepository {
@@ -14,32 +14,34 @@ public class ReceitaControleEspecialRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void insertRemedioControlado(RemedioControlado remedio_controlado) {
-        jdbcTemplate.update("INSERT INTO REMEDIO_CONTROLADO(FOI_APROVADO, CRF, CODIGO_REMEDIO) VALUES (?, ?, ?)",
-        remedio_controlado.getFoi_Aprovado(), remedio_controlado.getCrf(), remedio_controlado.getCodigoRemedio());
+    public void insertReceitaControleEspecial(Receita_controle_especial receita_controle_especial) {
+        jdbcTemplate.update("INSERT INTO RECEITA_CONTROLE_ESPECIAL (FOI_APROVADO, CRF, ID_RECEITA) VALUES (?, ?, ?)",
+        receita_controle_especial.getFoiAprovado(), receita_controle_especial.getCrf(), receita_controle_especial.getIdReceita());
     }
 
-    public boolean deleteRemedioControlado(int codigo_remedio){
-        int rowsAffected = jdbcTemplate.update("DELETE FROM REMEDIO_CONTROLADO WHERE FK_REMEDIO_CODIGO = ?", codigo_remedio);
+    public boolean deleteReceitaControleEspecial(int id_receita) {
+        int rowsAffected = jdbcTemplate.update("DELETE FROM RECEITA_CONTROLE_ESPECIAL WHERE ID_RECEITA = ?", id_receita);
         if(rowsAffected > 0){
-            System.out.println("Remédio controlado foi excluído com sucesso.");
+            System.out.println("Receita controle especial foi excluída com sucesso.");
         } else {
-            System.out.println("Não foi possível excluir o Remédio controlado ou não foi encontrado na base de dados.");
+            System.out.println("Não foi possível excluir a Receita controle especial ou não foi encontrada na base de dados.");
         }
-
-        return true;
-
+        return rowsAffected > 0;
     }
 
-    public List<RemedioControlado> getAllRemediosControlados() {
-        return jdbcTemplate.query("SELECT * FROM REMEDIO_CONTROLADO", (resultSet, rowNum) -> {
-            RemedioControlado remedioControlado = new RemedioControlado(false, null, rowNum);
-            remedioControlado.setFoi_Aprovado(resultSet.getBoolean("FOI_APROVADO"));
-            remedioControlado.setCrf(resultSet.getString("CRF"));
-            remedioControlado.setCodigoRemedio(resultSet.getInt("CODIGO_REMEDIO"));
-            return remedioControlado;
+    public List<Receita_controle_especial> getAllReceitasControleEspecial() {
+        return jdbcTemplate.query("SELECT * FROM RECEITA_CONTROLE_ESPECIAL", (resultSet, rowNum) -> {
+            Receita_controle_especial receitaControleEspecial = new Receita_controle_especial(false, null, rowNum);
+            receitaControleEspecial.setFoiAprovado(resultSet.getBoolean("FOI_APROVADO"));
+            receitaControleEspecial.setCrf(resultSet.getString("CRF"));
+            receitaControleEspecial.setIdReceita(resultSet.getInt("ID_RECEITA"));
+            return receitaControleEspecial;
         });
-
     }
 
+    public boolean updateReceitaControleEspecial(Receita_controle_especial receita_controle_especial) {
+        int rowsAffected = jdbcTemplate.update("UPDATE RECEITA_CONTROLE_ESPECIAL SET FOI_APROVADO = ?, CRF = ? WHERE ID_RECEITA = ?",
+            receita_controle_especial.getFoiAprovado(), receita_controle_especial.getCrf(), receita_controle_especial.getIdReceita());
+        return rowsAffected > 0;
+    }
 }
