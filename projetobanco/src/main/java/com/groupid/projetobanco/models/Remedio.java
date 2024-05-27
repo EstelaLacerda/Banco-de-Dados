@@ -4,35 +4,55 @@ import java.time.LocalDate;
 
 public class Remedio {
 
-    private String tipo;
-    private int codigo;
-    private String quantidade;
 
-    private LocalDate validade;
-
-    private LocalDate data_abertura;
-    
-    private String tempo_utilizacao;
-    private String principio_ativo;
-    private int cod_estoque;
+    private int codigo_remedio;
     private String nome_do_remedio;
-
-    public Remedio(String tipo, int codigo, String quantidade, LocalDate validade, 
-    LocalDate data_abertura, String tempo_utilizacao, String principio_ativo, 
-    int cod_estoque, String nome_do_remedio) {
-        this.tipo = tipo;
-        this.codigo = codigo;
-        this.quantidade = quantidade;
-        this.validade = validade;
-        this.data_abertura = data_abertura;
-        this.tempo_utilizacao = tempo_utilizacao;
+    private String principio_ativo;
+    private String tipo;
+    private String quantidade;
+    private String unidade_medida;
+    private String dosagem;
+    private int cod_estoque;
+    private boolean controlado;
+  
+    public Remedio(int codigo_remedio, String nome_do_remedio, String principio_ativo, String tipo, String quantidade,
+    String unidade_medida, String dosagem, int cod_estoque, boolean controlado) {
+        this.codigo_remedio = codigo_remedio;
+        this.nome_do_remedio = nome_do_remedio;
         this.principio_ativo = principio_ativo;
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+        this.unidade_medida = unidade_medida;
+        this.dosagem = dosagem;
         this.cod_estoque = cod_estoque;
+        this.controlado = controlado;
+       
+    }
+
+     // Getter e Setter
+     public int getCodigo() {
+        return codigo_remedio;
+    }
+
+    public void setCodigo(int codigo_remedio) {
+        this.codigo_remedio = codigo_remedio;
+    }
+
+       
+    public String getNomeRemedio() {
+        return nome_do_remedio;
+    }
+
+    public void setNomeRemedio(String nome_do_remedio) {
         this.nome_do_remedio = nome_do_remedio;
     }
 
-    public Remedio(){
-        super();
+    public String getPrincipioAtivo() {
+        return principio_ativo;
+    }
+
+    public void setPrincipioAtivo(String principio_ativo) {
+        this.principio_ativo = principio_ativo;
     }
 
     // Getter e Setter Tipo
@@ -44,15 +64,7 @@ public class Remedio {
         this.tipo = tipo;
     }
 
-    // Getter e Setter Codigo
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
+   
     // Getter e Setter Quantidade
     public String getQuantidade() {
         return quantidade;
@@ -62,43 +74,22 @@ public class Remedio {
         this.quantidade = quantidade;
     }
 
-    // Getter e Setter Validade
-    public LocalDate getValidade() {
-        return validade;
+    public String getUnidadeMedida() {
+        return unidade_medida;
     }
 
-    public void setValidade(LocalDate validade) {
-        this.validade = validade;
+    public void setUnidadeMedida(String unidade_medida){
+        this.unidade_medida = unidade_medida;
     }
 
-    // Getter e Setter Data de Abertura
-    public LocalDate getData_abertura() {
-        return data_abertura;
+    public String getDosagem() {
+        return dosagem;
     }
 
-    public void setData_abertura(LocalDate data_abertura) {
-        this.data_abertura = data_abertura;
+    public void setDosagem(String dosagem){
+        this.dosagem = dosagem;
     }
 
-    // Getter e Setter Tempo de Utilização
-    public String getTempoUtilizacao() {
-        return tempo_utilizacao;
-    }
-
-    public void setTempoUtilizacao(String tempo_utilizacao) {
-        this.tempo_utilizacao = tempo_utilizacao;
-    }
-
-    // Getter e Setter Princípio Ativo
-    public String getPrincipioAtivo() {
-        return principio_ativo;
-    }
-
-    public void setPrincipioAtivo(String principio_ativo) {
-        this.principio_ativo = principio_ativo;
-    }
-
-    // Getter e Setter Codigo de Estoque
     public int getCodEstoque() {
         return cod_estoque;
     }
@@ -107,13 +98,13 @@ public class Remedio {
         this.cod_estoque = cod_estoque;
     }
 
-    // Getter e Setter Codigo de Estoque
-    public String getNomeRemedio() {
-        return nome_do_remedio;
+    public boolean getControlado(){
+        return controlado;
     }
 
-    public void setNomeRemedio(String nome_do_remedio) {
-        this.nome_do_remedio = nome_do_remedio;
+    public void setControlado(boolean controlado){
+        this.controlado = controlado;
     }
+
 
 }
