@@ -4,13 +4,14 @@ public class Setor_hospitalar {
 
     private int codigo_Setor;
     private String nome_do_setor;
+    private int quantidade_receitas;
 
-    public Setor_hospitalar(int codigo_Setor, String nome_do_setor) {
+    public Setor_hospitalar(int codigo_Setor, String nome_do_setor, int quantidade_receitas) {
         this.codigo_Setor = codigo_Setor;
         this.nome_do_setor = nome_do_setor;
+        this.quantidade_receitas = quantidade_receitas;
     }
 
-    // Getter e Setter Código do Setor
     public int getCodigoSetor() {
         return codigo_Setor;
     }
@@ -19,12 +20,20 @@ public class Setor_hospitalar {
         this.codigo_Setor = codigo_Setor;
     }
 
+
     public String getNomeDoSetor() {
         return nome_do_setor;
     }
 
     public void setNomeDoSetor(String nome_do_setor) {
         this.nome_do_setor = nome_do_setor;
+    }
+
+    public int getQuantidadeReceitas() {
+        return quantidade_receitas;
+    }
+    public void setQuantidadeReceitas(int quantidade_receitas){
+        this.setQuantidadeReceitas(quantidade_receitas);
     }
 
 }
