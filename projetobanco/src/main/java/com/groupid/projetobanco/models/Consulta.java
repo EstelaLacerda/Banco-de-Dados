@@ -1,38 +1,38 @@
 package com.groupid.projetobanco.models;
 
+import java.security.Timestamp;
 import java.sql.Time;
 
 public class Consulta {
 
-    private Time hora;
-    private String cpf_Paciente;
+    private Timestamp data_hora;
+    private int codigo_paciente;
     private int matricula_medico;
 
-    public Consulta(Time hora, String cpf_Paciente, int matricula_medico) {
-        this.hora = hora;
-        this.cpf_Paciente = cpf_Paciente;
+    public Consulta(Timestamp data_hora, int codigo_paciente, int matricula_medico) {
+        this.data_hora = data_hora;
+        this.codigo_paciente = codigo_paciente;
         this.matricula_medico = matricula_medico;
     }
 
-    // Getter e Setter Hora
-    public Time getHora() {
-        return hora;
+    
+    public Timestamp getDataHora() {
+        return data_hora;
     }
 
-    public void setHora(Time hora) {
-        this.hora = hora;
+    public void setDataHora(Timestamp data_hora) {
+        this.data_hora = data_hora;
     }
 
-    // Getter e Setter CPF do Paciente
-    public String getCpfPaciente() {
-        return cpf_Paciente;
+    public int getCodigoPaciente() {
+        return codigo_paciente;
     }
 
-    public void setCpfPaciente(String cpf_Paciente) {
-        this.cpf_Paciente = cpf_Paciente;
+    public void setCodigoPaciente(int codigo_paciente) {
+        this.codigo_paciente = codigo_paciente;
     }
+   
 
-    // Getter e Setter Matricula do Funcionario Medico
     public int getMatriculaFuncionarioMedico() {
         return matricula_medico;
     }
