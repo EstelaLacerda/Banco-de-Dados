@@ -15,21 +15,21 @@ public class RecebeRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertRecebe(Recebe recebe) {
-        jdbcTemplate.update("INSERT INTO RECEBE(MATRICULA_FARMACEUTICO, ID_RECEITA) VALUES(?, ?)",
-        recebe.getMatriculaFuncionarioFarmaceutico(), recebe.getIdReceitaRecebe());
+        jdbcTemplate.update("INSERT INTO RECEBE(MATRICULA_FUNCIONARIO, ID_RECEITA) VALUES(?, ?)",
+        recebe.getMatriculaFuncionario(), recebe.getIdReceita());
     }
 
-    public boolean deleteRecebe(int id_receita){
+    public boolean deleteRecebe(int matricula_funcionario, int id_receita){
 
-        int rowsAffected = jdbcTemplate.update("DELETE FROM RECEBE WHERE ID_RECEITA = ?", id_receita);
+        int rowsAffected = jdbcTemplate.update("DELETE FROM RECEBE WHERE MATRICULA_FUNCIONARIO = ? AND ID_RECEITA = ?", matricula_funcionario, id_receita);
         return rowsAffected > 0;
     }
 
     public List<Recebe> getAllRecebe(){
         return jdbcTemplate.query("SELECT * FROM RECEBE", (resultSet, rowNum) -> {
             Recebe recebe = new Recebe(rowNum, rowNum);
-            recebe.setMatriculaFuncionarioFarmaceutico(resultSet.getInt("MATRICULA_FARMACEUTICO"));
-            recebe.setIdReceitaRecebe(resultSet.getInt("ID_RECEITA"));
+            recebe.setMatriculaFuncionario(resultSet.getInt("MATRICULA_FUNCIONARIO"));
+            recebe.setIdReceita(resultSet.getInt("ID_RECEITA"));
             return recebe;
         });
     }

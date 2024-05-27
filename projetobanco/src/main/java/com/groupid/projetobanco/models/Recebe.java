@@ -20,11 +20,11 @@ public class Recebe {
     }
 
     // Getter e Setter ID da Receita Recebida
-    public int getIdReceitaRecebe() {
+    public int getIdReceita() {
         return id_receita;
     }
 
-    public void setIdReceitaRecebe(int id_receita) {
+    public void setIdReceita(int id_receita) {
         this.id_receita = id_receita;
     }
 }
