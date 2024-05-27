@@ -1,7 +1,6 @@
 package com.groupid.projetobanco.models;
 
 import java.security.Timestamp;
-import java.sql.Time;
 
 public class Consulta {
 
