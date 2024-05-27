@@ -19,9 +19,9 @@ public class ContemRepository {
         contem.getIdReceita(), contem.getContemCodigoRemedio());
     }
 
-    public boolean deleteContem(int codigo_remedio){
+    public boolean deleteContem(int id_receita, int codigo_remedio){
 
-        int rowsAffected = jdbcTemplate.update("DELETE FROM CONTEM WHERE CODIGO_REMEDIO = ?", codigo_remedio);
+        int rowsAffected = jdbcTemplate.update("DELETE FROM CONTEM WHERE ID_RECEITA = ? AND CODIGO_REMEDIO = ? ", id_receita, codigo_remedio);
         return rowsAffected > 0;
     }
 
