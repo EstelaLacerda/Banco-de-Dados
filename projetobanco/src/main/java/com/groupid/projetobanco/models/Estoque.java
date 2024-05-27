@@ -1,5 +1,6 @@
 package com.groupid.projetobanco.models;
 
+import java.security.Timestamp;
 import java.time.LocalDate;
 
 public class Estoque {
@@ -7,13 +8,13 @@ public class Estoque {
     private int cod_estoque;
     private int unidades;
     private int quantidade_de_remedios;
-    private LocalDate data_ultima_atualizacao; 
+    private Timestamp data_ultima_atualizacao; 
     private String nome_remedio;
     private String unidade_medida;
     private String status_estoque; 
     private LocalDate data_de_validade;
 
-    public Estoque(int cod_estoque, int unidades, int quantidade_de_remedios, LocalDate data_ultima_atualizacao, String nome_remedio,
+    public Estoque(int cod_estoque, int unidades, int quantidade_de_remedios, Timestamp data_ultima_atualizacao, String nome_remedio,
     String unidade_medida, String status_estoque, LocalDate data_de_validade) {
         this.cod_estoque = cod_estoque;
         this.unidades = unidades;
@@ -52,11 +53,11 @@ public class Estoque {
     }
 
     // Getter e Setter Ultima Atualização
-    public LocalDate getDataUltimaAtualizacao() {
+    public Timestamp getDataUltimaAtualizacao() {
         return data_ultima_atualizacao;
     }
 
-    public void setDataUltimaAtualizacao(LocalDate data_ultima_atualizacao) {
+    public void setDataUltimaAtualizacao(Timestamp data_ultima_atualizacao) {
         this.data_ultima_atualizacao = data_ultima_atualizacao;
     }
 
