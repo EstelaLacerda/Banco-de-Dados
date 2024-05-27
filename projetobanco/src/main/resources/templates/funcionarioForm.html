@@ -61,14 +61,17 @@
                 <div class="form-group">
                     <label><strong>Cargo:</strong></label>
                     <br>
-                    <input type="radio" id="medico" name="cargo" th:value="'Médico'" th:field="*{cargo}">
+                    <input type="radio" id="medico" name="cargoRadio" value="Médico">
                     <label for="medico">Médico</label>
                     <br>
-                    <input type="radio" id="farmaceutico" name="cargo" th:value="'Farmacêutico'" th:field="*{cargo}">
+                    <input type="radio" id="farmaceutico" name="cargoRadio" value="Farmacêutico">
                     <label for="farmaceutico">Farmacêutico</label>
                     <br>
-                    <input type="radio" id="outro" name="cargo" th:value="'Outro'" th:field="*{cargo}">
+                    <input type="radio" id="outro" name="cargoRadio" value="Outro">
                     <label for="outro">Outro</label>
+                    <br>
+                    <input type="text" id="cargoOutro" name="cargoOutro" style="display: none; margin-top: 10px;">
+                    <input type="hidden" id="cargo" name="cargo" th:field="*{cargo}">
                 </div>
 
                 <div class="form-group">
@@ -82,11 +85,48 @@
         </div>
     </div>
 
-    <script th:inline="javascript">
-        var message = /*[[${message}]]*/ null;
-        if (message) {
-            alert(message);
-        }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const radioOutro = document.getElementById('outro');
+            const cargoOutroInput = document.getElementById('cargoOutro');
+            const cargoHiddenInput = document.getElementById('cargo');
+            const form = document.getElementById('formFuncionario');
+
+            // Esconde ou mostra o campo de entrada de texto quando "Outro" é selecionado
+            radioOutro.addEventListener('change', function () {
+                if (radioOutro.checked) {
+                    cargoOutroInput.style.display = 'block';
+                    cargoOutroInput.required = true;
+                } else {
+                    cargoOutroInput.style.display = 'none';
+                    cargoOutroInput.required = false;
+                }
+            });
+
+            // Verifica qual rádio está selecionado ao carregar a página
+            const radios = document.querySelectorAll('input[name="cargoRadio"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (radio.checked && radio.value !== 'Outro') {
+                        cargoOutroInput.style.display = 'none';
+                        cargoOutroInput.required = false;
+                        cargoHiddenInput.value = radio.value;
+                    }
+                });
+
+                if (radio.checked && radio.value === 'Outro') {
+                    cargoOutroInput.style.display = 'block';
+                    cargoOutroInput.required = true;
+                }
+            });
+
+            // Atualiza o valor do campo hidden antes de enviar o formulário
+            form.addEventListener('submit', function () {
+                if (radioOutro.checked) {
+                    cargoHiddenInput.value = cargoOutroInput.value;
+                }
+            });
+        });
     </script>
 </body>
 </html>

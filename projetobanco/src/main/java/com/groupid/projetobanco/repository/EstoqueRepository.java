@@ -16,15 +16,15 @@ public class EstoqueRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void updateEstoque(Estoque estoque){
-        jdbcTemplate.update("UPDATE INTO ESTOQUE(COD_ESTOQUE, QUANTIDADE_DE_REMEDIOS, DATA_ULTIMA_ATUALIZACAO, NOME_REMEDIO, UNIDADE_MEDIDA, STATUS_DO_ESTOQUE, DATA_DE_VALIDADE) VALUES(?, ?, ?, ?, ?, ?, ?)",
-        estoque.getCodigoEstoque(), estoque.getQuantidadeDeRemedios(), estoque.getDataUltimaAtualizacao(), 
+        jdbcTemplate.update("UPDATE INTO ESTOQUE(COD_ESTOQUE, UNIDADES, QUANTIDADE_DE_REMEDIOS, DATA_ULTIMA_ATUALIZACAO, NOME_REMEDIO, UNIDADE_MEDIDA, STATUS_DO_ESTOQUE, DATA_DE_VALIDADE) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+        estoque.getCodigoEstoque(), estoque.getUnidades(),estoque.getQuantidadeDeRemedios(), estoque.getDataUltimaAtualizacao(), 
         estoque.getNome_Remedio(), estoque.getUnidade_Medida(), estoque.getStatusEstoque(), estoque.getDataValidade());
     }
 
     public boolean insertEstoque(Estoque estoque) {
         int rowsAffected = jdbcTemplate.update(
-            "INSERT INTO ESTOQUE (COD_ESTOQUE, QUANTIDADE_DE_REMEDIOS, DATA_ULTIMA_ATUALIZACAO, NOME_REMEDIO, UNIDADE_MEDIDA, STATUS_DO_ESTOQUE, DATA_DE_VALIDADE) VALUES (?, ?, ?, ?, ?, ?, ?)",
-            estoque.getCodigoEstoque(), estoque.getQuantidadeDeRemedios(), Date.valueOf(estoque.getDataUltimaAtualizacao()),
+            "INSERT INTO ESTOQUE (COD_ESTOQUE, UNIDADES, QUANTIDADE_DE_REMEDIOS, DATA_ULTIMA_ATUALIZACAO, NOME_REMEDIO, UNIDADE_MEDIDA, STATUS_DO_ESTOQUE, DATA_DE_VALIDADE) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            estoque.getCodigoEstoque(), estoque.getUnidades(),estoque.getQuantidadeDeRemedios(), Date.valueOf(estoque.getDataUltimaAtualizacao()),
             estoque.getNome_Remedio(), estoque.getUnidade_Medida(), estoque.getStatusEstoque(), Date.valueOf(estoque.getDataValidade())
         );
         return rowsAffected > 0;
@@ -45,8 +45,9 @@ public class EstoqueRepository {
 
     public List<Estoque> getAllEstoques() {
         return jdbcTemplate.query("SELECT * FROM ESTOQUE", (resultSet, rowNum) -> {
-            Estoque estoque = new Estoque(rowNum, rowNum, null, null, null, null, null);
+            Estoque estoque = new Estoque(rowNum, rowNum, rowNum, null, null, null, null, null);
             estoque.setCodigoEstoque(resultSet.getInt("COD_ESTOQUE"));
+            estoque.setUnidades(resultSet.getInt("UNIDADES"));
             estoque.setQuantidadeDeRemedios(resultSet.getInt("QUANTIDADE_DE_REMEDIOS"));
             estoque.setDataUltimaAtualizacao(resultSet.getDate("DATA_ULTIMA_ATUALIZACAO").toLocalDate());
             estoque.setNome_Remedio(resultSet.getString("NOME_REMEDIO"));

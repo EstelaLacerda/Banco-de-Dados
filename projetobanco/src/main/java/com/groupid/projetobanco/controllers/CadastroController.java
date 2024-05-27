@@ -35,13 +35,13 @@ public class CadastroController {
 
     @GetMapping("/remedio")
     public String showFormRemedio(Model model) {
-        model.addAttribute("remedio", new Remedio(null, 0, null, null, null, null, null, 0, null));
+        model.addAttribute("remedio", new Remedio(0, null, null, null, null, null, null, 0, false));
         return "remedioForm";
     }
 
     @GetMapping("/estoque")
     public String showFormEstoque(Model model) {
-        model.addAttribute("estoque", new Estoque(0, 0, null, null, null, null, null));
+        model.addAttribute("estoque", new Estoque(0, 0, 0, null, null, null, null, null));
         return "estoqueForm";
     }
 }

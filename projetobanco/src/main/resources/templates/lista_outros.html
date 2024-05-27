@@ -155,7 +155,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="funcionario : ${funcionarios}" th:if="${funcionario.cargo == 'Outro'}">
+                    <tr th:each="funcionario : ${funcionarios}">
                         <td th:text="${funcionario.matricula}"></td>
                         <td th:text="${funcionario.nome}"></td>
                         <td th:text="${funcionario.cargo}"></td>

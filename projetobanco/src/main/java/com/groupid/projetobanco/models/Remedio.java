@@ -1,7 +1,5 @@
 package com.groupid.projetobanco.models;
 
-import java.time.LocalDate;
-
 public class Remedio {
 
 

@@ -15,18 +15,17 @@ public class RemedioRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void updateRemedio(Remedio remedio){
-        jdbcTemplate.update("UPDATE INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO, NOME_DO_REMEDIO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), 
-        remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo(),
-        remedio.getNomeRemedio());
+        jdbcTemplate.update("UPDATE INTO REMEDIO(CODIGO, NOME_DO_REMEDIO, PRINCIPIO_ATIVO, TIPO, QUANTIDADE, UNIDADE_MEDIDA, DOSAGEM, COD_ESTOQUE, CONTROLADO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        remedio.getCodigo(), remedio.getNomeRemedio(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
+        remedio.getUnidadeMedida(), remedio.getDosagem(),remedio.getCodEstoque(), remedio.getControlado()
+        );
     }
 
     public boolean insertRemedio(Remedio remedio) {
         int rowsAffected = jdbcTemplate.update(
-            "INSERT INTO REMEDIO(VALIDADE, QUANTIDADE, CODIGO, TIPO, DATA_ABERTURA, TEMPO_UTILIZACAO, COD_ESTOQUE, PRINCIPIO_ATIVO, NOME_DO_REMEDIO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            remedio.getValidade(), remedio.getQuantidade(), remedio.getCodigo(), remedio.getTipo(), 
-            remedio.getData_abertura(), remedio.getTempoUtilizacao(), remedio.getCodEstoque(), remedio.getPrincipioAtivo(), 
-            remedio.getNomeRemedio()
+            "INSERT INTO REMEDIO(CODIGO, NOME_DO_REMEDIO, PRINCIPIO_ATIVO, TIPO, QUANTIDADE, UNIDADE_MEDIDA, DOSAGEM, COD_ESTOQUE, CONTROLADO) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            remedio.getCodigo(), remedio.getNomeRemedio(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
+            remedio.getUnidadeMedida(), remedio.getDosagem(),remedio.getCodEstoque(), remedio.getControlado()
         );
         return rowsAffected > 0;
     }
@@ -46,16 +45,16 @@ public class RemedioRepository {
 
     public List<Remedio> getAllRemedios() {
         return jdbcTemplate.query("SELECT * FROM REMEDIO", (resultSet, rowNum) -> {
-            Remedio remedio = new Remedio();
-            remedio.setValidade(resultSet.getDate("VALIDADE").toLocalDate());
-            remedio.setQuantidade(resultSet.getString("QUANTIDADE"));
-            remedio.setCodigo(resultSet.getInt("CODIGO"));
+            Remedio remedio = new Remedio(rowNum, null, null, null, null, null, null, rowNum, false);
+            remedio.setCodigo(resultSet.getInt("CODGIO")); 
+            remedio.setNomeRemedio(resultSet.getString("NOME_DO_REMEDIO"));    
+            remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO")); 
             remedio.setTipo(resultSet.getString("TIPO"));
-            remedio.setData_abertura(resultSet.getDate("DATA_ABERTURA").toLocalDate());
-            remedio.setTempoUtilizacao(resultSet.getString("TEMPO_UTILIZACAO"));
+            remedio.setQuantidade(resultSet.getString("QUANTIDADE"));
+            remedio.setUnidadeMedida(resultSet.getString("UNIDADE_MEDIDA"));
+            remedio.setDosagem(resultSet.getString("DOSAGEM"));
             remedio.setCodEstoque(resultSet.getInt("COD_ESTOQUE"));
-            remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO"));
-            remedio.setNomeRemedio(resultSet.getString("NOME_DO_REMEDIO"));
+            remedio.setControlado(resultSet.getBoolean("CONTROLADO"));
             return remedio;
         });
     }

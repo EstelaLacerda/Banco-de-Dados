@@ -19,8 +19,8 @@ public class SetorHospitalarRepository {
     public boolean insertSetorHospitalar(Setor_hospitalar Setor_hospitalar) {
 
         try {
-            String sql = "INSERT INTO SETOR_HOSPITALAR(CODIGO_SETOR, NOME_DO_SETOR) VALUES(?,?)";
-            jdbcTemplate.update(sql, Setor_hospitalar.getCodigoSetor(), Setor_hospitalar.getNomeDoSetor());
+            String sql = "INSERT INTO SETOR_HOSPITALAR(CODIGO_SETOR, NOME_DO_SETOR, QUANTIDADE_RECEITAS) VALUES(?, ?, ?)";
+            jdbcTemplate.update(sql, Setor_hospitalar.getCodigoSetor(), Setor_hospitalar.getNomeDoSetor(), Setor_hospitalar.getQuantidade_receitas());
         } catch (DataAccessException e) {
             throw new RuntimeException("Erro ao inserir setor hospitalar " + e.getMessage(), e);
         }
@@ -43,9 +43,10 @@ public class SetorHospitalarRepository {
 
     public List<Setor_hospitalar> getAllSetoresHospilar(){
         return jdbcTemplate.query("SELECT * FROM SETOR_HOSPITALAR", (resultSet, rowNum) -> {
-            Setor_hospitalar Setor_hospitalar = new Setor_hospitalar(rowNum, null);
+            Setor_hospitalar Setor_hospitalar = new Setor_hospitalar(rowNum, null, rowNum);
             Setor_hospitalar.setCodigoSetor(resultSet.getInt("CODIGO_SETOR"));
             Setor_hospitalar.setNomeDoSetor(resultSet.getString("NOME_DO_SETOR"));
+            Setor_hospitalar.setQuantidade_receitas(resultSet.getInt("QUANTIDADE_RECEITAS"));
             return Setor_hospitalar;
         });
     }

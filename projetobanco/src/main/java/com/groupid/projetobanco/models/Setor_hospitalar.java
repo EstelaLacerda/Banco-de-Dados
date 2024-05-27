@@ -29,11 +29,12 @@ public class Setor_hospitalar {
         this.nome_do_setor = nome_do_setor;
     }
 
-    public int getQuantidadeReceitas() {
+    public int getQuantidade_receitas() {
         return quantidade_receitas;
     }
-    public void setQuantidadeReceitas(int quantidade_receitas){
-        this.setQuantidadeReceitas(quantidade_receitas);
+
+    public void setQuantidade_receitas(int quantidade_receitas) {
+        this.quantidade_receitas = quantidade_receitas;
     }
 
 }

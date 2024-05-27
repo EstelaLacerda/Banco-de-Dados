@@ -31,7 +31,7 @@ public class FuncionarioController {
     public String getFuncionarioOutro(Model model) {
         List<Funcionario> funcionarios = funcionarioRepository.getAllFuncionariosOutro();
         model.addAttribute("funcionarios", funcionarios);
-        return "lista_funcionarios";
+        return "lista_outros";
     }
 
     @PostMapping
