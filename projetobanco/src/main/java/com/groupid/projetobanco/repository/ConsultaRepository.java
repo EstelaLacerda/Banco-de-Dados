@@ -35,4 +35,12 @@ public class ConsultaRepository {
             return consulta;
         });
     }
+
+    public void updateConsulta(Consulta consulta) {
+        jdbcTemplate.update(
+            "UPDATE CONSULTA SET DATA_HORA = ?, CODIGO_PACIENTE = ?, MATRICULA_MEDICO = ? WHERE DATA_HORA = ? AND CODIGO_PACIENTE = ? AND MATRICULA_MEDICO = ?",
+            consulta.getDataHora(), consulta.getCodigoPaciente(), consulta.getMatriculaFuncionarioMedico(),
+            consulta.getDataHora(), consulta.getCodigoPaciente(), consulta.getMatriculaFuncionarioMedico()
+        );
+    }
 }
