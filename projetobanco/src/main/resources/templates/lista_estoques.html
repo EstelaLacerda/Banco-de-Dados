@@ -153,6 +153,7 @@
                 <thead>
                     <tr>
                         <th>Código</th>
+                        <th>Unidades</th>
                         <th>Quantidade</th>
                         <th>Ultima Atualização</th>
                         <th>Nome do Remédio</th>
@@ -166,6 +167,7 @@
                 <tbody>
                     <tr th:each="estoque : ${estoques}">
                         <td th:text="${estoque.codigoEstoque}"></td>
+                        <td th:text="${estoque.unidades}"></td>
                         <td th:text="${estoque.quantidadeDeRemedios}"></td>
                         <td th:text="${estoque.dataUltimaAtualizacao}"></td>
                         <td th:text="${estoque.nome_Remedio}"></td>

@@ -92,7 +92,6 @@
             const cargoHiddenInput = document.getElementById('cargo');
             const form = document.getElementById('formFuncionario');
 
-            // Esconde ou mostra o campo de entrada de texto quando "Outro" é selecionado
             radioOutro.addEventListener('change', function () {
                 if (radioOutro.checked) {
                     cargoOutroInput.style.display = 'block';
@@ -103,7 +102,6 @@
                 }
             });
 
-            // Verifica qual rádio está selecionado ao carregar a página
             const radios = document.querySelectorAll('input[name="cargoRadio"]');
             radios.forEach(radio => {
                 radio.addEventListener('change', function () {
@@ -120,7 +118,6 @@
                 }
             });
 
-            // Atualiza o valor do campo hidden antes de enviar o formulário
             form.addEventListener('submit', function () {
                 if (radioOutro.checked) {
                     cargoHiddenInput.value = cargoOutroInput.value;

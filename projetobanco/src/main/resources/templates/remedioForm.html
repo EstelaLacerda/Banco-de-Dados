@@ -53,6 +53,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="nomeRemedio"><strong>Nome do Remédio:</strong></label>
+                    <br>
+                    <input type="text" id="nomeRemedio" name="nomeRemedio" th:field="*{nomeRemedio}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="principioAtivo"><strong>Princípio Ativo:</strong></label>
+                    <br>
+                    <input type="text" id="principioAtivo" name="principioAtivo" th:field="*{principioAtivo}" required>
+                </div>  
+
+                <div class="form-group">
                     <label for="tipo"><strong>Tipo:</strong></label>
                     <br>
                     <input type="text" id="tipo" name="tipo" th:field="*{tipo}" required>
@@ -65,28 +77,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="validade"><strong>Data de Validade:</strong></label>
+                    <label for="unidadeMedida"><strong>Unidade Medida:</strong></label>
                     <br>
-                    <input type="date" id="validade" name="validade" th:field="*{validade}" pattern="yyyy-MM-dd" required>
+                    <input type="text" id="unidadeMedida" name="unidadeMedida" th:field="*{unidadeMedida}" required>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="data_abertura"><strong>Data de Abertura:</strong></label>
+                    <label for="dosagem"><strong>Dosagem:</strong></label>
                     <br>
-                    <input type="date" id="data_abertura" name="data_abertura" th:field="*{data_abertura}" pattern="yyyy-MM-dd" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="tempo_utilizacao"><strong>Tempo de Utilização:</strong></label>
-                    <br>
-                    <input type="text" id="tempo_utilizacao" name="tempo_utilizacao" th:field="*{tempo_utilizacao}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="principioAtivo"><strong>Princípio Ativo:</strong></label>
-                    <br>
-                    <input type="text" id="principioAtivo" name="principioAtivo" th:field="*{principioAtivo}" required>
-                </div>          
+                    <input type="text" id="dosagem" name="dosagem" th:field="*{dosagem}" required>
+                </div>  
 
                 <div class="form-group">
                     <label for="codEstoque"><strong>Código de Estoque:</strong></label>
@@ -95,9 +95,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nome_do_Remedio"><strong>Nome do Remédio:</strong></label>
+                    <label><strong>Controlado:</strong></label>
                     <br>
-                    <input type="text" id="nome_do_Remedio" name="nome_do_Remedio" th:field="*{nome_do_Remedio}" required>
+                    <input type="radio" id="controlado" name="cargoRadio" value="1">
+                    <label for="controlado">Sim</label>
+                    <br>
+                    <input type="radio" id="controlado" name="cargoRadio" value="0">
+                    <label for="controlado">Não</label>
+                    <br>
                 </div>
 
                 <div class="form-group">
@@ -111,11 +116,30 @@
         </div>
     </div>
 
-    <script th:inline="javascript">
-        var message = /*[[${message}]]*/ null;
-        if (message) {
-            alert(message);
-        }
-    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('formRemedio');
+            const radios = document.querySelectorAll('input[name="cargoRadio"]');
+            const controladoInput = document.getElementById('controlado');
+    
+            radios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (radio.checked) {
+                        controladoInput.value = radio.value;
+                    }
+                });
+            });
+    
+            form.addEventListener('submit', function () {
+                // Verifica qual opção de radiobox está selecionada
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        // Ajusta o valor do campo "Controlado" com base na seleção
+                        controladoInput.value = radio.value;
+                    }
+                });
+            });
+        });
+    </script>    
 </body>
 </html>

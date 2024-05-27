@@ -188,12 +188,6 @@
                         <td th:text="${remedio.dosagem}"></td>
                         <td th:text="${remedio.codEstoque}"></td>
                         <td th:text="${remedio.controlado}"></td>
-                        <td>
-                            <form th:action="@{/remedio/deletar/{codigo}(codigo=${remedio.codigo})}" method="post" class="delete-form">
-                                <input type="hidden" name="codigo" th:value="${remedio.codigo}">
-                                <button class="delete-button" type="submit">Deletar</button>
-                            </form>                                                                         
-                        </td>
                     </tr>
                 </tbody>
             </table>

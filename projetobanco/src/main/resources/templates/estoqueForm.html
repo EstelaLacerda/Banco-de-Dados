@@ -51,7 +51,13 @@
                     <br>
                     <input type="text" id="cod_estoque" name="cod_estoque" required>
                 </div>
-        
+
+                <div class="form-group">
+                    <label for="unidades"><strong>Unidades:</strong></label>
+                    <br>
+                    <input type="text" id="unidades" name="unidades" required>
+                </div>
+
                 <div class="form-group">
                     <label for="quantidade_de_remedios"><strong>Quantidade:</strong></label>
                     <br>
@@ -95,5 +101,27 @@
 
         </div>
     </div>
+
+    <script>
+        // Função para obter a data e hora atual no formato desejado
+        function getFormattedDateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            return formattedDateTime;
+        }
+
+        // Preencher automaticamente o campo "data_ultima_atualizacao" com a data e hora atual ao enviar o formulário
+        document.getElementById('formEstoque').addEventListener('submit', function(event) {
+            const dataUltimaAtualizacaoInput = document.getElementById('data_ultima_atualizacao');
+            if (dataUltimaAtualizacaoInput) {
+                dataUltimaAtualizacaoInput.value = getFormattedDateTime();
+            }
+        });
+    </script>
 </body>
 </html>

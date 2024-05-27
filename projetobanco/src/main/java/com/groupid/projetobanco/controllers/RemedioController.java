@@ -55,4 +55,11 @@ public class RemedioController {
         return "lista_remedios";
     }
 
+    @GetMapping("/lista/Clonazepam")
+    public String getRemediosClonazepam(Model model) {
+        List<Remedio> remedios = remedioRepository.getAllRemediosPrincipioAtivoClonazepam();
+        model.addAttribute("remedios", remedios);
+        return "lista_rem_principioAtivo";
+    }    
+
 }

@@ -10,18 +10,18 @@ public class Estoque {
     private LocalDate data_ultima_atualizacao; 
     private String nome_remedio;
     private String unidade_medida;
-    private String status_do_estoque; 
+    private String status_estoque; 
     private LocalDate data_de_validade;
 
     public Estoque(int cod_estoque, int unidades, int quantidade_de_remedios, LocalDate data_ultima_atualizacao, String nome_remedio,
-    String unidade_medida, String status_do_estoque, LocalDate data_de_validade) {
+    String unidade_medida, String status_estoque, LocalDate data_de_validade) {
         this.cod_estoque = cod_estoque;
         this.unidades = unidades;
         this.quantidade_de_remedios = quantidade_de_remedios;
         this.data_ultima_atualizacao = data_ultima_atualizacao;
         this.nome_remedio = nome_remedio;
         this.unidade_medida = unidade_medida;
-        this.status_do_estoque = status_do_estoque;
+        this.status_estoque = status_estoque;
         this.data_de_validade = data_de_validade;
     }
 
@@ -80,11 +80,11 @@ public class Estoque {
 
     // Getter e Setter Status do Estoque
     public String getStatusEstoque() {
-        return status_do_estoque;
+        return status_estoque;
     }
 
-    public void setStatusEstoque(String status_do_estoque) {
-        this.status_do_estoque = status_do_estoque;
+    public void setStatusEstoque(String status_estoque) {
+        this.status_estoque = status_estoque;
     }
 
     // Getter e Setter Data de Validade
