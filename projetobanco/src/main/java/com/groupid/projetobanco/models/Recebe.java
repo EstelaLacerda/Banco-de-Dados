@@ -2,21 +2,21 @@ package com.groupid.projetobanco.models;
 
 public class Recebe {
 
-    private int matricula_farmaceutico;
+    private int matricula_funcionario;
     private int id_receita;
 
-    public Recebe(int matricula_farmaceutico, int id_receita) {
-        this.matricula_farmaceutico = matricula_farmaceutico;
+    public Recebe(int matricula_funcionario, int id_receita) {
+        this.matricula_funcionario = matricula_funcionario;
         this.id_receita = id_receita;
     }
 
-    // Getter e Setter Matricula do Funcionario Farmaceutico
-    public int getMatriculaFuncionarioFarmaceutico() {
-        return matricula_farmaceutico;
+  
+    public int getMatriculaFuncionario() {
+        return matricula_funcionario;
     }
 
-    public void setMatriculaFuncionarioFarmaceutico(int matricula_farmaceutico) {
-        this.matricula_farmaceutico = matricula_farmaceutico;
+    public void setMatriculaFuncionario(int matricula_funcionario) {
+        this.matricula_funcionario = matricula_funcionario;
     }
 
     // Getter e Setter ID da Receita Recebida
