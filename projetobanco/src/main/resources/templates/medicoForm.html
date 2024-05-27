@@ -46,6 +46,13 @@
 
             <!-- FORMULÁRIO DE CADASTRO -->
             <form id="formFuncionarioMedico" action="/funcionario/medico" method="post" onsubmit="return sendData()">
+        
+                <div class="form-group">
+                    <label for="crm"><strong>CRM:</strong></label>
+                    <br>
+                    <input type="text" id="crm" name="crm" required>
+                </div>
+
                 <div class="form-group">
                     <label for="matricula_medico"><strong>Matrícula:</strong></label>
                     <br>
@@ -53,15 +60,13 @@
                 </div>
         
                 <div class="form-group">
-                    <label for="crm"><strong>CRM:</strong></label>
-                    <br>
-                    <input type="text" id="crm" name="crm" required>
-                </div>
-        
-                <div class="form-group">
-                    <button type="button" onclick="sendData()" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px">Cadastrar</button>
+                    <button type="button" onclick="sendData()" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
                 </div>
             </form>
+
+            <div class="form-group">
+                <button onclick="history.back();" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #D1345B; color: white; font-weight: bold; cursor: pointer; margin-bottom: 50px;">Voltar</button>
+            </div>
 
         </div>
     </div>
@@ -69,8 +74,8 @@
     <script>
         function sendData() {
             var formData = {
-                matricula_medico: document.getElementById("matricula_medico").value,
-                crm: document.getElementById("crm").value
+                crm: document.getElementById("crm").value,
+                matricula_medico: document.getElementById("matricula_medico").value
             };
         
             fetch("/funcionario/medico", {

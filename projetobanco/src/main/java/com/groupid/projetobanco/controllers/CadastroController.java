@@ -23,19 +23,19 @@ public class CadastroController {
 
     @GetMapping("/medico")
     public String showFormMedico(Model model) {
-        model.addAttribute("medico", new Medico(0, null, null, null));
+        model.addAttribute("medico", new Medico(0, null, null, null, 0));
         return "medicoForm";
     }
 
     @GetMapping("/farmaceutico")
     public String getFarmaceuticos(Model model) {
-        model.addAttribute("farmaceuticos", new Farmaceutico(null, null, null));
+        model.addAttribute("farmaceuticos", new Farmaceutico(null, null, null, 0));
         return "farmaceuticoForm";
     }
 
     @GetMapping("/remedio")
     public String showFormRemedio(Model model) {
-        model.addAttribute("remedio", new Remedio(0, null, null, null, null, null, null, 0, 0));
+        model.addAttribute("remedio", new Remedio(0, null, null, null, 0, null, null, 0, false));
         return "remedioForm";
     }
 

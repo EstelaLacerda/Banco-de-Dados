@@ -5,9 +5,10 @@ public class Farmaceutico extends Funcionario{
     private String crf;
     private int matricula_farmaceutico;
 
-    public Farmaceutico(String nome, String cargo, String crf) {
+    public Farmaceutico(String nome, String cargo, String crf, int matricula_farmaceutico) {
         super(nome, cargo);
         this.crf = crf;
+        this.matricula_farmaceutico = matricula_farmaceutico;
     }
 
     // Getter e Setter CRF

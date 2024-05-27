@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.groupid.projetobanco.models.Funcionario;
 import com.groupid.projetobanco.repository.FuncionarioRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/funcionario")
 public class FuncionarioController {
@@ -35,33 +37,34 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public String createFuncionario(@ModelAttribute Funcionario funcionario, Model model) {
+    public String createFuncionario(@ModelAttribute Funcionario funcionario, Model model, HttpSession session) {
         boolean inserted = funcionarioRepository.insertFuncionario(funcionario);
-    
+
         if (inserted) {
             model.addAttribute("message", "Funcionário inserido com sucesso!");
-        } else {
-            model.addAttribute("message", "Já existe um Funcionário com essa matrícula.");
-        }
-    
-        // Verifica o valor do cargo
-        String cargo = funcionario.getCargo().trim();
-        System.out.println("Cargo inserido: " + cargo);
-    
-        if ("Médico".equalsIgnoreCase(cargo)) {
-            return "redirect:/cadastro/medico";
-        } 
-        
-        else if ("Farmacêutico".equalsIgnoreCase(cargo)) {
-            return "redirect:/cadastro/farmaceutico";
-        } 
-        
-        else if ("Outro".equalsIgnoreCase(cargo)) {
-            return "redirect:/funcionario/outro/lista";
-        } 
 
+            String cargo = funcionario.getCargo().trim();
+
+            if ("Médico".equalsIgnoreCase(cargo)) {
+                return "redirect:/funcionario/medico/lista";
+            } 
+            
+            else if ("Farmacêutico".equalsIgnoreCase(cargo)) {
+                return "redirect:/funcionario/farmaceutico/lista";
+            } 
+            
+            else if ("Outro".equalsIgnoreCase(cargo)) {
+                return "redirect:/funcionario/outro/lista";
+            } 
+            
+            else {
+                return "redirect:/funcionario";
+            }
+        } 
+        
         else {
-            return "redirect:/funcionario";
+            model.addAttribute("message", "Já existe um Funcionário com essa matrícula.");
+            return "funcionarioForm";
         }
     }
     

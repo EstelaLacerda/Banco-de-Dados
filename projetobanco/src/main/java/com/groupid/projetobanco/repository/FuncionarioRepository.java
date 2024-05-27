@@ -21,11 +21,6 @@ public class FuncionarioRepository {
         return true;
     }
 
-    public boolean funcionarioExists(int matricula) {
-        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, matricula) > 0;
-    }
-
     public boolean deleteFuncionario(int matricula) {
         jdbcTemplate.update("DELETE FROM FARMACEUTICO WHERE MATRICULA_FARMACEUTICO = ?", matricula);
         jdbcTemplate.update("DELETE FROM MEDICO WHERE MATRICULA_MEDICO = ?", matricula);
@@ -62,5 +57,9 @@ public class FuncionarioRepository {
             funcionario.setCargo(resultSet.getString("CARGO"));
             return funcionario;
         });
-    }    
+    }
+    
+    public int getLastMatricula() {
+        return jdbcTemplate.queryForObject("SELECT MAX(MATRICULA) FROM FUNCIONARIO", Integer.class);
+    }
 }

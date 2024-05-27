@@ -17,8 +17,8 @@ public class MedicoRepository {
     public boolean insertMedico(Medico medico) {
         if (funcionarioExists(medico.getMatricula_Medico())) {
             int rowsMedico = jdbcTemplate.update(
-                "INSERT INTO MEDICO(MATRICULA_MEDICO, CRM) VALUES(?, ?)",
-                medico.getMatricula_Medico(), medico.getCrm()
+                "INSERT INTO MEDICO(CRM, MATRICULA_MEDICO) VALUES(?, ?)",
+                medico.getCrm(), medico.getMatricula_Medico()
             );
             return rowsMedico > 0;
         } else {

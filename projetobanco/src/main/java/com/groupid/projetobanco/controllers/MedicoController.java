@@ -27,7 +27,8 @@ public class MedicoController {
     public ResponseEntity<String> createMedico(@RequestBody Medico medico) {
         if (medicoRepository.insertMedico(medico)) {
             return ResponseEntity.ok("Médico cadastrado com sucesso!");
-        } else {
+        } 
+        else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao cadastrar médico.");
         }
     }
