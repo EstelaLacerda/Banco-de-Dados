@@ -4,16 +4,19 @@ import java.util.Date;
 
 public class Paciente {
 
+    private int codigo_paciente;
     private String nome;
     private String cpf;
-    private String sexo;
+    private char sexo;
     private int idade;
     private float peso;
     private String nome_mae;
     private Date data_nascimento;
     private int codigo_setor;
+    private String status_paciente;
 
-    public Paciente(String nome, String cpf, String sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor){
+    public Paciente(int codigo_paciente, String nome, String cpf, char sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor, String status_paciente){
+        this.codigo_paciente = codigo_paciente;
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;
@@ -22,9 +25,19 @@ public class Paciente {
         this.nome_mae = nome_mae;
         this.data_nascimento = data_nascimento;
         this.codigo_setor = codigo_setor;
+        this.status_paciente = status_paciente;
     }
 
-    // Getter e Setter Nome
+
+
+    public int getCodigoPaciente(){
+        return codigo_paciente;
+    }
+
+    public void setCodigoPaciente(int codigo_paciente){
+        this.codigo_paciente = codigo_paciente;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -33,7 +46,6 @@ public class Paciente {
         this.nome = nome;
     }
 
-    // Getter e Setter CPF
     public String getCpf() {
         return cpf;
     }
@@ -42,16 +54,16 @@ public class Paciente {
         this.cpf = cpf;
     }
 
-    // Getter e Setter Sexo
-    public String getSexo() {
+    
+    public char getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(char sexo) {
         this.sexo = sexo;
     }
 
-    // Getter e Setter Idade
+   
     public int getIdade() {
         return idade;
     }
@@ -60,7 +72,7 @@ public class Paciente {
         this.idade = idade;
     }
 
-    // Getter e Setter Peso
+   
     public float getPeso() {
         return peso;
     }
@@ -69,7 +81,6 @@ public class Paciente {
         this.peso = peso;
     }
 
-    // Getter e Setter Nome da Mãe
     public String getNomeMae() {
         return nome_mae;
     }
@@ -94,5 +105,13 @@ public class Paciente {
 
     public void setCodigoSetorHospitalar(int codigo_setor) {
         this.codigo_setor = codigo_setor;
+    }
+
+    public String getStatusPaciente(){
+        return status_paciente;
+    }
+
+    public void setStatusPaciente(String status_paciente){
+        this.status_paciente = status_paciente;
     }
 }
