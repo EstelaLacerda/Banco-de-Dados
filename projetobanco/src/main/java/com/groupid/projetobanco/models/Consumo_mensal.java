@@ -5,12 +5,12 @@ public class Consumo_mensal {
     private int codigo_consumo_mensal;
     private int codigo_remedio;
     private String mes;
-    private int consumo_mensal;
+    private double consumo_mensal;
     private String unidade_medida;
-    private int consumo_mensal_medio;
+    private double consumo_mensal_medio;
 
     public Consumo_mensal(int codigo_consumo_mensal, int codigo_remedio, String mes,
-     int consumo_mensal, String unidade_medida, int consumo_mensal_medio){
+     double consumo_mensal, String unidade_medida, double consumo_mensal_medio){
         this.codigo_consumo_mensal = codigo_consumo_mensal;
         this.codigo_remedio = codigo_remedio;
         this.mes = mes;
@@ -41,11 +41,11 @@ public class Consumo_mensal {
             this.mes = mes;
         }
 
-        public int getConsumoMensal(){
+        public double getConsumoMensal(){
             return consumo_mensal;
         }
 
-        public void setConsumoMensal(int consumo_mensal){
+        public void setConsumoMensal(double consumo_mensal){
             this.consumo_mensal = consumo_mensal;
         }
 
@@ -57,8 +57,12 @@ public class Consumo_mensal {
             this.unidade_medida = unidade_medida;
         }
 
-        public int getConsumoMensalMedio() {
+        public double getConsumoMensalMedio() {
             return consumo_mensal_medio;
+        }
+
+        public void setConsumoMensalMedio(double consumo_mensal_medio) {
+            this.consumo_mensal_medio = consumo_mensal_medio;
         }
         
 }
