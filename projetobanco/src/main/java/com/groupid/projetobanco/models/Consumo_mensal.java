@@ -53,7 +53,7 @@ public class Consumo_mensal {
             return unidade_medida;
         }
 
-        public void setUnidadeMedida() {
+        public void setUnidadeMedida(String unidade_medida) {
             this.unidade_medida = unidade_medida;
         }
 
