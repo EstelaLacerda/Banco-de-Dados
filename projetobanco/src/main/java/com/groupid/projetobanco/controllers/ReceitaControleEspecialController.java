@@ -16,7 +16,7 @@ import com.groupid.projetobanco.repository.ReceitaControleEspecialRepository;
 
 @RestController
 @RequestMapping("/remedio/controlado")
-public class RemedioControladoController {
+public class ReceitaControleEspecialController {
     @Autowired
     private ReceitaControleEspecialRepository remedioControladoRepository;
 
