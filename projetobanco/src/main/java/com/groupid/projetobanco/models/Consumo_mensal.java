@@ -1,6 +1,6 @@
 package com.groupid.projetobanco.models;
 
-public class Consumo_medio {
+public class Consumo_mensal {
     
     private int codigo_consumo_mensal;
     private int codigo_remedio;
@@ -9,7 +9,7 @@ public class Consumo_medio {
     private String unidade_medida;
     private int consumo_mensal_medio;
 
-    public Consumo_medio(int codigo_consumo_mensal, int codigo_remedio, String mes,
+    public Consumo_mensal(int codigo_consumo_mensal, int codigo_remedio, String mes,
      int consumo_mensal, String unidade_medida, int consumo_mensal_medio){
         this.codigo_consumo_mensal = codigo_consumo_mensal;
         this.codigo_remedio = codigo_remedio;
