@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Estoque {
 
     private int cod_estoque;
+    private int unidades;
     private int quantidade_de_remedios;
     private LocalDate data_ultima_atualizacao; 
     private String nome_remedio;
@@ -12,9 +13,10 @@ public class Estoque {
     private String status_do_estoque; 
     private LocalDate data_de_validade;
 
-    public Estoque(int cod_estoque, int quantidade_de_remedios, LocalDate data_ultima_atualizacao, String nome_remedio,
+    public Estoque(int cod_estoque, int unidades, int quantidade_de_remedios, LocalDate data_ultima_atualizacao, String nome_remedio,
     String unidade_medida, String status_do_estoque, LocalDate data_de_validade) {
         this.cod_estoque = cod_estoque;
+        this.unidades = unidades;
         this.quantidade_de_remedios = quantidade_de_remedios;
         this.data_ultima_atualizacao = data_ultima_atualizacao;
         this.nome_remedio = nome_remedio;
@@ -30,6 +32,14 @@ public class Estoque {
 
     public void setCodigoEstoque(int cod_estoque) {
         this.cod_estoque = cod_estoque;
+    }
+
+    public int getUnidades() {
+        return unidades;
+    }
+
+    public void setUnidades(int unidades){
+        this.unidades = unidades;
     }
 
     // Getter e Setter Quantidade de Remédios
