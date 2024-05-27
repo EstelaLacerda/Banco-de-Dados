@@ -1,6 +1,5 @@
 package com.groupid.projetobanco.repository;
 
-import java.sql.Timestamp;
 import java.sql.Date;
 import java.util.List;
 

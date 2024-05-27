@@ -7,7 +7,7 @@ public class Paciente {
     private int codigo_paciente;
     private String nome;
     private String cpf;
-    private char sexo;
+    private String sexo;
     private int idade;
     private float peso;
     private String nome_mae;
@@ -15,7 +15,7 @@ public class Paciente {
     private int codigo_setor;
     private String status_paciente;
 
-    public Paciente(int codigo_paciente, String nome, String cpf, char sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor, String status_paciente){
+    public Paciente(int codigo_paciente, String nome, String cpf, String sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor, String status_paciente){
         this.codigo_paciente = codigo_paciente;
         this.nome = nome;
         this.cpf = cpf;
@@ -55,11 +55,11 @@ public class Paciente {
     }
 
     
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
