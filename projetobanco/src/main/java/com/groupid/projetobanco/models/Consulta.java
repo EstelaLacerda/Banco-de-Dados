@@ -19,8 +19,8 @@ public class Consulta {
         return data_hora;
     }
 
-    public void setDataHora(Timestamp data_hora) {
-        this.data_hora = data_hora;
+    public void setDataHora(java.sql.Timestamp timestamp) {
+        this.data_hora = timestamp;
     }
 
     public int getCodigoPaciente() {

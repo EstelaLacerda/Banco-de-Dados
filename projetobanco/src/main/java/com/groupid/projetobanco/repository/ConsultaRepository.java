@@ -1,6 +1,6 @@
 package com.groupid.projetobanco.repository;
 
-import java.sql.Time;
+import java.security.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +16,22 @@ public class ConsultaRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertConsulta(Consulta consulta) {
-        jdbcTemplate.update("INSERT INTO CONSULTA (HORA, CPF_PACIENTE, MATRICULA_MEDICO) VALUES(SYSDATE,?, ?)",
-        consulta.getHora(), consulta.getCpfPaciente(), consulta.getMatriculaFuncionarioMedico());
+        jdbcTemplate.update("INSERT INTO CONSULTA (DATA_HORA, CODIGO_PACIENTE, MATRICULA_MEDICO) VALUES(?,?, ?)",
+        consulta.getDataHora(), consulta.getCodigoPaciente(), consulta.getMatriculaFuncionarioMedico());
     }
 
-    public boolean deleteConsulta(int matricula_medico, String cpf_Paciente, Time hora ){
+    public boolean deleteConsulta(Timestamp data_hora, int codigo_paciente , int matricula_medico ){
 
-        int rowsAffected = jdbcTemplate.update("DELETE FROM CONSULTA WHERE MATRICULA_MEDICO = ? AND CPF_PACIENTE = ? AND HORA= ?", matricula_medico, cpf_Paciente, hora);
+        int rowsAffected = jdbcTemplate.update("DELETE FROM CONSULTA WHERE DATA_HORA= ? AND CODIGO_PACIENTE = ? AND MATRICULA_MEDICO = ? ", data_hora, codigo_paciente, matricula_medico);
         return rowsAffected > 0;
     }
 
     public List<Consulta> getAllConsultas(){
         return jdbcTemplate.query("SELECT * FROM CONSULTA", (resultSet, rowNum) -> {
-            Consulta consulta = new Consulta(null, null, rowNum);
-            consulta.setCpfPaciente(null);
-            consulta.setMatriculaFuncionarioMedico(rowNum);
-            consulta.setHora(null);
+            Consulta consulta = new Consulta(null, rowNum, rowNum);
+            consulta.setDataHora(resultSet.getTimestamp("DATA_HORA"));
+            consulta.setCodigoPaciente(resultSet.getInt("CODIGO_PACIENTE"));
+            consulta.setMatriculaFuncionarioMedico(resultSet.getInt("MATRICULA_MEDICO"));
             return consulta;
         });
     }
