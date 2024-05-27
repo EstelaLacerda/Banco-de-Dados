@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.groupid.projetobanco.models.RemedioControlado;
-import com.groupid.projetobanco.repository.RemedioControladoRepository;
+import com.groupid.projetobanco.repository.ReceitaControleEspecialRepository;
 
 @RestController
 @RequestMapping("/remedio/controlado")
 public class RemedioControladoController {
     @Autowired
-    private RemedioControladoRepository remedioControladoRepository;
+    private ReceitaControleEspecialRepository remedioControladoRepository;
 
     @PostMapping
     public String createRemedioControlado(@RequestBody RemedioControlado remedio_controlado){

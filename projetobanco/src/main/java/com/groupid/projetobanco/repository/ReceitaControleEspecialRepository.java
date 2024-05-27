@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.groupid.projetobanco.models.RemedioControlado;
 
 @Repository
-public class RemedioControladoRepository {
+public class ReceitaControleEspecialRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
