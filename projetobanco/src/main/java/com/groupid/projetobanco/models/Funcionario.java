@@ -6,12 +6,11 @@ public class Funcionario {
     private String nome;
     private String cargo;
 
-    public Funcionario(int matricula, String nome, String cargo) {
-        this.matricula = matricula;
+    public Funcionario(String nome, String cargo) {
         this.nome = nome;
         this.cargo = cargo;
     }
-
+    
     public int getMatricula() {
         return matricula;
     }

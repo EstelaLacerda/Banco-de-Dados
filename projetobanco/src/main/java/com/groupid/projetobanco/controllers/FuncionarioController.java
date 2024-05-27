@@ -23,7 +23,7 @@ public class FuncionarioController {
 
     @GetMapping
     public String showForm(Model model) {
-        model.addAttribute("funcionario", new Funcionario(0, null, null));
+        model.addAttribute("funcionario", new Funcionario(null, null));
         return "funcionarioForm";
     }
 

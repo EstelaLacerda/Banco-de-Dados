@@ -41,7 +41,7 @@ public class FarmaceuticoRepository {
         return jdbcTemplate.query(
             "SELECT F.MATRICULA, F.NOME, FA.CRF FROM FARMACEUTICO FA INNER JOIN FUNCIONARIO F ON FA.MATRICULA_FARMACEUTICO = F.MATRICULA",
             (resultSet, rowNum) -> {
-                Farmaceutico farmaceutico = new Farmaceutico(rowNum, null, null, null, rowNum);
+                Farmaceutico farmaceutico = new Farmaceutico(null, null, null);
                 farmaceutico.setMatricula(resultSet.getInt("MATRICULA"));
                 farmaceutico.setNome(resultSet.getString("NOME"));
                 farmaceutico.setCrf(resultSet.getString("CRF"));

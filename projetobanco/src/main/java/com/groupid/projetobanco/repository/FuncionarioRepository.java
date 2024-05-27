@@ -15,15 +15,10 @@ public class FuncionarioRepository {
     private JdbcTemplate jdbcTemplate;
 
     public boolean insertFuncionario(Funcionario funcionario) {
-        if (!funcionarioExists(funcionario.getMatricula())) {
-            jdbcTemplate.update("INSERT INTO FUNCIONARIO(MATRICULA, NOME, CARGO) VALUES(?, ?, ?)",
-                    funcionario.getMatricula(), funcionario.getNome(), funcionario.getCargo());
-            return true;
-        } 
-        
-        else {
-            return false;
-        }
+        jdbcTemplate.update("INSERT INTO FUNCIONARIO(NOME, CARGO) VALUES(?, ?)", 
+        funcionario.getNome(), funcionario.getCargo());
+        funcionario.setMatricula(funcionario.getMatricula());
+        return true;
     }
 
     public boolean funcionarioExists(int matricula) {
@@ -38,7 +33,7 @@ public class FuncionarioRepository {
         int rowsAffected = jdbcTemplate.update("DELETE FROM FUNCIONARIO WHERE MATRICULA = ?", matricula);
         
         if (rowsAffected > 0) {
-            System.out.println("Funcionário e suas dependências foram excluídos com sucesso.");
+            System.out.println("Funcionário e suas dependências foram excluídas com sucesso.");
             return true;
         } else {
             System.out.println("Não foi possível excluir o Funcionário ou não foi encontrado na base de dados.");
@@ -49,7 +44,7 @@ public class FuncionarioRepository {
 
     public List<Funcionario> getAllFuncionarios(){
         return jdbcTemplate.query("SELECT * FROM FUNCIONARIO", (resultSet, rowNum) -> {
-            Funcionario funcionario = new Funcionario(rowNum, null, null);
+            Funcionario funcionario = new Funcionario(null, null);
             funcionario.setMatricula(resultSet.getInt("MATRICULA"));
             funcionario.setNome(resultSet.getString("NOME"));
             funcionario.setCargo(resultSet.getString("CARGO"));
@@ -61,7 +56,7 @@ public class FuncionarioRepository {
         String sql = "SELECT * FROM FUNCIONARIO WHERE CARGO NOT IN ('Médico', 'Farmacêutico')";
         
         return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
-            Funcionario funcionario = new Funcionario(rowNum, null, null);
+            Funcionario funcionario = new Funcionario(null, null);
             funcionario.setMatricula(resultSet.getInt("MATRICULA"));
             funcionario.setNome(resultSet.getString("NOME"));
             funcionario.setCargo(resultSet.getString("CARGO"));

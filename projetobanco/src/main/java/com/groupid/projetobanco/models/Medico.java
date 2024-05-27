@@ -6,7 +6,7 @@ public class Medico extends Funcionario {
     private int matricula_medico;
 
     public Medico(int matricula, String nome, String cargo, String crm, int matricula_medico) {
-        super(matricula, nome, cargo);
+        super(nome, cargo);
         this.crm = crm;
         this.matricula_medico = matricula_medico;
     }

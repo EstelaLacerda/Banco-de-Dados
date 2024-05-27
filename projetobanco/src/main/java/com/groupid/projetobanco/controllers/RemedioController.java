@@ -59,7 +59,7 @@ public class RemedioController {
     public String getRemediosClonazepam(Model model) {
         List<Remedio> remedios = remedioRepository.getAllRemediosPrincipioAtivoClonazepam();
         model.addAttribute("remedios", remedios);
-        return "lista_rem_principioAtivo";
+        return "lista_remediso_clonazepam";
     }    
 
 }
