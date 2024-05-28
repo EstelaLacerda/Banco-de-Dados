@@ -1,16 +1,14 @@
 package com.groupid.projetobanco.repository;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.groupid.projetobanco.models.Aprova;
 
 @Repository
 public class AprovaRepository {
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -27,9 +25,10 @@ public class AprovaRepository {
 
     public List<Aprova> getAllAprova() {
         return jdbcTemplate.query("SELECT * FROM APROVA", (resultSet, rowNum) -> {
-            Aprova aprova = new Aprova(rowNum, rowNum);
-            aprova.setMatriculaFuncionarioFarmaceuticoAprova(resultSet.getInt("MATRICULA_FARMACEUTICO"));
-            aprova.setidReceitaControlada(resultSet.getInt("ID_RECEITA_CONTROLADA"));
+            Aprova aprova = new Aprova(
+                resultSet.getInt("MATRICULA_FARMACEUTICO"), 
+                resultSet.getInt("ID_RECEITA_CONTROLADA")
+            );
             return aprova;
         });
     }
