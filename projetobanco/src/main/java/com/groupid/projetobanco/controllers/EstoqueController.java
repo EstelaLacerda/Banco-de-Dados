@@ -38,7 +38,7 @@ public class EstoqueController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 
-    @PostMapping
+    @PostMapping("/estoque")
     public String createEstoque(@ModelAttribute Estoque estoque) {
         boolean inserted = estoqueRepository.insertEstoque(estoque);
         
@@ -67,4 +67,14 @@ public class EstoqueController {
         model.addAttribute("estoques", estoques);
         return "lista_estoques";
     }
+
+    @PostMapping("/atualizar/{cod_estoque}")
+    public String updateEstoque(@PathVariable int cod_estoque, @ModelAttribute Estoque estoque, Model model) {
+        estoque.setCodigoEstoque(cod_estoque); // Define o código do estoque a ser atualizado
+        estoqueRepository.updateEstoque(estoque); // Atualiza o estoque
+        model.addAttribute("message", "Estoque atualizado com sucesso!");
+        return "redirect:/estoque/lista";
+    }
+
+
 }
