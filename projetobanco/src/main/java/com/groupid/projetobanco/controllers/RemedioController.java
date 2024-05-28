@@ -3,18 +3,14 @@ package com.groupid.projetobanco.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.groupid.projetobanco.models.Remedio;
 import com.groupid.projetobanco.repository.RemedioRepository;
 
-@Controller
+@RestController
 @RequestMapping("/remedio")
 public class RemedioController {
 
@@ -22,44 +18,45 @@ public class RemedioController {
     private RemedioRepository remedioRepository;
 
     @GetMapping
-    public String getMedicos(Model model) {
+    public String getMedicos() {
         return "remedio_index";
     }
 
     @PostMapping
-    public String createRemedio(@ModelAttribute Remedio remedio) {
+    public ResponseEntity<String> createRemedio(@RequestBody Remedio remedio) {
         boolean inserted = remedioRepository.insertRemedio(remedio);
         
         if (inserted) {
-            return "redirect:/remedio/lista";
+            return ResponseEntity.status(HttpStatus.CREATED).body("Remédio inserido com sucesso!");
         } else {
-            return "error";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao inserir o remédio.");
         }
-    }    
+    }
 
-    @PostMapping("/deletar/{codigo}")
-    public String deleteRemedio(@PathVariable int codigo, Model model) {
+    @DeleteMapping("/deletar/{codigo}")
+    public ResponseEntity<String> deleteRemedio(@PathVariable int codigo) {
         boolean deleted = remedioRepository.deleteRemedio(codigo);
         if (deleted) {
-            model.addAttribute("message", "Remédio deletado com sucesso!");
+            return ResponseEntity.status(HttpStatus.OK).body("Remédio deletado com sucesso!");
         } else {
-            model.addAttribute("message", "O Remédio com esse código não existe no banco de dados!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("O remédio com esse código não existe no banco de dados!");
         }
-        return "redirect:/remedio/lista";
     }
 
     @GetMapping("/lista")
-    public String getRemedios(Model model) {
-        List<Remedio> remedios = remedioRepository.getAllRemedios();
-        model.addAttribute("remedios", remedios);
-        return "lista_remedios";
+    public List<Remedio> getRemedios() {
+        return remedioRepository.getAllRemedios();
+    }
+
+    @PutMapping("/atualizar/{codigo}")
+    public ResponseEntity<String> updateRemedio(@PathVariable int codigo, @RequestBody Remedio remedio) {
+        remedio.setCodigo(codigo);
+        remedioRepository.updateRemedio(remedio);
+        return ResponseEntity.status(HttpStatus.OK).body("Remédio atualizado com sucesso!");
     }
 
     @GetMapping("/lista/Clonazepam")
-    public String getRemediosClonazepam(Model model) {
-        List<Remedio> remedios = remedioRepository.getAllRemediosPrincipioAtivoClonazepam();
-        model.addAttribute("remedios", remedios);
-        return "lista_remediso_clonazepam";
+    public List<Remedio> getRemediosClonazepam() {
+        return remedioRepository.getAllRemediosPrincipioAtivoClonazepam();
     }    
-
 }
