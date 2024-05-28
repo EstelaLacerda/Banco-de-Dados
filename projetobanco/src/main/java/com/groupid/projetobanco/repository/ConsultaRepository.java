@@ -16,8 +16,8 @@ public class ConsultaRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void insertConsulta(Consulta consulta) {
-        jdbcTemplate.update("INSERT INTO CONSULTA (DATA_HORA, CODIGO_PACIENTE, MATRICULA_MEDICO) VALUES(?,?, ?)",
-        consulta.getDataHora(), consulta.getCodigoPaciente(), consulta.getMatriculaFuncionarioMedico());
+        jdbcTemplate.update("INSERT INTO CONSULTA (CODIGO_PACIENTE, MATRICULA_MEDICO) VALUES(?, ?)",
+        consulta.getCodigoPaciente(), consulta.getMatriculaFuncionarioMedico());
     }
 
     public boolean deleteConsulta(Timestamp data_hora, int codigo_paciente , int matricula_medico ){
