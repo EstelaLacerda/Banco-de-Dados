@@ -42,23 +42,23 @@
     <div class="container">
         <div class="form-container" style="border-radius: 10px; border: solid; background-color: #D9D9D9; margin-top: 100px">
 
-            <h2 style="margin-top: 50px;">Cadastro de Médico</h2>
+            <h2 style="margin-top: 50px;">Cadastro de Consulta</h2>
 
             <!-- FORMULÁRIO DE CADASTRO -->
-            <form id="formFuncionarioMedico" action="/funcionario/medico" method="post" onsubmit="return sendData()">
-        
+            <form id="formConsulta" action="/consulta" method="post" onsubmit="return sendData()">
+
                 <div class="form-group">
-                    <label for="crm"><strong>CRM:</strong></label>
+                    <label for="codigo_paciente"><strong>Código do Paciente:</strong></label>
                     <br>
-                    <input type="text" id="crm" name="crm" required>
+                    <input type="text" id="codigo_paciente" name="codigo_paciente" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="matricula_medico"><strong>Matrícula:</strong></label>
+                    <label for="matricula_medico"><strong>Matrícula do Médico:</strong></label>
                     <br>
                     <input type="text" id="matricula_medico" name="matricula_medico" required>
                 </div>
-        
+
                 <div class="form-group">
                     <button type="button" onclick="sendData()" style="width: 170px; height: 30px; text-align: center; border-radius: 5px; border: none; background-color: #604CCD; color: white; font-weight: bold; cursor: pointer;">Cadastrar</button>
                 </div>
@@ -74,11 +74,11 @@
     <script>
         function sendData() {
             var formData = {
-                crm: document.getElementById("crm").value,
+                codigo_paciente: document.getElementById("codigo_paciente").value,
                 matricula_medico: document.getElementById("matricula_medico").value
             };
         
-            fetch("/funcionario/medico", {
+            fetch("/consulta", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -90,7 +90,7 @@
                     throw new Error('Erro ao enviar os dados');
                 }
 
-                window.location.href = "/funcionario/medico/lista";
+                window.location.href = "/consulta/lista";
             })
             .catch(error => {
                 console.error('Erro:', error);

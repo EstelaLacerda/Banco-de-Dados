@@ -20,10 +20,8 @@ public class Receita {
     private String tempo_de_espera;
     
 
-    public Receita(int id_receita, Timestamp data_hora_consulta, String crm, int matricula_medico, int codigo_paciente, String nome_remedio, 
-     String dosagem,int quantidade, String unidade_medida, String horario, Timestamp data_prescricao, boolean receita_controlada, String status_receita,
-     String tempo_de_espera){
-      this.id_receita = id_receita;
+    public Receita(Timestamp data_hora_consulta, String crm, int matricula_medico, int codigo_paciente, String nome_remedio, 
+     String dosagem,int quantidade, String unidade_medida, String horario, Timestamp data_prescricao, boolean receita_controlada, String status_receita){
       this.data_hora_consulta = data_hora_consulta;
       this.crm = crm;
       this.matricula_medico = matricula_medico;
@@ -36,8 +34,6 @@ public class Receita {
       this.data_prescricao = data_prescricao;
       this.receita_controlada = receita_controlada;
       this.status_receita = status_receita;
-      this.tempo_de_espera = tempo_de_espera;
-       
     }
 
     public int getIdReceita() {
@@ -65,11 +61,11 @@ public class Receita {
     }
 
      // Getter e Setter Matricula do Funcionario Medico
-     public int getMatriculaFuncionarioMedico() {
+     public int getMatriculaMedico() {
         return matricula_medico;
     }
 
-    public void setMatriculaFuncionarioMedico(int matricula_medico) {
+    public void setMatriculaMedico(int matricula_medico) {
         this.matricula_medico = matricula_medico;
     }
 
@@ -129,7 +125,7 @@ public class Receita {
         this.data_prescricao = data_prescricao;
     }
 
-    public boolean getReceitacontrolada(){
+    public boolean getReceitaControlada(){
         return receita_controlada;
     }
 
@@ -152,6 +148,5 @@ public class Receita {
     public void setTempoDeEspera( String tempo_de_espera){
         this.tempo_de_espera = tempo_de_espera;
     }
-  
 
 }

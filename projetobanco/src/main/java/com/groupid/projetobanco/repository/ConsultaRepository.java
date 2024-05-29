@@ -17,7 +17,8 @@ public class ConsultaRepository {
 
     public void insertConsulta(Consulta consulta) {
         jdbcTemplate.update("INSERT INTO CONSULTA (CODIGO_PACIENTE, MATRICULA_MEDICO) VALUES(?, ?)",
-        consulta.getCodigoPaciente(), consulta.getMatriculaFuncionarioMedico());
+        consulta.getCodigoPaciente(), consulta.getMatriculaMedico());
+        consulta.setDataHora(consulta.getDataHora());
     }
 
     public boolean deleteConsulta(Timestamp data_hora, int codigo_paciente , int matricula_medico ){
@@ -31,7 +32,7 @@ public class ConsultaRepository {
             Consulta consulta = new Consulta(null, rowNum, rowNum);
             consulta.setDataHora(resultSet.getTimestamp("DATA_HORA"));
             consulta.setCodigoPaciente(resultSet.getInt("CODIGO_PACIENTE"));
-            consulta.setMatriculaFuncionarioMedico(resultSet.getInt("MATRICULA_MEDICO"));
+            consulta.setMatriculaMedico(resultSet.getInt("MATRICULA_MEDICO"));
             return consulta;
         });
     }

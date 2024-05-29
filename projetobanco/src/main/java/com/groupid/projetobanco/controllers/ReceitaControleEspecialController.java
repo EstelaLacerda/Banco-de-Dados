@@ -3,13 +3,21 @@ package com.groupid.projetobanco.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.groupid.projetobanco.models.Receita_controle_especial;
 import com.groupid.projetobanco.repository.ReceitaControleEspecialRepository;
 
-@RestController
-@RequestMapping("/remedio/controlado")
+@Controller
+@RequestMapping("/receita/controle_especial")
 public class ReceitaControleEspecialController {
 
     @Autowired
@@ -21,20 +29,24 @@ public class ReceitaControleEspecialController {
         return "Receita controle especial inserida!\n";
     }
 
-    @DeleteMapping("/{id_receita}")
-    public String deleteReceitaControleEspecial(@PathVariable int id_receita) {
-        boolean deleted = receitaControleEspecialRepository.deleteReceitaControleEspecial(id_receita);
+    @DeleteMapping("deletar/{id_receita}")
+    public String deleteReceitaControleEspecial(@PathVariable int idReceita) {
+        boolean deleted = receitaControleEspecialRepository.deleteReceitaControleEspecial(idReceita);
         if (deleted) {
-            return "Receita controle especial deletada!\n";
-        } else {
-            return "A receita controle especial com esse ID não existe no banco de dados!\n";
+            return "redirect:/receita/controle_especial/lista";
+        } 
+        
+        else {
+            return "redirect:/receita/controle_especial/lista";
         }
     }
-
-    @GetMapping("/allreceitacontroleespecial")
-    public List<Receita_controle_especial> getReceitasControleEspecial() {
-        return receitaControleEspecialRepository.getAllReceitasControleEspecial();
-    }
+    
+    @GetMapping("/lista")
+    public String getAllReceitas(Model model){
+        List<Receita_controle_especial> receitas_controle_especial = receitaControleEspecialRepository.getAllReceitasControleEspecial();
+        model.addAttribute("receitas_controle_especial", receitas_controle_especial);
+        return "lista_receitas_controle_especial";
+    }  
 
     @PutMapping("/{id_receita}")
     public String updateReceitaControleEspecial(@PathVariable int id_receita, @RequestBody Receita_controle_especial receitaControleEspecial) {

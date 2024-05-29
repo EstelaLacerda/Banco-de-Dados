@@ -15,8 +15,7 @@ public class Paciente {
     private int codigo_setor;
     private String status_paciente;
 
-    public Paciente(int codigo_paciente, String nome, String cpf, String sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor, String status_paciente){
-        this.codigo_paciente = codigo_paciente;
+    public Paciente(String nome, String cpf, String sexo, int idade, float peso, String nome_mae, Date data_nascimento, int codigo_setor, String status_paciente){
         this.nome = nome;
         this.cpf = cpf;
         this.sexo = sexo;
@@ -28,7 +27,7 @@ public class Paciente {
         this.status_paciente = status_paciente;
     }
 
-
+    public Paciente() {}
 
     public int getCodigoPaciente(){
         return codigo_paciente;
@@ -99,11 +98,11 @@ public class Paciente {
     }
 
     // Getter e Setter Codigo do Setor Hospitalar
-    public int getCodigoSetorHospitalar() {
+    public int getCodigoSetor() {
         return codigo_setor;
     }
 
-    public void setCodigoSetorHospitalar(int codigo_setor) {
+    public void setCodigoSetor(int codigo_setor) {
         this.codigo_setor = codigo_setor;
     }
 

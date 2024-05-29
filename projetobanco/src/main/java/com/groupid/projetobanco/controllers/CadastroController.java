@@ -5,10 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.groupid.projetobanco.models.Consulta;
 import com.groupid.projetobanco.models.Estoque;
 import com.groupid.projetobanco.models.Farmaceutico;
 import com.groupid.projetobanco.models.Funcionario;
 import com.groupid.projetobanco.models.Medico;
+import com.groupid.projetobanco.models.Paciente;
+import com.groupid.projetobanco.models.Receita;
 import com.groupid.projetobanco.models.Remedio;
 
 @Controller
@@ -37,6 +40,24 @@ public class CadastroController {
     public String showFormRemedio(Model model) {
         model.addAttribute("remedio", new Remedio(0, null, null, null, 0, null, null, 0, false));
         return "remedioForm";
+    }
+
+    @GetMapping("/consulta")
+    public String showFormConsulta(Model model) {
+        model.addAttribute("consulta", new Consulta(null, 0, 0));
+        return "consultaForm";
+    }
+
+    @GetMapping("/paciente")
+    public String showFormPaciente(Model model) {
+        model.addAttribute("paciente", new Paciente(null, null, null, 0, 0, null, null, 0, null));
+        return "pacienteForm";
+    }
+
+    @GetMapping("/receita")
+    public String showFormReceita(Model model) {
+        model.addAttribute("receita", new Receita(null, null, 0, 0, null, null, 0, null, null, null, false, null));
+        return "receitaForm";
     }
 
     @GetMapping("/estoque")

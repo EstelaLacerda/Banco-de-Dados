@@ -46,15 +46,15 @@ public class FuncionarioController {
             String cargo = funcionario.getCargo().trim();
 
             if ("Médico".equalsIgnoreCase(cargo)) {
-                return "redirect:/funcionario/medico/lista";
+                return "redirect:/funcionario/lista";
             } 
             
             else if ("Farmacêutico".equalsIgnoreCase(cargo)) {
-                return "redirect:/funcionario/farmaceutico/lista";
+                return "redirect:/funcionario/lista";
             } 
             
             else if ("Outro".equalsIgnoreCase(cargo)) {
-                return "redirect:/funcionario/outro/lista";
+                return "redirect:/funcionario/lista";
             } 
             
             else {

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <title>Farmácia Hospitalar</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #000000;
+            color: white;
+        }
+
+        .container {
+            width: 95%;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .button-container button {
+            width: 220px;
+            height: 35px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            background-color: #604CCD;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .button-container button:last-child {
+            margin-right: 10px;
+        }
+
+        .delete-button-container {
+            text-align: center;
+        }
+
+        .delete-button-container button {
+            width: auto;
+            height: auto;
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            border: 1px solid #604CCD;
+            margin: 20px auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #604CCD;
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #000000;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 5%;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 15%;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 10%;
+        }
+
+        th:nth-child(4), td:nth-child(4) {
+            width: 5%;
+        }
+
+        th:nth-child(5), td:nth-child(5) {
+            width: 5%;
+        }
+
+        th:nth-child(6), td:nth-child(6) {
+            width: 10%;
+        }
+
+        th:nth-child(7), td:nth-child(7) {
+            width: 10%;
+        }
+
+        th:nth-child(8), td:nth-child(8) {
+            width: 5%;
+        }
+
+        th:nth-child(9), td:nth-child(9) {
+            width: 5%;
+        }
+
+        th:nth-child(10), td:nth-child(10) {
+            width: 10%;
+        }
+
+        th:nth-child(11), td:nth-child(11) {
+            width: 15%;
+        }
+
+        th:nth-child(12), td:nth-child(12) {
+            width: 5%;
+        }
+
+        .delete-button {
+            background-color: #D1345B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="button-container">
+        <form action="/receita/lista" method="get">
+            <button type="submit">Ver Receitas</button>
+        </form>
+
+        <form action="/receita/controle_especial/lista" method="get">
+            <button type="submit">Ver Receitas de Controle Especial</button>
+        </form>
+
+        <form onsubmit="history.back(); return false;">
+            <button style="background-color: #D1345B;" type="submit">Voltar</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aprovação</th>
+                        <th>CRF</th>
+                        <th>ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="receitas_controle_especial : ${receitas_controle_especial}">
+                        <td th:text="${receitas_controle_especial.foiAprovado}"></td>
+                        <td th:text="${receitas_controle_especial.crf}"></td>
+                        <td th:text="${receitas_controle_especial.idReceita}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</body>
+</html>

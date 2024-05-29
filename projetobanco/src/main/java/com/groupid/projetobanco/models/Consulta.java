@@ -4,16 +4,15 @@ import java.sql.Timestamp;
 
 public class Consulta {
 
-    private Timestamp data_hora;
-    private int codigo_paciente;
-    private int matricula_medico;
+    Timestamp data_hora;
+    int codigo_paciente;
+    int matricula_medico;
 
     public Consulta(Timestamp data_hora, int codigo_paciente, int matricula_medico) {
         this.data_hora = data_hora;
         this.codigo_paciente = codigo_paciente;
         this.matricula_medico = matricula_medico;
     }
-
     
     public Timestamp getDataHora() {
         return data_hora;
@@ -32,11 +31,11 @@ public class Consulta {
     }
    
 
-    public int getMatriculaFuncionarioMedico() {
+    public int getMatriculaMedico() {
         return matricula_medico;
     }
 
-    public void setMatriculaFuncionarioMedico(int matricula_medico) {
+    public void setMatriculaMedico(int matricula_medico) {
         this.matricula_medico = matricula_medico;
     }
 }
