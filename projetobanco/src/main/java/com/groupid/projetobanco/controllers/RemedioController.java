@@ -5,12 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.groupid.projetobanco.models.Remedio;
 import com.groupid.projetobanco.repository.RemedioRepository;
 
-@RestController
+/**
+ *
+ * @author Matheus Gomes
+ */
+@Controller
 @RequestMapping("/remedio")
 public class RemedioController {
 
@@ -23,13 +35,15 @@ public class RemedioController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createRemedio(@RequestBody Remedio remedio) {
+    public String createRemedio(@RequestBody Remedio remedio) {
         boolean inserted = remedioRepository.insertRemedio(remedio);
         
         if (inserted) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("Remédio inserido com sucesso!");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao inserir o remédio.");
+            return "redirect:/remedio/lista";
+        } 
+        
+        else {
+            return "error";
         }
     }
 
@@ -44,19 +58,24 @@ public class RemedioController {
     }
 
     @GetMapping("/lista")
-    public List<Remedio> getRemedios() {
-        return remedioRepository.getAllRemedios();
+    public String getRemedios(Model model) {
+        List<Remedio> remedios = remedioRepository.getAllRemedios();
+        model.addAttribute("remedios", remedios);
+        return "lista_remedios";
     }
+    
 
     @PutMapping("/atualizar/{codigo}")
     public ResponseEntity<String> updateRemedio(@PathVariable int codigo, @RequestBody Remedio remedio) {
         remedio.setCodigo(codigo);
         remedioRepository.updateRemedio(remedio);
         return ResponseEntity.status(HttpStatus.OK).body("Remédio atualizado com sucesso!");
-    }
-
+    } 
+    
     @GetMapping("/lista/Clonazepam")
-    public List<Remedio> getRemediosClonazepam() {
-        return remedioRepository.getAllRemediosPrincipioAtivoClonazepam();
-    }    
+    public String getRemediosClonazepam(Model model) {
+        List<Remedio> remedios = remedioRepository.getAllRemediosPrincipioAtivoClonazepam();
+        model.addAttribute("remedios", remedios);
+        return "lista_remedios";
+    }
 }

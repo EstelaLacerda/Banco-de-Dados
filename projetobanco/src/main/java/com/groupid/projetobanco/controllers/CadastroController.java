@@ -38,7 +38,7 @@ public class CadastroController {
 
     @GetMapping("/remedio")
     public String showFormRemedio(Model model) {
-        model.addAttribute("remedio", new Remedio(0, null, null, null, 0, null, null, 0, false));
+        model.addAttribute("remedio", new Remedio(null, null, null, 0, null, null, 0, false));
         return "remedioForm";
     }
 

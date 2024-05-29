@@ -46,11 +46,6 @@
             <h2 style="margin-top: 50px;">Cadastro de Remédio</h2>
 
             <form id="formRemedio" action="/remedio" method="post" th:object="${remedio}">
-                <div class="form-group">
-                    <label for="codigo"><strong>Código:</strong></label>
-                    <br>
-                    <input type="text" id="codigo" name="codigo" th:field="*{codigo}" required>
-                </div>
 
                 <div class="form-group">
                     <label for="nomeRemedio"><strong>Nome do Remédio:</strong></label>
@@ -131,10 +126,8 @@
             });
     
             form.addEventListener('submit', function () {
-                // Verifica qual opção de radiobox está selecionada
                 radios.forEach(radio => {
                     if (radio.checked) {
-                        // Ajusta o valor do campo "Controlado" com base na seleção
                         controladoInput.value = radio.value;
                     }
                 });

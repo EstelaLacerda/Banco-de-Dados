@@ -13,9 +13,8 @@ public class Remedio {
     private int cod_estoque;
     private boolean controlado;
   
-    public Remedio(int codigo_remedio, String nome, String principio_ativo, String tipo, int quantidade,
+    public Remedio(String nome, String principio_ativo, String tipo, int quantidade,
     String unidade_medida, String dosagem, int cod_estoque, boolean controlado) {
-        this.codigo_remedio = codigo_remedio;
         this.nome = nome;
         this.principio_ativo = principio_ativo;
         this.tipo = tipo;

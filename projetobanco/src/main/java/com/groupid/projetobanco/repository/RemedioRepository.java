@@ -20,6 +20,7 @@ public class RemedioRepository {
             remedio.getNomeRemedio(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
             remedio.getUnidadeMedida(), remedio.getDosagem(), remedio.getCodEstoque(), remedio.getControlado()
         );
+        remedio.setCodigo(remedio.getCodigo());
         return rowsAffected > 0;
     }
 
@@ -35,7 +36,7 @@ public class RemedioRepository {
 
     public List<Remedio> getAllRemedios() {
         return jdbcTemplate.query("SELECT * FROM REMEDIO", (resultSet, rowNum) -> {
-            Remedio remedio = new Remedio(rowNum, null, null, null, rowNum, null, null, rowNum, false);
+            Remedio remedio = new Remedio(null, null, null, rowNum, null, null, rowNum, false);
             remedio.setCodigo(resultSet.getInt("CODIGO_REMEDIO")); 
             remedio.setNomeRemedio(resultSet.getString("NOME"));    
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO")); 
@@ -59,7 +60,7 @@ public class RemedioRepository {
 
     public List<Remedio> getAllRemediosPrincipioAtivoClonazepam() {
         return jdbcTemplate.query("SELECT * FROM REMEDIO WHERE NOME IN (SELECT NOME_REMEDIO FROM ESTOQUE WHERE NOME_REMEDIO = 'Clonazepam')", (resultSet, rowNum) -> {
-            Remedio remedio = new Remedio(rowNum, null, null, null, rowNum, null, null, rowNum, false);
+            Remedio remedio = new Remedio(null, null, null, rowNum, null, null, rowNum, false);
             remedio.setCodigo(resultSet.getInt("CODIGO_REMEDIO")); 
             remedio.setNomeRemedio(resultSet.getString("NOME"));    
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO")); 
