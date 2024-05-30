@@ -27,9 +27,9 @@ public class MedicoRepository {
     }
 
     private boolean funcionarioExists(int matricula) {
-        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ?";
-        return jdbcTemplate.queryForObject(sql, Integer.class, matricula) > 0;
-    }
+        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ? AND CARGO = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, matricula, "Médico") > 0;
+    }    
 
     public boolean deleteMedico(int matricula_medico) {
         int rowsAffected = jdbcTemplate.update("DELETE FROM MEDICO WHERE MATRICULA_MEDICO = ?", matricula_medico);

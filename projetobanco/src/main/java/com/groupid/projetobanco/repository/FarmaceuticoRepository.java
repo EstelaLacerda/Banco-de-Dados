@@ -15,10 +15,21 @@ public class FarmaceuticoRepository {
     private JdbcTemplate jdbcTemplate;
 
     public boolean insertFarmaceutico(Farmaceutico farmaceutico) {
-        jdbcTemplate.update("INSERT INTO FARMACEUTICO(CRF, MATRICULA_FARMACEUTICO) VALUES(?, ?)", 
-        farmaceutico.getCrf(), farmaceutico.getMatriculaFarmaceutico());
-        return true;
+        if (funcionarioExists(farmaceutico.getMatriculaFarmaceutico())) {
+            int rowsFarmaceutico = jdbcTemplate.update(
+                "INSERT INTO FARMACEUTICO(CRF, MATRICULA_FARMACEUTICO) VALUES(?, ?)",
+                farmaceutico.getCrf(), farmaceutico.getMatriculaFarmaceutico()
+            );
+            return rowsFarmaceutico > 0;
+        } else {
+            return false;
+        }
     }
+
+    private boolean funcionarioExists(int matricula) {
+        String sql = "SELECT COUNT(*) FROM FUNCIONARIO WHERE MATRICULA = ? AND CARGO = ?";
+        return jdbcTemplate.queryForObject(sql, Integer.class, matricula, "Farmacêutico") > 0;
+    }  
 
     public boolean deleteFarmaceutico(int matricula_farmaceutico){
 

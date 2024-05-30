@@ -6,8 +6,7 @@ public class Setor_hospitalar {
     private String nome_do_setor;
     private int quantidade_receitas;
 
-    public Setor_hospitalar(int codigo_Setor, String nome_do_setor, int quantidade_receitas) {
-        this.codigo_Setor = codigo_Setor;
+    public Setor_hospitalar(String nome_do_setor, int quantidade_receitas) {
         this.nome_do_setor = nome_do_setor;
         this.quantidade_receitas = quantidade_receitas;
     }
@@ -29,11 +28,11 @@ public class Setor_hospitalar {
         this.nome_do_setor = nome_do_setor;
     }
 
-    public int getQuantidade_receitas() {
+    public int getQuantidadeReceitas() {
         return quantidade_receitas;
     }
 
-    public void setQuantidade_receitas(int quantidade_receitas) {
+    public void setQuantidadeReceitas(int quantidade_receitas) {
         this.quantidade_receitas = quantidade_receitas;
     }
 

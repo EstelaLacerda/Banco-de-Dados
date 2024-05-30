@@ -56,7 +56,7 @@ public class CadastroController {
 
     @GetMapping("/receita")
     public String showFormReceita(Model model) {
-        model.addAttribute("receita", new Receita(null, null, 0, 0, null, null, 0, null, null, null, false, null));
+        model.addAttribute("receita", new Receita(null, null, 0, 0, null, null, 0, null, null, false, null));
         return "receitaForm";
     }
 

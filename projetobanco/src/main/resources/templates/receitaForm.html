@@ -49,8 +49,12 @@
 
                 <div class="form-group">
                     <label for="data_hora_consulta"><strong>Data e Hora da Consulta:</strong></label>
-                    <br>
-                    <input type="datetime-local" id="data_hora_consulta" name="data_hora_consulta" required>
+                        <br>
+                        <input type="datetime-local" id="data_hora_consulta" name="data_hora_consulta" required>
+                        <br>
+                        <label for="segundos"><strong>Segundos:</strong></label>
+                        <input type="number" id="segundos" name="segundos" min="0" max="59">
+                        <br>
                 </div>
 
                 <div class="form-group">
@@ -108,7 +112,7 @@
                 <div class="form-group">
                     <label for="status_receita"><strong>Status da Receita:</strong></label>
                     <br>
-                    <input type="text" id="status_receita" name="status_receita" required>
+                    <input type="text" id="status_receita" name="status_receita" value="Receita Nova" required>
                 </div>
 
                 <div class="form-group">
@@ -126,18 +130,27 @@
     <script>
         function sendData() {
             var formData = {
-                data_hora_consulta: document.getElementById("data_hora_consulta").value,
-                matricula_medico: document.getElementById("matricula_medico").value,
-                codigo_paciente: document.getElementById("codigo_paciente").value,
-                nome_remedio: document.getElementById("nome_remedio").value,
+                dataHoraConsulta: document.getElementById("data_hora_consulta").value,
+                segundos: document.getElementById("segundos").value,
+                milisegundos: document.getElementById("milisegundos").value,
+                matriculaMedico: document.getElementById("matricula_medico").value,
+                codigoPaciente: document.getElementById("codigo_paciente").value,
+                nomeRemedio: document.getElementById("nome_remedio").value,
                 dosagem: document.getElementById("dosagem").value,
                 quantidade: document.getElementById("quantidade").value,
                 unidadeMedida: document.getElementById("unidadeMedida").value,
                 horario: document.getElementById("horario").value,
-                receita_controlada: document.getElementById("receita_controlada").value,
-                status_receita: document.getElementById("status_receita").value
+                receitaControlada: document.querySelector('input[name="receita_controlada"]:checked').value,
+                statusReceita: document.getElementById("status_receita").value
             };
-        
+    
+            // Combine a data e hora com segundos e milisegundos
+            var dataHoraCompleta = formData.dataHoraConsulta + "";
+            dataHoraCompleta += ":" + formData.segundos.padStart(2, '0');
+    
+            // Atualize o formData com a data e hora completa
+            formData.dataHoraConsulta = dataHoraCompleta;
+    
             fetch("/receita", {
                 method: "POST",
                 headers: {
@@ -149,14 +162,14 @@
                 if (!response.ok) {
                     throw new Error('Erro ao enviar os dados');
                 }
-
+    
                 window.location.href = "/receita/lista";
             })
             .catch(error => {
                 console.error('Erro:', error);
             });
         }
-        
     </script>
+    
 </body>
 </html>

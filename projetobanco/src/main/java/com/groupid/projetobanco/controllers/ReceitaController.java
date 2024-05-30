@@ -26,14 +26,17 @@ public class ReceitaController {
     private ReceitaRepository receitaRepository;
 
     @PostMapping
-    public String createReceita(@RequestBody Receita receita){
-        boolean inserted = receitaRepository.insertReceita(receita);
-
-        if (inserted) {
-            return "redirect:/receita/lista";
-        } 
-        
-        else {
+    public String createReceita(@RequestBody Receita receita, Model model) {
+        try {
+            boolean inserted = receitaRepository.insertReceita(receita);
+            if (inserted) {
+                return "redirect:/receita/lista";
+            } else {
+                model.addAttribute("errorMessage", "Erro ao inserir a receita no banco de dados.");
+                return "error";
+            }
+        } catch (Exception e) {
+            model.addAttribute("errorMessage", "Ocorreu um erro ao processar a solicitação: " + e.getMessage());
             return "error";
         }
     }

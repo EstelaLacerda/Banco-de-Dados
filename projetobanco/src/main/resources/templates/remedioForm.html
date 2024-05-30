@@ -48,15 +48,15 @@
             <form id="formRemedio" action="/remedio" method="post" th:object="${remedio}">
 
                 <div class="form-group">
-                    <label for="nomeRemedio"><strong>Nome do Remédio:</strong></label>
+                    <label for="nome"><strong>Nome do Remédio:</strong></label>
                     <br>
-                    <input type="text" id="nomeRemedio" name="nomeRemedio" th:field="*{nomeRemedio}" required>
+                    <input type="text" id="nome" name="nome" th:field="*{nome}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="principioAtivo"><strong>Princípio Ativo:</strong></label>
                     <br>
-                    <input type="text" id="principioAtivo" name="principioAtivo" th:field="*{principioAtivo}" required>
+                    <input type="text" id="principio_ativo" name="principioAtivo" th:field="*{principioAtivo}" required>
                 </div>  
 
                 <div class="form-group">
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label for="quantidade"><strong>Quantidade:</strong></label>
                     <br>
-                    <input type="text" id="quantidade" name="quantidade" th:field="*{quantidade}" required>
+                    <input type="number" id="quantidade" name="quantidade" th:field="*{quantidade}" required>
                 </div>
 
                 <div class="form-group">
@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label for="codEstoque"><strong>Código de Estoque:</strong></label>
                     <br>
-                    <input type="text" id="codEstoque" name="codEstoque" th:field="*{codEstoque}" required>
+                    <input type="number" id="codEstoque" name="codEstoque" th:field="*{codEstoque}" required>
                 </div>
 
                 <div class="form-group">

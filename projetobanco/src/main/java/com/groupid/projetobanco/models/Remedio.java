@@ -36,11 +36,11 @@ public class Remedio {
     }
 
        
-    public String getNomeRemedio() {
+    public String getNome() {
         return nome;
     }
 
-    public void setNomeRemedio(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 

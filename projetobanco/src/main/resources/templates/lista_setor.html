@@ -96,39 +96,15 @@
         }
 
         th:nth-child(1), td:nth-child(1) {
-            width: 10%;
+            width: 20%;
         }
 
         th:nth-child(2), td:nth-child(2) {
-            width: 10%;
+            width: 40%;
         }
 
         th:nth-child(3), td:nth-child(3) {
-            width: 10%;
-        }
-
-        th:nth-child(4), td:nth-child(4) {
-            width: 10%;
-        }
-
-        th:nth-child(5), td:nth-child(5) {
-            width: 15%;
-        }
-
-        th:nth-child(6), td:nth-child(6) {
-            width: 15%;
-        }
-
-        th:nth-child(7), td:nth-child(7) {
-            width: 10%;
-        }
-
-        th:nth-child(8), td:nth-child(8) {
-            width: 10%;
-        }
-
-        th:nth-child(9), td:nth-child(9) {
-            width: 10%;
+            width: 40%;
         }
 
         .delete-button {
@@ -146,14 +122,6 @@
     <div th:replace="fragments/header :: header"></div>
 
     <div class="button-container">
-        <form action="/remedio/lista" method="get">
-            <button type="submit">Ver Remédios</button>
-        </form>
-
-        <form action="/remedio/lista/Clonazepam" method="get">
-            <button type="submit">Ver Remédios Clonazepam</button>
-        </form>
-
         <form onsubmit="history.back(); return false;">
             <button style="background-color: #D1345B;" type="submit">Voltar</button>
         </form>
@@ -166,28 +134,21 @@
                     <tr>
                         <th>Código</th>
                         <th>Nome</th>
-                        <th>Princípio Ativo</th>
-                        <th>Tipo</th>
-                        <th>Quantidade</th>
-                        <th>Unidade de Medida</th>
-                        <th>Dosagem</th>
-                        <th>Código de Estoque</th>
-                        <th>Controlado</th>
+                        <th>Quantidade de Receitas</th>
                         <th></th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <tr th:each="remedio : ${remedios}">
-                        <td th:text="${remedio.codigo}"></td>
-                        <td th:text="${remedio.nome}"></td>
-                        <td th:text="${remedio.principioAtivo}"></td>
-                        <td th:text="${remedio.tipo}"></td>
-                        <td th:text="${remedio.quantidade}"></td>
-                        <td th:text="${remedio.unidadeMedida}"></td>
-                        <td th:text="${remedio.dosagem}"></td>
-                        <td th:text="${remedio.codEstoque}"></td>
-                        <td th:text="${remedio.controlado}"></td>
+                    <tr th:each="setor_hospitalar : ${setor_hospitalar}">
+                        <td th:text="${setor_hospitalar.codigoSetor}"></td>
+                        <td th:text="${setor_hospitalar.nomeDoSetor}"></td>
+                        <td th:text="${setor_hospitalar.quantidadeReceitas}"></td>
+                        <td>
+                            <form th:action="@{/setor/deletar/{codigoSetor}(codigoSetor=${setor_hospitalar.codigoSetor})}" method="post" class="delete-form">
+                                <input type="hidden" name="codigo" th:value="${setor_hospitalar.codigoSetor}">
+                                <button class="delete-button" type="submit">Deletar</button>
+                            </form>  
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -17,7 +17,7 @@ public class RemedioRepository {
     public boolean insertRemedio(Remedio remedio) {
         int rowsAffected = jdbcTemplate.update(
             "INSERT INTO REMEDIO(NOME, PRINCIPIO_ATIVO, TIPO, QUANTIDADE, UNIDADE_MEDIDA, DOSAGEM, COD_ESTOQUE, CONTROLADO) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            remedio.getNomeRemedio(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
+            remedio.getNome(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
             remedio.getUnidadeMedida(), remedio.getDosagem(), remedio.getCodEstoque(), remedio.getControlado()
         );
         remedio.setCodigo(remedio.getCodigo());
@@ -38,7 +38,7 @@ public class RemedioRepository {
         return jdbcTemplate.query("SELECT * FROM REMEDIO", (resultSet, rowNum) -> {
             Remedio remedio = new Remedio(null, null, null, rowNum, null, null, rowNum, false);
             remedio.setCodigo(resultSet.getInt("CODIGO_REMEDIO")); 
-            remedio.setNomeRemedio(resultSet.getString("NOME"));    
+            remedio.setNome(resultSet.getString("NOME"));    
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO")); 
             remedio.setTipo(resultSet.getString("TIPO"));
             remedio.setQuantidade(resultSet.getInt("QUANTIDADE"));
@@ -53,7 +53,7 @@ public class RemedioRepository {
     public void updateRemedio(Remedio remedio) {
         jdbcTemplate.update(
             "UPDATE REMEDIO SET NOME = ?, PRINCIPIO_ATIVO = ?, TIPO = ?, QUANTIDADE = ?, UNIDADE_MEDIDA = ?, DOSAGEM = ?, COD_ESTOQUE = ?, CONTROLADO = ? WHERE CODIGO_REMEDIO = ?",
-            remedio.getNomeRemedio(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
+            remedio.getNome(), remedio.getPrincipioAtivo(), remedio.getTipo(), remedio.getQuantidade(), 
             remedio.getUnidadeMedida(), remedio.getDosagem(), remedio.getCodEstoque(), remedio.getControlado(), remedio.getCodigo()
         );
     }
@@ -62,7 +62,7 @@ public class RemedioRepository {
         return jdbcTemplate.query("SELECT * FROM REMEDIO WHERE NOME IN (SELECT NOME_REMEDIO FROM ESTOQUE WHERE NOME_REMEDIO = 'Clonazepam')", (resultSet, rowNum) -> {
             Remedio remedio = new Remedio(null, null, null, rowNum, null, null, rowNum, false);
             remedio.setCodigo(resultSet.getInt("CODIGO_REMEDIO")); 
-            remedio.setNomeRemedio(resultSet.getString("NOME"));    
+            remedio.setNome(resultSet.getString("NOME"));    
             remedio.setPrincipioAtivo(resultSet.getString("PRINCIPIO_ATIVO")); 
             remedio.setTipo(resultSet.getString("TIPO"));
             remedio.setQuantidade(resultSet.getInt("QUANTIDADE"));

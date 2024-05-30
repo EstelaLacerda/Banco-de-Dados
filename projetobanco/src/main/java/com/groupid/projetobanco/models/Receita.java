@@ -21,7 +21,7 @@ public class Receita {
     
 
     public Receita(Timestamp data_hora_consulta, String crm, int matricula_medico, int codigo_paciente, String nome_remedio, 
-     String dosagem,int quantidade, String unidade_medida, String horario, Timestamp data_prescricao, boolean receita_controlada, String status_receita){
+     String dosagem,int quantidade, String unidade_medida, String horario, boolean receita_controlada, String status_receita){
       this.data_hora_consulta = data_hora_consulta;
       this.crm = crm;
       this.matricula_medico = matricula_medico;
@@ -31,7 +31,6 @@ public class Receita {
       this.quantidade = quantidade;
       this.unidade_medida = unidade_medida;
       this.horario = horario;
-      this.data_prescricao = data_prescricao;
       this.receita_controlada = receita_controlada;
       this.status_receita = status_receita;
     }

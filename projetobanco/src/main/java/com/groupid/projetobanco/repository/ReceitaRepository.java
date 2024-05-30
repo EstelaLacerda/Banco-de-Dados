@@ -20,7 +20,7 @@ public class ReceitaRepository {
             receita.getDataHoraConsulta(), receita.getCrm(), receita.getMatriculaMedico(), receita.getCodigoPaciente(), receita.getNomeRemedio(),
             receita.getDosagem(), receita.getQuantidade(), receita.getUnidadeMedida(), receita.getHorario(), receita.getReceitaControlada(), 
             receita.getStatusReceita());
-        receita.setIdReceita(receita.getIdReceita());
+
         return true;
     }
     
@@ -44,7 +44,7 @@ public class ReceitaRepository {
 
     public List<Receita> getAllReceitas() {
         return jdbcTemplate.query("SELECT * FROM RECEITA", (resultSet, rowNum) -> {
-            Receita receita = new Receita(null, null, rowNum, rowNum, null, null, rowNum, null, null, null, false, null);
+            Receita receita = new Receita(null, null, rowNum, rowNum, null, null, rowNum, null, null, false, null);
             receita.setIdReceita(resultSet.getInt("ID_RECEITA"));
             receita.setDataHoraConsulta(resultSet.getTimestamp("DATA_HORA_CONSULTA"));
             receita.setCrm(resultSet.getString("CRM"));
